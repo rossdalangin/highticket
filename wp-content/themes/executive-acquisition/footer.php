@@ -8,6 +8,9 @@
     </div>
 </footer>
 
-<?php wp_footer(); ?>
+<?php
+echo get_theme_mod( 'ea_footer_scripts' );
+wp_footer();
+?>
 </body>
 </html>

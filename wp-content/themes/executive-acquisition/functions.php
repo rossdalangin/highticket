@@ -70,6 +70,104 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'url',
     ) );
 
+    // Social Proof Section
+    $wp_customize->add_section( 'ea_social_proof', array(
+        'title'    => __( 'Social Proof & Authority', 'executive-acquisition' ),
+        'priority' => 31,
+    ) );
+
+    $wp_customize->add_setting( 'ea_logo_bar_text', array(
+        'default'   => 'TRUSTED BY LEADERS AT:',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_logo_bar_text', array(
+        'label'    => __( 'Logo Bar Label', 'executive-acquisition' ),
+        'section'  => 'ea_social_proof',
+        'type'     => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'ea_testimonial_quote', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_testimonial_quote', array(
+        'label'    => __( 'Featured Testimonial Quote', 'executive-acquisition' ),
+        'section'  => 'ea_social_proof',
+        'type'     => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'ea_testimonial_author', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_testimonial_author', array(
+        'label'    => __( 'Testimonial Author Name/Title', 'executive-acquisition' ),
+        'section'  => 'ea_social_proof',
+        'type'     => 'text',
+    ) );
+
+    // Advanced SEO & Schema
+    $wp_customize->add_section( 'ea_seo_section', array(
+        'title'    => __( 'Advanced SEO & Schema', 'executive-acquisition' ),
+        'priority' => 31.5,
+    ) );
+
+    $wp_customize->add_setting( 'ea_schema_json', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_schema_json', array(
+        'label'    => __( 'Schema.org JSON-LD (Organization/Coach)', 'executive-acquisition' ),
+        'section'  => 'ea_seo_section',
+        'type'     => 'textarea',
+        'description' => __( 'Paste your Schema.org JSON-LD script here.', 'executive-acquisition' ),
+    ) );
+
+    $wp_customize->add_setting( 'ea_og_image', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_og_image', array(
+        'label'    => __( 'Default OpenGraph Image (Social Sharing)', 'executive-acquisition' ),
+        'section'  => 'ea_seo_section',
+    ) ) );
+
+    // Tracking & Scripts Section
+    $wp_customize->add_section( 'ea_tracking_section', array(
+        'title'    => __( 'Tracking & Scripts', 'executive-acquisition' ),
+        'priority' => 32,
+    ) );
+
+    $wp_customize->add_setting( 'ea_gtm_id', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_gtm_id', array(
+        'label'    => __( 'Google Tag Manager ID (e.g. GTM-XXXXXX)', 'executive-acquisition' ),
+        'section'  => 'ea_tracking_section',
+        'type'     => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'ea_header_scripts', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_header_scripts', array(
+        'label'    => __( 'Header Scripts (CAPI, LinkedIn Pixel, etc.)', 'executive-acquisition' ),
+        'section'  => 'ea_tracking_section',
+        'type'     => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'ea_footer_scripts', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_footer_scripts', array(
+        'label'    => __( 'Footer Scripts (Hotjar, Microsoft Clarity, etc.)', 'executive-acquisition' ),
+        'section'  => 'ea_tracking_section',
+        'type'     => 'textarea',
+    ) );
+
     // Funnel Flow Settings
     $wp_customize->add_section( 'ea_funnel_flow', array(
         'title'    => __( 'Funnel Flow & Logic', 'executive-acquisition' ),

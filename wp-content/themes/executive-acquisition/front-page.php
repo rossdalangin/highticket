@@ -24,8 +24,23 @@
     </div>
 </section>
 
+<!-- Logo Bar Section -->
+<section class="logo-bar" style="padding: 40px 0; background: var(--white); border-bottom: 1px solid #eee;">
+    <div class="container" style="text-align: center;">
+        <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 25px;"><?php echo esc_html( get_theme_mod( 'ea_logo_bar_text', 'TRUSTED BY LEADERS AT:' ) ); ?></p>
+        <div class="logo-grid" style="display: flex; justify-content: center; gap: 60px; filter: grayscale(1); opacity: 0.6; align-items: center; flex-wrap: wrap;">
+            <!-- Placeholder Logos -->
+            <div style="font-weight: 900; font-size: 1.2rem;">FORBES</div>
+            <div style="font-weight: 900; font-size: 1.2rem;">INC.</div>
+            <div style="font-weight: 900; font-size: 1.2rem;">HBR</div>
+            <div style="font-weight: 900; font-size: 1.2rem;">FAST CO.</div>
+            <div style="font-weight: 900; font-size: 1.2rem;">DELOITTE</div>
+        </div>
+    </div>
+</section>
+
 <!-- Section 2: Agitation (The Pain) -->
-<section style="background-color: var(--white);">
+<section style="background-color: var(--light-bg);">
     <div class="container">
         <div class="section-title">
             <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title', "The 'High-Ticket' Paradox: Why Your Expertise Isn't Converting Into Calendars" ) ); ?></h2>
@@ -53,8 +68,21 @@
     </div>
 </section>
 
+<!-- Featured Testimonial -->
+<?php
+$quote = get_theme_mod( 'ea_testimonial_quote' );
+if ( $quote ) : ?>
+<section class="testimonial-featured" style="background: var(--primary-color); color: var(--white); padding: 100px 0;">
+    <div class="container" style="max-width: 900px; text-align: center;">
+        <div style="font-size: 4rem; font-family: var(--font-heading); line-height: 1; color: var(--accent-color); margin-bottom: -20px;">“</div>
+        <blockquote style="font-size: 2rem; font-family: var(--font-heading); font-style: italic; margin-bottom: 30px;"><?php echo esc_html( $quote ); ?></blockquote>
+        <p style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color);"><?php echo esc_html( get_theme_mod( 'ea_testimonial_author' ) ); ?></p>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- Section 3: The Mechanism -->
-<section style="background-color: var(--light-bg);">
+<section style="background-color: var(--white);">
     <div class="container">
         <div class="section-title">
             <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title', 'Introducing: The Institutional Intent Method™' ) ); ?></h2>

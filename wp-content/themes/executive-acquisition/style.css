@@ -35,10 +35,12 @@ h1, h2, h3, h4 {
     font-family: var(--font-heading);
     color: var(--primary-color);
     margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
 }
 
 p {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: #4A5568; /* Slightly softer than pure charcoal */
 }
 
 .container {
@@ -49,19 +51,23 @@ p {
 
 .btn {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: 1.25rem 3rem;
     background-color: var(--accent-color);
     color: var(--white);
     text-decoration: none;
     font-weight: 700;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 2px; /* Sharper edges for a more executive look */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 6px rgba(197, 160, 89, 0.2);
 }
 
 .btn:hover {
     background-color: #b08e4a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px rgba(197, 160, 89, 0.3);
 }
 
 /* Header */
