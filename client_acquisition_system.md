@@ -113,6 +113,11 @@ The 3-step psychological sequence to maximize commitment:
 
 ## 3. TECH STACK & OPTIMIZATION BLUEPRINT
 
+### Advanced Funnel Features
+- **Dynamic Text Replacement (DTR):** The system supports `{company}` and `{name}` placeholders that can be replaced via URL parameters (e.g., `?company=Google`) for simulated personalization.
+- **Exit-Intent Authority Logic:** A strategic overlay triggers when a user attempts to leave the briefing page, offering a "Final ROI Diagnostic" session to recover the lead.
+- **One-Click Infrastructure Setup:** The theme includes a "Theme Setup" admin page that automatically generates all core pages, menus, and reading settings with a single click.
+
 ### Recommended WordPress Architecture
 - **CMS:** WordPress (Self-hosted on WP Engine or SiteGround for performance).
 - **Theme:** **GeneratePress (Premium)** or **Hello Elementor**. Zero-bloat foundation is priority.

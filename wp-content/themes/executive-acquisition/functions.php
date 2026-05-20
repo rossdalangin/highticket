@@ -22,6 +22,21 @@ function executive_acquisition_scripts() {
 add_action( 'wp_enqueue_scripts', 'executive_acquisition_scripts' );
 
 /**
+ * Custom Login Styles
+ */
+function ea_login_stylesheet() {
+    wp_enqueue_style( 'ea-login-style', get_template_directory_uri() . '/assets/css/admin-login.css' );
+    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap', array(), null );
+}
+add_action( 'login_enqueue_scripts', 'ea_login_stylesheet' );
+
+function ea_login_logo_url() { return home_url(); }
+add_filter( 'login_headerurl', 'ea_login_logo_url' );
+
+function ea_login_logo_url_title() { return get_bloginfo('name'); }
+add_filter( 'login_headertext', 'ea_login_logo_url_title' );
+
+/**
  * Include Shortcodes
  */
 require get_template_directory() . '/functions-shortcodes.php';
@@ -30,6 +45,11 @@ require get_template_directory() . '/functions-shortcodes.php';
  * Include Page Generator
  */
 require get_template_directory() . '/functions-generator.php';
+
+/**
+ * Include Admin Setup
+ */
+require get_template_directory() . '/functions-admin.php';
 
 /**
  * Customizer settings for the Acquisition System

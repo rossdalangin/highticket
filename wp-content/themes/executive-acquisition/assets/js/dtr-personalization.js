@@ -62,15 +62,18 @@
         observer.observe(this);
     });
 
-    // 4. Simulated Exit-Intent (if enabled)
+    // 4. Exit-Intent Logic
     let exitIntentShown = false;
     $(document).on('mouseleave', function(e) {
         if (e.clientY < 0 && !exitIntentShown) {
-            // In a real theme, we would check a global JS variable set by PHP Customizer
-            // For now, we simulate the logic
-            console.log('Exit Intent Triggered: Offering Final ROI Diagnostic.');
+            $('#ea-exit-intent').css('display', 'flex');
             exitIntentShown = true;
+            window.dataLayer.push({'event': 'Exit_Intent_Triggered'});
         }
+    });
+
+    $('#close-exit').on('click', function() {
+        $('#ea-exit-intent').fadeOut();
     });
 
 })(jQuery);
