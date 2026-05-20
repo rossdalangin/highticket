@@ -111,6 +111,33 @@ if ( $quote ) : ?>
     </div>
 </section>
 
+<!-- FAQ Section -->
+<section class="faq" style="background-color: var(--light-bg);">
+    <div class="container">
+        <div class="section-title">
+            <h2>Common Objections & Executive FAQ</h2>
+            <p>Addressing the critical questions about the Institutional Intent Method™.</p>
+        </div>
+        <div class="faq-container">
+            <?php for ($i = 1; $i <= 4; $i++) :
+                $q = get_theme_mod( "ea_faq_q_{$i}" );
+                $a = get_theme_mod( "ea_faq_a_{$i}" );
+
+                if (!$q && $i == 1) $q = 'How much time is required to manage this system?';
+                if (!$a && $i == 1) $a = 'The system is designed for high-leverage. After the initial 14-day setup, your only responsibility is showing up for pre-qualified diagnostic sessions.';
+                if (!$q && $i == 2) $q = 'Does this work for specialized coaching niches?';
+                if (!$a && $i == 2) $a = 'Yes. The Institutional Intent Method™ is niche-agnostic; it identifies intent based on specific problem searches, not general industry terms.';
+
+                if ($q) : ?>
+                <div class="faq-item">
+                    <span class="faq-question"><?php echo esc_html($q); ?></span>
+                    <div class="faq-answer"><?php echo esc_html($a); ?></div>
+                </div>
+            <?php endif; endfor; ?>
+        </div>
+    </div>
+</section>
+
 <!-- CTA / Form Section -->
 <section id="cta" style="background-color: var(--primary-color); color: var(--white);">
     <div class="container" style="max-width: 600px; text-align: center;">

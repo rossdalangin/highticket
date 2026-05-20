@@ -21,6 +21,11 @@ function executive_acquisition_scripts() {
 add_action( 'wp_enqueue_scripts', 'executive_acquisition_scripts' );
 
 /**
+ * Include Shortcodes
+ */
+require get_template_directory() . '/functions-shortcodes.php';
+
+/**
  * Customizer settings for the Acquisition System
  */
 function executive_acquisition_customize_register( $wp_customize ) {
@@ -286,6 +291,19 @@ function executive_acquisition_customize_register( $wp_customize ) {
             'section'  => 'ea_mechanism_section',
             'type'     => 'textarea',
         ) );
+    }
+
+    // FAQ Section
+    $wp_customize->add_section( 'ea_faq_section', array(
+        'title'    => __( 'Executive FAQ', 'executive-acquisition' ),
+        'priority' => 60,
+    ) );
+
+    for ($i = 1; $i <= 4; $i++) {
+        $wp_customize->add_setting( "ea_faq_q_{$i}", array( 'default' => '', 'transport' => 'refresh' ) );
+        $wp_customize->add_control( "ea_faq_q_{$i}", array( 'label' => __( "Question {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'text' ) );
+        $wp_customize->add_setting( "ea_faq_a_{$i}", array( 'default' => '', 'transport' => 'refresh' ) );
+        $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "Answer {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
     }
 }
 add_action( 'customize_register', 'executive_acquisition_customize_register' );
