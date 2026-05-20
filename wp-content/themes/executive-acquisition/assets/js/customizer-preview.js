@@ -70,9 +70,23 @@
     // Agitation
     wp.customize('ea_agitation_title', function(value) {
         value.bind(function(newval) {
-            $('.agitation-section h2').first().text(newval);
+            $('section:has(.grid-3) h2').first().text(newval);
         });
     });
+
+    // Agitation Bullets - Loop for 3
+    for(let i=1; i<=3; i++) {
+        wp.customize('ea_agitation_bullet_'+i+'_title', function(value) {
+            value.bind(function(newval) {
+                $('.card:nth-child('+i+') h3').text(newval);
+            });
+        });
+        wp.customize('ea_agitation_bullet_'+i+'_text', function(value) {
+            value.bind(function(newval) {
+                $('.card:nth-child('+i+') p').text(newval);
+            });
+        });
+    }
 
     // Mechanism
     wp.customize('ea_mechanism_title', function(value) {
@@ -80,6 +94,20 @@
             $('.mechanism-section h2').text(newval);
         });
     });
+
+    // Mechanism Steps - Loop for 3
+    for(let i=1; i<=3; i++) {
+        wp.customize('ea_mechanism_step_'+i+'_title', function(value) {
+            value.bind(function(newval) {
+                $('.step-card:nth-child('+i+') h3').text(newval);
+            });
+        });
+        wp.customize('ea_mechanism_step_'+i+'_text', function(value) {
+            value.bind(function(newval) {
+                $('.step-card:nth-child('+i+') p').text(newval);
+            });
+        });
+    }
 
     // FAQ - Comprehensive Preview for all 4
     for(let i=1; i<=4; i++) {

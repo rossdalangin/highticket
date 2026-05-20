@@ -23,7 +23,30 @@
     if ( $og_image ) : ?>
         <meta property="og:image" content="<?php echo esc_url( $og_image ); ?>">
     <?php endif; ?>
-    <?php echo get_theme_mod( 'ea_schema_json' ); ?>
+
+    <?php
+    $manual_schema = get_theme_mod( 'ea_schema_json' );
+    if ( $manual_schema ) {
+        echo $manual_schema;
+    } else {
+        // Dynamic Schema Generation
+        $founder = get_theme_mod('ea_founder_name', get_bloginfo('name'));
+        $logo = get_theme_mod('ea_executive_logo', '');
+        $schema = [
+            "@context" => "https://schema.org",
+            "@type" => "ProfessionalService",
+            "name" => get_bloginfo('name'),
+            "description" => get_bloginfo('description'),
+            "url" => home_url(),
+            "founder" => [
+                "@type" => "Person",
+                "name" => $founder
+            ]
+        ];
+        if ($logo) $schema["image"] = $logo;
+        echo '<script type="application/ld+json">' . json_encode($schema) . '</script>';
+    }
+    ?>
 
     <!-- SEO & Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

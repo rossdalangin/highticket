@@ -100,6 +100,14 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_lead_magnet_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_lead_magnet_url', array( 'label' => __( 'Asset Download URL', 'executive-acquisition' ), 'section' => 'ea_assets_section', 'type' => 'url' ) );
 
+    $wp_customize->add_setting( 'ea_form_action_url', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_form_action_url', array(
+        'label' => __( 'ESP Form Action URL (e.g. Mailchimp/Klaviyo)', 'executive-acquisition' ),
+        'section' => 'ea_assets_section',
+        'type' => 'text',
+        'description' => __( 'The action URL for your lead magnet capture form.', 'executive-acquisition' )
+    ) );
+
     // 3. Founder/Coach Profile
     $wp_customize->add_section( 'ea_profile_section', array(
         'title'    => __( 'Founder/Coach Profile', 'executive-acquisition' ),
