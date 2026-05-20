@@ -38,6 +38,31 @@ function ea_render_setup_page() {
                     <?php _e( 'Generate Infrastructure →', 'executive-acquisition' ); ?>
                 </button>
                 <span class="spinner" style="float:none; vertical-align: middle;"></span>
+
+                <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
+
+                <h3>Funnel Architecture Map</h3>
+                <div class="funnel-map" style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 30px; border-radius: 4px; text-align: center; border: 1px dashed #cbd5e1;">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 900; color: #0B1D33;">1. LANDING</div>
+                        <div style="font-size: 0.75rem;">Authority Hook</div>
+                    </div>
+                    <div style="color: #C5A059; font-weight: 900;">→</div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 900; color: #0B1D33;">2. BRIDGE</div>
+                        <div style="font-size: 0.75rem;">Trust Anchor</div>
+                    </div>
+                    <div style="color: #C5A059; font-weight: 900;">→</div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 900; color: #0B1D33;">3. BRIEFING</div>
+                        <div style="font-size: 0.75rem;">12m ROI Demo</div>
+                    </div>
+                    <div style="color: #C5A059; font-weight: 900;">→</div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 900; color: #C5A059;">4. BOOKING</div>
+                        <div style="font-size: 0.75rem;">Qualified Lead</div>
+                    </div>
+                </div>
             </div>
 
             <div class="sidebar-links">

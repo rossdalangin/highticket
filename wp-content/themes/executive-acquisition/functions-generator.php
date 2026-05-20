@@ -139,6 +139,17 @@ function ea_ajax_generate_pages() {
     $locations['primary'] = $menu_id;
     set_theme_mod( 'nav_menu_locations', $locations );
 
+    // 4. Generate Sample Blog Post
+    $sample_post_id = wp_insert_post( array(
+        'post_title'   => 'The Institutional Intent Method: Scaling Leadership Beyond Referrals',
+        'post_content' => '[roi_callout value="$2.4M" label="Retention Revenue Protected"]
+                            <p>Most executive coaches rely on a referral-only model. While referrals provide high trust, they lack <strong>predictability</strong>.</p>
+                            [exec_quote author="Strategic Growth Lead"]By implementing a surgical intent beacon, we were able to identify decision-makers months before they issued an RFP.[/exec_quote]
+                            <p>In this insight, we break down the three pillars of institutional trust...</p>',
+        'post_status'  => 'publish',
+        'post_type'    => 'post',
+    ) );
+
     $created_count = 0;
     foreach ( $pages_to_create as $title => $data ) {
         $page_id = wp_insert_post( array(

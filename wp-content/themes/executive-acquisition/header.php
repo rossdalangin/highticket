@@ -61,7 +61,13 @@ if ( $gtm_id ) : ?>
 <header>
     <div class="container header-inner">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
-            <?php bloginfo( 'name' ); ?>
+            <?php
+            $logo = get_theme_mod( 'ea_executive_logo' );
+            if ( $logo ) : ?>
+                <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" style="max-height: 40px; width: auto;">
+            <?php else : ?>
+                <?php bloginfo( 'name' ); ?>
+            <?php endif; ?>
         </a>
         <nav class="main-nav">
             <?php

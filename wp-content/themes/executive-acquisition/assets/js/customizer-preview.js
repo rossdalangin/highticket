@@ -70,9 +70,7 @@
     // Agitation
     wp.customize('ea_agitation_title', function(value) {
         value.bind(function(newval) {
-            $('.faq-container').parent().parent().find('.section-title h2').text(newval); // This selector might be tricky if structure changes
-            // More direct selector for the actual Agitation section
-            $('section:has(.grid-3) h2').first().text(newval);
+            $('.agitation-section h2').first().text(newval);
         });
     });
 
@@ -83,7 +81,7 @@
         });
     });
 
-    // FAQ - Loop for all 4
+    // FAQ - Comprehensive Preview for all 4
     for(let i=1; i<=4; i++) {
         wp.customize('ea_faq_q_'+i, function(value) {
             value.bind(function(newval) {
@@ -96,5 +94,12 @@
             });
         });
     }
+
+    // Compliance
+    wp.customize('ea_cookie_notice', function(value) {
+        value.bind(function(newval) {
+            console.log('Compliance Update:', newval);
+        });
+    });
 
 })(jQuery);
