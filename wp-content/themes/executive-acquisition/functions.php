@@ -26,6 +26,11 @@ add_action( 'wp_enqueue_scripts', 'executive_acquisition_scripts' );
 require get_template_directory() . '/functions-shortcodes.php';
 
 /**
+ * Include Page Generator
+ */
+require get_template_directory() . '/functions-generator.php';
+
+/**
  * Customizer settings for the Acquisition System
  */
 function executive_acquisition_customize_register( $wp_customize ) {
