@@ -1,6 +1,6 @@
 (function($) {
     /**
-     * Executive Acquisition: Funnel Logic & Aesthetics
+     * Executive Acquisition: Funnel Logic, Aesthetics & Security
      */
 
     // 1. GTM DataLayer Tracking
@@ -31,25 +31,42 @@
         });
     });
 
-    // 2. Dynamic Text Replacement (DTR)
+    // 2. Secure Dynamic Text Replacement (DTR)
+    // Sanitizes input to prevent DOM-based XSS
+    function sanitize(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const replacements = {
-        'company': urlParams.get('company') || 'your organization',
-        'name': urlParams.get('name') || 'Executive'
+        'company': sanitize(urlParams.get('company') || 'your organization'),
+        'name': sanitize(urlParams.get('name') || 'Executive')
     };
 
-    $('*').each(function() {
-        let content = $(this).html();
+    // Performance & Security Fix:
+    // Only search within headlines, paragraphs and spans that likely contain placeholders
+    $('h1, h2, h3, p, span, .btn').each(function() {
+        let el = $(this);
+        // We use text replacement logic to avoid breaking existing HTML structure
+        let content = el.html();
         if (content && content.includes('{')) {
+            let hasReplaced = false;
             for (const [key, value] of Object.entries(replacements)) {
                 const regex = new RegExp(`{${key}}`, 'g');
-                content = content.replace(regex, value);
+                if (regex.test(content)) {
+                    content = content.replace(regex, value);
+                    hasReplaced = true;
+                }
             }
-            $(this).html(content);
+            if (hasReplaced) {
+                el.html(content);
+            }
         }
     });
 
-    // 3. Animate In
+    // 3. Animate In (Intersection Observer)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -58,7 +75,7 @@
         });
     }, { threshold: 0.1 });
 
-    $('.card, .step-card, .section-title, .hero-content').each(function() {
+    $('.card, .step-card, .section-title, .hero-content, .founder-section').each(function() {
         observer.observe(this);
     });
 
@@ -74,6 +91,15 @@
 
     $('#close-exit').on('click', function() {
         $('#ea-exit-intent').fadeOut();
+    });
+
+    // 5. Header Scroll Class
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 50) {
+            $('header').addClass('scrolled');
+        } else {
+            $('header').removeClass('scrolled');
+        }
     });
 
 })(jQuery);

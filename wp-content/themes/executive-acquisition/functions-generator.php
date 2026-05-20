@@ -108,23 +108,28 @@ function ea_ajax_generate_pages() {
     $pages_to_create = array(
         'Home' => array(
             'template' => 'front-page.php',
-            'content'  => '',
+            'content'  => '<!-- Static Content Handled via front-page.php -->',
         ),
         'Thank You' => array(
             'template' => 'template-thank-you.php',
-            'content'  => '',
+            'content'  => '<!-- Static Content Handled via template-thank-you.php -->',
         ),
         'Executive Briefing' => array(
             'template' => 'template-briefing.php',
-            'content'  => '',
+            'content'  => '<!-- Static Content Handled via template-briefing.php -->',
         ),
         'Blog' => array(
             'template' => 'home.php',
-            'content'  => '',
+            'content'  => '<!-- Post Loop Handled via home.php -->',
         ),
         'ROI Case Study' => array(
             'template' => 'template-case-study.php',
-            'content'  => 'This is a sample ROI case study showing institutional impact.',
+            'content'  => '[roi_callout value="+140%" label="Leadership Efficiency"]
+                            [exec_quote author="VP Operations, Fortune 500"]This system eliminated our lead quality bottleneck within 90 days.[/exec_quote]
+                            <h3>The Institutional Challenge</h3>
+                            <p>Before implementing the method, the leadership team was trapped on the content hamster wheel, resulting in unqualified leads and wasted executive hours.</p>
+                            <h3>The Engineered Solution</h3>
+                            <p>By deploying the Authority Infrastructure, we replaced manual outreach with a surgical intent-based beacon.</p>',
         ),
     );
 
@@ -147,7 +152,7 @@ function ea_ajax_generate_pages() {
             update_post_meta( $page_id, '_wp_page_template', $data['template'] );
             update_post_meta( $page_id, '_ea_generated_page', '1' );
 
-            // Add to Menu (Exclude Thank You and Briefing from main nav if desired, but here we add all for demo)
+            // Add to Menu
             if ( $title !== 'Thank You' && $title !== 'Executive Briefing' ) {
                 wp_update_nav_menu_item( $menu_id, 0, array(
                     'menu-item-title'     => $title,
@@ -170,6 +175,6 @@ function ea_ajax_generate_pages() {
         }
     }
 
-    wp_send_json_success( array( 'message' => sprintf( __( 'Success! %d funnel pages and Primary Menu generated.', 'executive-acquisition' ), $created_count ) ) );
+    wp_send_json_success( array( 'message' => sprintf( __( 'Success! %d funnel pages and Primary Menu generated with sample authority content.', 'executive-acquisition' ), $created_count ) ) );
 }
 add_action( 'wp_ajax_ea_generate_pages', 'ea_ajax_generate_pages' );

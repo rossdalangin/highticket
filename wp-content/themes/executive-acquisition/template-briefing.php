@@ -74,10 +74,13 @@ get_header(); ?>
      * Executive Briefing Logic
      * Ensures value consumption before allowing the next step.
      */
+    const ctaDelay = <?php echo (int) get_theme_mod( 'ea_briefing_cta_delay', 480 ); ?> * 1000;
     setTimeout(function() {
-        document.getElementById('delayed-cta').style.display = 'block';
-        document.getElementById('cta-timer').style.display = 'none';
-    }, 5000); // 5 seconds for demonstration (normally 8-12 minutes)
+        const cta = document.getElementById('delayed-cta');
+        const timer = document.getElementById('cta-timer');
+        if (cta) cta.style.display = 'block';
+        if (timer) timer.style.display = 'none';
+    }, ctaDelay);
 </script>
 
 <?php get_footer(); ?>

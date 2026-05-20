@@ -55,7 +55,8 @@ require get_template_directory() . '/functions-admin.php';
  * Customizer settings for the Acquisition System
  */
 function executive_acquisition_customize_register( $wp_customize ) {
-    // Global Brand Identity
+
+    // 1. Global Brand Identity
     $wp_customize->add_section( 'ea_brand_section', array(
         'title'    => __( 'Global Brand Identity', 'executive-acquisition' ),
         'priority' => 25,
@@ -63,7 +64,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_accent_color', array(
         'default'   => '#C5A059',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
         'sanitize_callback' => 'sanitize_hex_color',
     ) );
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'ea_accent_color', array(
@@ -73,7 +74,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_border_radius', array(
         'default'   => '2px',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_border_radius', array(
         'label'    => __( 'Global Border Radius (px)', 'executive-acquisition' ),
@@ -81,7 +82,37 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
-    // Hero Section
+    // 2. Strategic Assets
+    $wp_customize->add_section( 'ea_assets_section', array(
+        'title'    => __( 'Strategic Assets (Lead Magnets)', 'executive-acquisition' ),
+        'priority' => 24,
+    ) );
+
+    $wp_customize->add_setting( 'ea_lead_magnet_title', array( 'default' => '', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_lead_magnet_title', array( 'label' => __( 'Asset Title', 'executive-acquisition' ), 'section' => 'ea_assets_section' ) );
+
+    $wp_customize->add_setting( 'ea_lead_magnet_url', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_lead_magnet_url', array( 'label' => __( 'Asset Download URL', 'executive-acquisition' ), 'section' => 'ea_assets_section', 'type' => 'url' ) );
+
+    // 3. Founder/Coach Profile
+    $wp_customize->add_section( 'ea_profile_section', array(
+        'title'    => __( 'Founder/Coach Profile', 'executive-acquisition' ),
+        'priority' => 26,
+    ) );
+
+    $wp_customize->add_setting( 'ea_founder_name', array( 'default' => '', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_founder_name', array( 'label' => __( 'Founder Name', 'executive-acquisition' ), 'section' => 'ea_profile_section' ) );
+
+    $wp_customize->add_setting( 'ea_founder_bio', array( 'default' => '', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_founder_bio', array( 'label' => __( 'Brief Bio (Authority focus)', 'executive-acquisition' ), 'section' => 'ea_profile_section', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'ea_founder_image', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_founder_image', array(
+        'label'    => __( 'Founder Image', 'executive-acquisition' ),
+        'section'  => 'ea_profile_section',
+    ) ) );
+
+    // 4. Hero Section
     $wp_customize->add_section( 'ea_hero_section', array(
         'title'    => __( 'Hero Section', 'executive-acquisition' ),
         'priority' => 30,
@@ -89,7 +120,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_hero_pre_headline', array(
         'default'   => 'Strictly for Executive, Leadership, and Business Coaches targeting the C-Suite & Scaling Founders:',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_hero_pre_headline', array(
         'label'    => __( 'Pre-Headline', 'executive-acquisition' ),
@@ -99,7 +130,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_hero_headline', array(
         'default'   => 'Book 3-5 High-Ticket Corporate Engagements Every Month Using an Institutional Intent Engine WITHOUT The Content Hamster Wheel.',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_hero_headline', array(
         'label'    => __( 'Headline', 'executive-acquisition' ),
@@ -109,7 +140,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_hero_cta_text', array(
         'default'   => 'Access the Private Executive Briefing →',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_hero_cta_text', array(
         'label'    => __( 'CTA Button Text', 'executive-acquisition' ),
@@ -127,7 +158,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'url',
     ) );
 
-    // Social Proof Section
+    // 5. Social Proof Section
     $wp_customize->add_section( 'ea_social_proof', array(
         'title'    => __( 'Social Proof & Authority', 'executive-acquisition' ),
         'priority' => 31,
@@ -135,7 +166,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_logo_bar_text', array(
         'default'   => 'TRUSTED BY LEADERS AT:',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_logo_bar_text', array(
         'label'    => __( 'Logo Bar Label', 'executive-acquisition' ),
@@ -145,7 +176,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_testimonial_quote', array(
         'default'   => '',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_testimonial_quote', array(
         'label'    => __( 'Featured Testimonial Quote', 'executive-acquisition' ),
@@ -155,7 +186,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_testimonial_author', array(
         'default'   => '',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_testimonial_author', array(
         'label'    => __( 'Testimonial Author Name/Title', 'executive-acquisition' ),
@@ -163,7 +194,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
-    // Advanced SEO & Schema
+    // 6. Advanced SEO & Schema
     $wp_customize->add_section( 'ea_seo_section', array(
         'title'    => __( 'Advanced SEO & Schema', 'executive-acquisition' ),
         'priority' => 31.5,
@@ -189,7 +220,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'section'  => 'ea_seo_section',
     ) ) );
 
-    // Tracking & Scripts Section
+    // 7. Tracking & Scripts Section
     $wp_customize->add_section( 'ea_tracking_section', array(
         'title'    => __( 'Tracking & Scripts', 'executive-acquisition' ),
         'priority' => 32,
@@ -225,7 +256,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'textarea',
     ) );
 
-    // Funnel Flow Settings
+    // 8. Funnel Flow Settings
     $wp_customize->add_section( 'ea_funnel_flow', array(
         'title'    => __( 'Funnel Flow & Logic', 'executive-acquisition' ),
         'priority' => 35,
@@ -281,7 +312,18 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'checkbox',
     ) );
 
-    // Agitation Section
+    $wp_customize->add_setting( 'ea_briefing_cta_delay', array(
+        'default'   => '480', // 8 minutes in seconds
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_briefing_cta_delay', array(
+        'label'    => __( 'Briefing CTA Delay (Seconds)', 'executive-acquisition' ),
+        'section'  => 'ea_funnel_flow',
+        'type'     => 'number',
+        'description' => __( 'Set the delay before the booking button appears on the briefing page.', 'executive-acquisition' ),
+    ) );
+
+    // 9. Agitation Section
     $wp_customize->add_section( 'ea_agitation_section', array(
         'title'    => __( 'Agitation Section', 'executive-acquisition' ),
         'priority' => 40,
@@ -289,7 +331,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_agitation_title', array(
         'default'   => "The 'High-Ticket' Paradox: Why Your Expertise Isn't Converting Into Calendars",
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_agitation_title', array(
         'label'    => __( 'Section Title', 'executive-acquisition' ),
@@ -300,7 +342,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     for ($i = 1; $i <= 3; $i++) {
         $wp_customize->add_setting( "ea_agitation_bullet_{$i}_title", array(
             'default'   => '',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_agitation_bullet_{$i}_title", array(
             'label'    => __( "Bullet {$i} Title", 'executive-acquisition' ),
@@ -309,7 +351,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         ) );
         $wp_customize->add_setting( "ea_agitation_bullet_{$i}_text", array(
             'default'   => '',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_agitation_bullet_{$i}_text", array(
             'label'    => __( "Bullet {$i} Text", 'executive-acquisition' ),
@@ -318,7 +360,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         ) );
     }
 
-    // Mechanism Section
+    // 10. Mechanism Section
     $wp_customize->add_section( 'ea_mechanism_section', array(
         'title'    => __( 'Mechanism Section', 'executive-acquisition' ),
         'priority' => 50,
@@ -326,7 +368,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_mechanism_title', array(
         'default'   => 'Introducing: The Institutional Intent Method™',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_mechanism_title', array(
         'label'    => __( 'Section Title', 'executive-acquisition' ),
@@ -337,7 +379,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     for ($i = 1; $i <= 3; $i++) {
         $wp_customize->add_setting( "ea_mechanism_step_{$i}_title", array(
             'default'   => '',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_mechanism_step_{$i}_title", array(
             'label'    => __( "Step {$i} Title", 'executive-acquisition' ),
@@ -346,7 +388,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         ) );
         $wp_customize->add_setting( "ea_mechanism_step_{$i}_text", array(
             'default'   => '',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_mechanism_step_{$i}_text", array(
             'label'    => __( "Step {$i} Text", 'executive-acquisition' ),
@@ -355,7 +397,20 @@ function executive_acquisition_customize_register( $wp_customize ) {
         ) );
     }
 
-    // Compliance Section
+    // 11. FAQ Section
+    $wp_customize->add_section( 'ea_faq_section', array(
+        'title'    => __( 'Executive FAQ', 'executive-acquisition' ),
+        'priority' => 60,
+    ) );
+
+    for ($i = 1; $i <= 4; $i++) {
+        $wp_customize->add_setting( "ea_faq_q_{$i}", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_faq_q_{$i}", array( 'label' => __( "Question {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'text' ) );
+        $wp_customize->add_setting( "ea_faq_a_{$i}", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "Answer {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
+    }
+
+    // 12. Compliance Section
     $wp_customize->add_section( 'ea_compliance_section', array(
         'title'    => __( 'Privacy & Compliance', 'executive-acquisition' ),
         'priority' => 70,
@@ -363,7 +418,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_cookie_notice', array(
         'default'   => 'We use cookies to ensure you get the best experience on our executive platform.',
-        'transport' => 'refresh',
+        'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_cookie_notice', array(
         'label'    => __( 'Cookie Notice Text', 'executive-acquisition' ),
@@ -371,17 +426,28 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
-    // FAQ Section
-    $wp_customize->add_section( 'ea_faq_section', array(
-        'title'    => __( 'Executive FAQ', 'executive-acquisition' ),
-        'priority' => 60,
+    // 13. Premium Animations
+    $wp_customize->add_section( 'ea_animations_section', array(
+        'title'    => __( 'Premium Animations', 'executive-acquisition' ),
+        'priority' => 80,
     ) );
 
-    for ($i = 1; $i <= 4; $i++) {
-        $wp_customize->add_setting( "ea_faq_q_{$i}", array( 'default' => '', 'transport' => 'refresh' ) );
-        $wp_customize->add_control( "ea_faq_q_{$i}", array( 'label' => __( "Question {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'text' ) );
-        $wp_customize->add_setting( "ea_faq_a_{$i}", array( 'default' => '', 'transport' => 'refresh' ) );
-        $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "Answer {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
-    }
+    $wp_customize->add_setting( 'ea_enable_animations', array(
+        'default'   => true,
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_enable_animations', array(
+        'label'    => __( 'Enable Entrance Animations', 'executive-acquisition' ),
+        'section'  => 'ea_animations_section',
+        'type'     => 'checkbox',
+    ) );
 }
 add_action( 'customize_register', 'executive_acquisition_customize_register' );
+
+/**
+ * Enqueue Customizer Preview JS
+ */
+function ea_customize_preview_js() {
+    wp_enqueue_script( 'ea-customizer-preview', get_template_directory_uri() . '/assets/js/customizer-preview.js', array( 'customize-preview', 'jquery' ), '1.0.0', true );
+}
+add_action( 'customize_preview_init', 'ea_customize_preview_js' );

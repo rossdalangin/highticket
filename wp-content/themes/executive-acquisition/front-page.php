@@ -81,6 +81,32 @@ if ( $quote ) : ?>
 </section>
 <?php endif; ?>
 
+<!-- Founder Section -->
+<?php
+$founder_name = get_theme_mod( 'ea_founder_name' );
+if ( $founder_name ) : ?>
+<section class="founder-section" style="background-color: var(--light-bg); border-top: 1px solid #eee;">
+    <div class="container hero-grid">
+        <div class="founder-image" style="text-align: center;">
+            <?php
+            $image = get_theme_mod( 'ea_founder_image' );
+            if ( $image ) : ?>
+                <img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $founder_name ); ?>" style="max-width: 100%; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            <?php else : ?>
+                <div style="width: 100%; aspect-ratio: 1/1; background: #cbd5e0; border-radius: 4px;"></div>
+            <?php endif; ?>
+        </div>
+        <div class="founder-content">
+            <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 10px;">The Architect Behind the Method</span>
+            <h2 style="font-size: 2.5rem;"><?php echo esc_html( $founder_name ); ?></h2>
+            <div style="font-size: 1.1rem; line-height: 1.8; color: var(--charcoal);">
+                <?php echo wp_kses_post( get_theme_mod( 'ea_founder_bio' ) ); ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- Section 3: The Mechanism -->
 <section style="background-color: var(--white);">
     <div class="container">

@@ -41,6 +41,10 @@
             --border-radius: <?php echo get_theme_mod( 'ea_border_radius', '2px' ); ?>;
         }
         .btn, .card, .step-card, .results-box, .booking-sidebar { border-radius: var(--border-radius); }
+
+        <?php if ( ! get_theme_mod( 'ea_enable_animations', true ) ) : ?>
+        .animate-in { opacity: 1 !important; transform: none !important; animation: none !important; }
+        <?php endif; ?>
     </style>
 </head>
 <body <?php body_class(); ?>>
