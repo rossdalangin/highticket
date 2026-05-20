@@ -22,45 +22,43 @@ function ea_render_setup_page() {
         <h1 style="margin-bottom: 30px;"><?php _e( 'Executive Acquisition: Command Center', 'executive-acquisition' ); ?></h1>
 
         <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
-            <div class="card" style="padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: none;">
-                <h2><?php _e( '1. Infrastructure Generator', 'executive-acquisition' ); ?></h2>
-                <p><?php _e( 'Deploy your high-ticket funnel architecture instantly. This will generate all core pages and set your reading settings.', 'executive-acquisition' ); ?></p>
+            <div class="main-column">
+                <div class="card" style="padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: none; margin-bottom: 40px;">
+                    <h2><?php _e( '1. Infrastructure Generator', 'executive-acquisition' ); ?></h2>
+                    <p><?php _e( 'Deploy your high-ticket funnel architecture instantly. This will generate all core pages and set your reading settings.', 'executive-acquisition' ); ?></p>
 
-                <ul style="margin: 25px 0; list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;">✓ <strong>Home:</strong> High-Conversion Funnel</li>
-                    <li style="margin-bottom: 10px;">✓ <strong>Thank You:</strong> Authority Bridge</li>
-                    <li style="margin-bottom: 10px;">✓ <strong>Briefing:</strong> Executive Briefing Page</li>
-                    <li style="margin-bottom: 10px;">✓ <strong>ROI Proof:</strong> Case Study Page</li>
-                    <li style="margin-bottom: 10px;">✓ <strong>Primary Menu:</strong> Automated Navigation</li>
-                </ul>
+                    <ul style="margin: 25px 0; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">✓ <strong>Home:</strong> High-Conversion Funnel</li>
+                        <li style="margin-bottom: 10px;">✓ <strong>Thank You:</strong> Authority Bridge</li>
+                        <li style="margin-bottom: 10px;">✓ <strong>Briefing:</strong> Executive Briefing Page</li>
+                        <li style="margin-bottom: 10px;">✓ <strong>ROI Proof:</strong> Case Study Page</li>
+                        <li style="margin-bottom: 10px;">✓ <strong>Primary Menu:</strong> Automated Navigation</li>
+                    </ul>
 
-                <button type="button" class="button button-primary button-large ea-generator-btn" id="ea-admin-regenerate-btn" style="padding: 10px 30px; height: auto; font-size: 1.1rem; background: #C5A059; border-color: #C5A059;">
-                    <?php _e( 'Generate Infrastructure →', 'executive-acquisition' ); ?>
-                </button>
-                <span class="spinner" style="float:none; vertical-align: middle;"></span>
+                    <button type="button" class="button button-primary button-large ea-generator-btn" id="ea-admin-regenerate-btn" style="padding: 10px 30px; height: auto; font-size: 1.1rem; background: #C5A059; border-color: #C5A059;">
+                        <?php _e( 'Generate Infrastructure →', 'executive-acquisition' ); ?>
+                    </button>
+                    <span class="spinner" style="float:none; vertical-align: middle;"></span>
+                </div>
 
-                <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
-
-                <h3>Funnel Architecture Map</h3>
-                <div class="funnel-map" style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 30px; border-radius: 4px; text-align: center; border: 1px dashed #cbd5e1;">
-                    <div style="flex: 1;">
-                        <div style="font-weight: 900; color: #0B1D33;">1. LANDING</div>
-                        <div style="font-size: 0.75rem;">Authority Hook</div>
-                    </div>
-                    <div style="color: #C5A059; font-weight: 900;">→</div>
-                    <div style="flex: 1;">
-                        <div style="font-weight: 900; color: #0B1D33;">2. BRIDGE</div>
-                        <div style="font-size: 0.75rem;">Trust Anchor</div>
-                    </div>
-                    <div style="color: #C5A059; font-weight: 900;">→</div>
-                    <div style="flex: 1;">
-                        <div style="font-weight: 900; color: #0B1D33;">3. BRIEFING</div>
-                        <div style="font-size: 0.75rem;">12m ROI Demo</div>
-                    </div>
-                    <div style="color: #C5A059; font-weight: 900;">→</div>
-                    <div style="flex: 1;">
-                        <div style="font-weight: 900; color: #C5A059;">4. BOOKING</div>
-                        <div style="font-size: 0.75rem;">Qualified Lead</div>
+                <div class="card" style="padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: none;">
+                    <h2><?php _e( '2. Executive Launch Checklist', 'executive-acquisition' ); ?></h2>
+                    <div style="margin-top: 20px;">
+                        <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <input type="checkbox" checked disabled> <span style="font-weight: 700;">Infrastructure:</span> Core pages generated & templates assigned.
+                        </div>
+                        <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <input type="checkbox"> <span style="font-weight: 700;">Identity:</span> Global colors, logo, and founder bio configured.
+                        </div>
+                        <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <input type="checkbox"> <span style="font-weight: 700;">Briefing:</span> Video URLs for Bridge and Briefing pages added.
+                        </div>
+                        <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <input type="checkbox"> <span style="font-weight: 700;">Conversion:</span> Diagnostic session booking link connected.
+                        </div>
+                        <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <input type="checkbox"> <span style="font-weight: 700;">Tracking:</span> GTM ID and Conversion API (CAPI) events verified.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,11 +66,10 @@ function ea_render_setup_page() {
             <div class="sidebar-links">
                 <div class="card" style="padding: 30px; margin-bottom: 30px; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h3>Tutorials & Guides</h3>
-                    <p style="font-size: 0.9rem;">Master the Institutional Intent Method™ with our comprehensive guides.</p>
-                    <ul style="margin-top: 20px;">
-                        <li><a href="#" style="text-decoration: none; color: #C5A059; font-weight: 700;">User Setup Guide</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #C5A059; font-weight: 700;">Marketing Strategy</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #C5A059; font-weight: 700;">Technical Reference</a></li>
+                    <ul style="margin-top: 20px; list-style: none; padding: 0;">
+                        <li><a href="#" style="text-decoration: none; color: #C5A059; font-weight: 700; display: block; margin-bottom: 10px;">User Setup Guide</a></li>
+                        <li><a href="#" style="text-decoration: none; color: #C5A059; font-weight: 700; display: block; margin-bottom: 10px;">Marketing Strategy</a></li>
+                        <li><a href="#" style="text-decoration: none; color: #C5A059; font-weight: 700; display: block;">Technical Reference</a></li>
                     </ul>
                 </div>
 
@@ -116,6 +113,7 @@ function ea_render_setup_page() {
         .ea-admin-wrap h1, .ea-admin-wrap h2, .ea-admin-wrap h3 { font-family: 'Playfair Display', serif; }
         .ea-admin-wrap h1 { font-size: 2.8rem; color: #0B1D33; }
         .ea-admin-wrap .card { border-radius: 4px; }
+        .ea-admin-wrap input[type="checkbox"] { width: 20px; height: 20px; }
     </style>
     <?php
 }

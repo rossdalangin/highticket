@@ -82,7 +82,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
-    $wp_customize->add_setting( 'ea_executive_logo', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_setting( 'ea_executive_logo', array( 'default' => '', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_executive_logo', array(
         'label'    => __( 'Executive Logo (Header)', 'executive-acquisition' ),
         'section'  => 'ea_brand_section',

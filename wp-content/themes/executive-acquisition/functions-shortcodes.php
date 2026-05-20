@@ -68,3 +68,15 @@ function ea_case_study_index_shortcode() {
     return $output;
 }
 add_shortcode( 'case_studies', 'ea_case_study_index_shortcode' );
+
+// Logo Bar Shortcode
+function ea_logo_bar_shortcode() {
+    $text = get_theme_mod( 'ea_logo_bar_text', 'TRUSTED BY LEADERS AT:' );
+    return '<div class="logo-bar" style="padding: 40px 0; text-align: center; border-bottom: 1px solid #eee;">
+                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 25px;">' . esc_html($text) . '</p>
+                <div class="logo-grid" style="display: flex; justify-content: center; gap: 60px; filter: grayscale(1); opacity: 0.6; align-items: center; flex-wrap: wrap; font-weight: 900; font-size: 1.2rem;">
+                    <div>FORBES</div><div>INC.</div><div>HBR</div><div>FAST CO.</div><div>DELOITTE</div>
+                </div>
+            </div>';
+}
+add_shortcode( 'logo_bar', 'ea_logo_bar_shortcode' );

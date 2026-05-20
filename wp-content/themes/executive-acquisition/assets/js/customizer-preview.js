@@ -102,4 +102,13 @@
         });
     });
 
+    // Brand Assets
+    wp.customize('ea_executive_logo', function(value) {
+        value.bind(function(newval) {
+            if(newval) {
+                $('.logo').html('<img src="'+newval+'" style="max-height: 40px; width: auto;">');
+            }
+        });
+    });
+
 })(jQuery);
