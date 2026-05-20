@@ -70,6 +70,52 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'url',
     ) );
 
+    // Funnel Flow Settings
+    $wp_customize->add_section( 'ea_funnel_flow', array(
+        'title'    => __( 'Funnel Flow & Logic', 'executive-acquisition' ),
+        'priority' => 35,
+    ) );
+
+    $wp_customize->add_setting( 'ea_bridge_video_url', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_bridge_video_url', array(
+        'label'    => __( 'Authority Bridge Video (60s) URL', 'executive-acquisition' ),
+        'section'  => 'ea_funnel_flow',
+        'type'     => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'ea_briefing_video_url', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_briefing_video_url', array(
+        'label'    => __( 'Executive Briefing (12m) Video URL', 'executive-acquisition' ),
+        'section'  => 'ea_funnel_flow',
+        'type'     => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'ea_briefing_page_url', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_briefing_page_url', array(
+        'label'    => __( 'Briefing Page URL', 'executive-acquisition' ),
+        'section'  => 'ea_funnel_flow',
+        'type'     => 'url',
+    ) );
+
+    $wp_customize->add_setting( 'ea_booking_url', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_booking_url', array(
+        'label'    => __( 'Booking/Calendar URL', 'executive-acquisition' ),
+        'section'  => 'ea_funnel_flow',
+        'type'     => 'url',
+    ) );
+
     // Agitation Section
     $wp_customize->add_section( 'ea_agitation_section', array(
         'title'    => __( 'Agitation Section', 'executive-acquisition' ),

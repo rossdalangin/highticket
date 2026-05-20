@@ -157,6 +157,30 @@ section {
     margin-bottom: 10px;
 }
 
+/* Funnel Specifics */
+.briefing-page h1 {
+    color: var(--primary-color);
+}
+
+.learning-points ul li span {
+    flex-shrink: 0;
+}
+
+.booking-sidebar {
+    position: sticky;
+    top: 120px;
+}
+
+@media (max-width: 768px) {
+    .briefing-meta-grid {
+        grid-template-columns: 1fr;
+    }
+    .booking-sidebar {
+        position: static;
+        margin-top: 40px;
+    }
+}
+
 .section-title {
     text-align: center;
     max-width: 800px;
