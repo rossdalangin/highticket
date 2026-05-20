@@ -25,40 +25,59 @@ get_header(); ?>
 
         <div class="briefing-meta-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
             <div class="learning-points">
-                <h2 style="font-size: 1.5rem; margin-bottom: 25px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px;">Inside this Briefing:</h2>
+                <h2 style="font-size: 1.5rem; margin-bottom: 25px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px;">Executive Content Outline:</h2>
                 <ul style="list-style: none; font-size: 1.1rem;">
-                    <li style="margin-bottom: 20px; display: flex; gap: 15px;">
-                        <span style="color: var(--accent-color); font-weight: 900;">[02:45]</span>
-                        <span>The "Decision-Maker Beacon" strategy for identifying C-Suite intent before your competitors do.</span>
+                    <li style="margin-bottom: 25px; display: flex; gap: 15px;">
+                        <span style="color: var(--accent-color); font-weight: 900; min-width: 60px;">[00:00]</span>
+                        <div>
+                            <strong style="display: block; color: var(--primary-color);">The High-Ticket Paradigm Shift</strong>
+                            <span style="font-size: 0.9rem; opacity: 0.8;">Why standard B2C funnels fail in the C-Suite and how institutional trust is engineered.</span>
+                        </div>
                     </li>
-                    <li style="margin-bottom: 20px; display: flex; gap: 15px;">
-                        <span style="color: var(--accent-color); font-weight: 900;">[05:20]</span>
-                        <span>Why your current "Funnel" is actually repelling $20k+ corporate engagements.</span>
+                    <li style="margin-bottom: 25px; display: flex; gap: 15px;">
+                        <span style="color: var(--accent-color); font-weight: 900; min-width: 60px;">[02:45]</span>
+                        <div>
+                            <strong style="display: block; color: var(--primary-color);">Step 1: The Decision-Maker Beacon</strong>
+                            <span style="font-size: 0.9rem; opacity: 0.8;">Using intent-data to identify anonymous VPs and Founders searching for your specific expertise.</span>
+                        </div>
                     </li>
-                    <li style="margin-bottom: 20px; display: flex; gap: 15px;">
-                        <span style="color: var(--accent-color); font-weight: 900;">[08:15]</span>
-                        <span>The 3-part Authority Infrastructure that automates trust without manual outreach.</span>
+                    <li style="margin-bottom: 25px; display: flex; gap: 15px;">
+                        <span style="color: var(--accent-color); font-weight: 900; min-width: 60px;">[05:20]</span>
+                        <div>
+                            <strong style="display: block; color: var(--primary-color);">Step 2: Authority Infrastructure</strong>
+                            <span style="font-size: 0.9rem; opacity: 0.8;">How to replace manual outreach with an automated 'Executive Asset' that pre-sells your $25k engagements.</span>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 25px; display: flex; gap: 15px;">
+                        <span style="color: var(--accent-color); font-weight: 900; min-width: 60px;">[08:15]</span>
+                        <div>
+                            <strong style="display: block; color: var(--primary-color);">Step 3: The Frictionless conversion Gate</strong>
+                            <span style="font-size: 0.9rem; opacity: 0.8;">Filtering out the 'pick your brain' calls and booking only qualified, high-budget diagnostic sessions.</span>
+                        </div>
                     </li>
                 </ul>
             </div>
-            <div class="booking-sidebar" style="background: var(--light-bg); padding: 30px; border-radius: 8px; text-align: center;">
-                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Ready to Implement?</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 25px;">Schedule your 1:1 Diagnostic Session to apply this architecture to your specific practice.</p>
+            <div class="booking-sidebar" style="background: var(--light-bg); padding: 40px; border-radius: 4px; text-align: center; border-top: 5px solid var(--accent-color);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Apply for Your Diagnostic Session</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 25px; color: var(--charcoal);">If you're ready to implement the Institutional Intent Method™ in your practice, schedule a session below.</p>
                 <div id="delayed-cta" style="display: none;">
-                    <a href="<?php echo esc_url( get_theme_mod( 'ea_booking_url', '#' ) ); ?>" class="btn" style="width: 100%;">Book Diagnostic Session →</a>
+                    <a href="<?php echo esc_url( get_theme_mod( 'ea_booking_url', '#' ) ); ?>" class="btn" style="width: 100%;">Book Session →</a>
                 </div>
-                <p id="cta-timer" style="font-size: 0.8rem; font-style: italic; opacity: 0.7; margin-top: 15px;">The booking option will appear shortly...</p>
+                <p id="cta-timer" style="font-size: 0.8rem; font-style: italic; opacity: 0.7; margin-top: 15px;">The application window will open once the core mechanism is revealed in the video...</p>
             </div>
         </div>
     </div>
 </section>
 
 <script>
-    // Psychological logic: Only show booking CTA after they have consumed enough value (e.g., 5 seconds for demo, usually 8 mins)
+    /**
+     * Executive Briefing Logic
+     * Ensures value consumption before allowing the next step.
+     */
     setTimeout(function() {
         document.getElementById('delayed-cta').style.display = 'block';
         document.getElementById('cta-timer').style.display = 'none';
-    }, 5000); // 5 seconds for demo purposes
+    }, 5000); // 5 seconds for demonstration (normally 8-12 minutes)
 </script>
 
 <?php get_footer(); ?>

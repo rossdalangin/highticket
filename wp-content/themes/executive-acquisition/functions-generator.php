@@ -39,18 +39,18 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             <label>
                 <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
                 <button type="button" class="button button-primary ea-generator-btn" id="ea-regenerate-btn">
-                    <?php _e( 'Generate / Reset Pages', 'executive-acquisition' ); ?>
+                    <?php _e( 'Generate / Reset Infrastructure', 'executive-acquisition' ); ?>
                 </button>
                 <span class="spinner" style="float:none; vertical-align: middle;"></span>
                 <p class="description" style="margin-top: 10px;">
-                    <?php _e( 'This will create: Home (Funnel), Thank You, Executive Briefing, Blog, and ROI Case Study.', 'executive-acquisition' ); ?>
+                    <?php _e( 'This will create: Home, Thank You, Briefing, Blog, ROI Proof, and a Primary Menu.', 'executive-acquisition' ); ?>
                 </p>
             </label>
             <script type="text/javascript">
                 jQuery(document).ready(function($) {
                     $('#ea-regenerate-btn').on('click', function(e) {
                         e.preventDefault();
-                        if (!confirm('Are you sure? This will delete previously generated pages.')) return;
+                        if (!confirm('Are you sure? This will delete previously generated pages and menus.')) return;
 
                         var $btn = $(this);
                         var $spinner = $btn.next('.spinner');
@@ -98,7 +98,13 @@ function ea_ajax_generate_pages() {
         wp_delete_post( $p->ID, true );
     }
 
-    // 2. Generate new pages
+    // 2. Delete old menus
+    $old_menu = wp_get_nav_menu_object( 'Executive Primary Menu' );
+    if ( $old_menu ) {
+        wp_delete_nav_menu( $old_menu->term_id );
+    }
+
+    // 3. Generate new pages
     $pages_to_create = array(
         'Home' => array(
             'template' => 'front-page.php',
@@ -122,6 +128,12 @@ function ea_ajax_generate_pages() {
         ),
     );
 
+    // Create Menu
+    $menu_id = wp_create_nav_menu( 'Executive Primary Menu' );
+    $locations = get_theme_mod( 'nav_menu_locations' );
+    $locations['primary'] = $menu_id;
+    set_theme_mod( 'nav_menu_locations', $locations );
+
     $created_count = 0;
     foreach ( $pages_to_create as $title => $data ) {
         $page_id = wp_insert_post( array(
@@ -135,6 +147,17 @@ function ea_ajax_generate_pages() {
             update_post_meta( $page_id, '_wp_page_template', $data['template'] );
             update_post_meta( $page_id, '_ea_generated_page', '1' );
 
+            // Add to Menu (Exclude Thank You and Briefing from main nav if desired, but here we add all for demo)
+            if ( $title !== 'Thank You' && $title !== 'Executive Briefing' ) {
+                wp_update_nav_menu_item( $menu_id, 0, array(
+                    'menu-item-title'     => $title,
+                    'menu-item-object'    => 'page',
+                    'menu-item-object-id' => $page_id,
+                    'menu-item-type'      => 'post_type',
+                    'menu-item-status'    => 'publish',
+                ) );
+            }
+
             // Set Reading Settings
             if ( $title === 'Home' ) {
                 update_option( 'show_on_front', 'page' );
@@ -147,6 +170,6 @@ function ea_ajax_generate_pages() {
         }
     }
 
-    wp_send_json_success( array( 'message' => sprintf( __( 'Success! %d funnel pages generated.', 'executive-acquisition' ), $created_count ) ) );
+    wp_send_json_success( array( 'message' => sprintf( __( 'Success! %d funnel pages and Primary Menu generated.', 'executive-acquisition' ), $created_count ) ) );
 }
 add_action( 'wp_ajax_ea_generate_pages', 'ea_ajax_generate_pages' );

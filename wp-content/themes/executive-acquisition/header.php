@@ -33,6 +33,15 @@
     echo get_theme_mod( 'ea_header_scripts' );
     wp_head();
     ?>
+
+    <!-- Dynamic Customizer Styles -->
+    <style>
+        :root {
+            --accent-color: <?php echo get_theme_mod( 'ea_accent_color', '#C5A059' ); ?>;
+            --border-radius: <?php echo get_theme_mod( 'ea_border_radius', '2px' ); ?>;
+        }
+        .btn, .card, .step-card, .results-box, .booking-sidebar { border-radius: var(--border-radius); }
+    </style>
 </head>
 <body <?php body_class(); ?>>
 <?php

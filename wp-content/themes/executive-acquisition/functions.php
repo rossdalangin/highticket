@@ -17,6 +17,7 @@ add_action( 'after_setup_theme', 'executive_acquisition_setup' );
 function executive_acquisition_scripts() {
     wp_enqueue_style( 'executive-acquisition-style', get_stylesheet_uri(), array(), '1.0.0' );
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700;900&display=swap', array(), null );
+    wp_enqueue_script( 'ea-dtr', get_template_directory_uri() . '/assets/js/dtr-personalization.js', array('jquery'), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'executive_acquisition_scripts' );
 
@@ -34,6 +35,32 @@ require get_template_directory() . '/functions-generator.php';
  * Customizer settings for the Acquisition System
  */
 function executive_acquisition_customize_register( $wp_customize ) {
+    // Global Brand Identity
+    $wp_customize->add_section( 'ea_brand_section', array(
+        'title'    => __( 'Global Brand Identity', 'executive-acquisition' ),
+        'priority' => 25,
+    ) );
+
+    $wp_customize->add_setting( 'ea_accent_color', array(
+        'default'   => '#C5A059',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'ea_accent_color', array(
+        'label'    => __( 'Accent Color (Gold)', 'executive-acquisition' ),
+        'section'  => 'ea_brand_section',
+    ) ) );
+
+    $wp_customize->add_setting( 'ea_border_radius', array(
+        'default'   => '2px',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_border_radius', array(
+        'label'    => __( 'Global Border Radius (px)', 'executive-acquisition' ),
+        'section'  => 'ea_brand_section',
+        'type'     => 'text',
+    ) );
+
     // Hero Section
     $wp_customize->add_section( 'ea_hero_section', array(
         'title'    => __( 'Hero Section', 'executive-acquisition' ),
@@ -224,6 +251,16 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'url',
     ) );
 
+    $wp_customize->add_setting( 'ea_enable_exit_intent', array(
+        'default'   => false,
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_enable_exit_intent', array(
+        'label'    => __( 'Enable Exit-Intent Overlay', 'executive-acquisition' ),
+        'section'  => 'ea_funnel_flow',
+        'type'     => 'checkbox',
+    ) );
+
     // Agitation Section
     $wp_customize->add_section( 'ea_agitation_section', array(
         'title'    => __( 'Agitation Section', 'executive-acquisition' ),
@@ -297,6 +334,22 @@ function executive_acquisition_customize_register( $wp_customize ) {
             'type'     => 'textarea',
         ) );
     }
+
+    // Compliance Section
+    $wp_customize->add_section( 'ea_compliance_section', array(
+        'title'    => __( 'Privacy & Compliance', 'executive-acquisition' ),
+        'priority' => 70,
+    ) );
+
+    $wp_customize->add_setting( 'ea_cookie_notice', array(
+        'default'   => 'We use cookies to ensure you get the best experience on our executive platform.',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_cookie_notice', array(
+        'label'    => __( 'Cookie Notice Text', 'executive-acquisition' ),
+        'section'  => 'ea_compliance_section',
+        'type'     => 'text',
+    ) );
 
     // FAQ Section
     $wp_customize->add_section( 'ea_faq_section', array(

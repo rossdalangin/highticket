@@ -43,3 +43,28 @@ function ea_cta_button_shortcode( $atts ) {
             </div>';
 }
 add_shortcode( 'cta_button', 'ea_cta_button_shortcode' );
+
+// Case Study Index Shortcode
+function ea_case_study_index_shortcode() {
+    $pages = get_posts( array(
+        'post_type' => 'page',
+        'meta_query' => array(
+            array(
+                'key' => '_wp_page_template',
+                'value' => 'template-case-study.php'
+            )
+        )
+    ) );
+
+    $output = '<div class="grid-3">';
+    foreach ( $pages as $page ) {
+        $output .= '<article class="card">
+                        <h3>' . esc_html($page->post_title) . '</h3>
+                        <p>' . esc_html(wp_trim_words($page->post_excerpt, 20)) . '</p>
+                        <a href="' . get_permalink($page->ID) . '" style="color: var(--accent-color); font-weight: 700;">View Full Proof →</a>
+                    </article>';
+    }
+    $output .= '</div>';
+    return $output;
+}
+add_shortcode( 'case_studies', 'ea_case_study_index_shortcode' );

@@ -28,8 +28,9 @@ Text Domain: executive-acquisition
 body {
     font-family: var(--font-body);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.7;
     background-color: var(--white);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); /* Fluid Body Typography */
 }
 
 h1, h2, h3, h4 {
@@ -37,7 +38,11 @@ h1, h2, h3, h4 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
+    line-height: 1.1;
 }
+
+h1 { font-size: clamp(2.5rem, 2rem + 2.5vw, 4.5rem); } /* Fluid H1 */
+h2 { font-size: clamp(2rem, 1.75rem + 1.25vw, 3rem); } /* Fluid H2 */
 
 p {
     margin-bottom: 1.5rem;
