@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-    <article style="padding: 100px 0;">
-        <div class="container" style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 80px;">
+    <article class="single-post-article">
+        <div class="container post-layout-grid">
             <div class="post-main">
-                <header style="margin-bottom: 40px; border: none;">
+                <header class="post-header">
                     <div style="margin-bottom: 15px;">
                         <?php the_category(', '); ?>
                     </div>
@@ -18,11 +18,11 @@
                     </div>
                 <?php endif; ?>
 
-                <div class="post-content animate-in" style="font-size: 1.15rem; line-height: 1.8;">
+                <div class="post-content animate-in">
                     <?php the_content(); ?>
                 </div>
 
-                <div style="margin-top: 60px; padding: 40px; background: var(--light-bg); border-radius: 4px; text-align: center; border-left: 5px solid var(--accent-color);">
+                <div class="post-cta-box">
                     <h3>Ready to scale your corporate engagements?</h3>
                     <p>Discover the Institutional Intent Method™ today.</p>
                     <a href="<?php echo home_url('/#cta'); ?>" class="btn">Access the Executive Briefing</a>
