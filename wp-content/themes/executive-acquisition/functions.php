@@ -7,6 +7,8 @@ if ( ! function_exists( 'executive_acquisition_setup' ) ) :
     function executive_acquisition_setup() {
         add_theme_support( 'title-tag' );
         add_theme_support( 'post-thumbnails' );
+        add_image_size( 'executive-hero', 1200, 675, true );
+        add_image_size( 'executive-card', 600, 400, true );
         register_nav_menus( array(
             'primary' => __( 'Primary Menu', 'executive-acquisition' ),
             'footer'  => __( 'Footer Menu', 'executive-acquisition' ),

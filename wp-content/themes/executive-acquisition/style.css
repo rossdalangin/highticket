@@ -36,6 +36,12 @@ body.executive-night-mode .logo, body.executive-night-mode .nav-list a {
     color: #fff;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -76,6 +82,7 @@ p {
 .btn {
     display: inline-block;
     padding: 1.25rem 3rem;
+    min-height: 48px; /* Enhanced touch target height for mobile */
     background-color: var(--accent-color);
     color: var(--white);
     text-decoration: none;
@@ -550,7 +557,16 @@ footer {
 }
 
 @media (max-width: 992px) {
-    .menu-toggle { display: block !important; position: relative; z-index: 100001; }
+    .menu-toggle {
+        display: block !important;
+        position: relative;
+        z-index: 100001;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .main-nav {
         display: none;
         position: absolute;

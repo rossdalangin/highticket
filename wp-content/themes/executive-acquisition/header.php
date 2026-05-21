@@ -79,6 +79,9 @@
     <!-- SEO & Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="canonical" href="<?php echo esc_url( get_permalink() ); ?>" />
 
     <?php
     echo get_theme_mod( 'ea_header_scripts' );
@@ -99,6 +102,7 @@
     </style>
 </head>
 <body <?php body_class( get_theme_mod( 'ea_enable_night_mode' ) ? 'executive-night-mode' : '' ); ?>>
+<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'executive-acquisition' ); ?></a>
 <?php
 if ( $gtm_id ) : ?>
     <!-- Google Tag Manager (noscript) -->

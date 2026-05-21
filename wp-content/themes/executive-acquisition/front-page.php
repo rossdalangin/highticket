@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <!-- Section 1: Above-the-Fold (The Hook) -->
-<section class="hero animate-in">
+<section id="primary" class="hero animate-in">
     <div class="container hero-grid">
         <div class="hero-content">
             <span class="pre-headline"><?php echo esc_html( get_theme_mod( 'ea_hero_pre_headline' ) ); ?></span>
@@ -14,7 +14,7 @@
             <?php
             $video_url = get_theme_mod( 'ea_hero_video_url' );
             if ( $video_url ) : ?>
-                <iframe src="<?php echo esc_url( $video_url ); ?>" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="<?php echo esc_url( $video_url ); ?>" fetchpriority="high" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             <?php else : ?>
                 <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: #fff; background: #1a202c;">
                     <p>Executive Briefing Video Placeholder</p>
@@ -38,7 +38,7 @@
                 for ($i = 1; $i <= 5; $i++) {
                     $logo = get_theme_mod("ea_logo_{$i}");
                     if ($logo) {
-                        $logo_items .= '<img src="'.esc_url($logo).'" style="max-height: 30px; width: auto;">';
+                        $logo_items .= '<img src="'.esc_url($logo).'" loading="lazy" width="150" height="30" alt="Partner Logo" style="max-height: 30px; width: auto;">';
                         $has_custom_logos = true;
                     }
                 }
@@ -95,7 +95,7 @@ if ( $testimonials ) : ?>
                     <div style="font-size: 1.1rem; font-style: italic; margin-bottom: 25px; line-height: 1.7;"><?php echo get_the_content(null, false, $t->ID); ?></div>
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <div style="width: 50px; height: 50px; border-radius: 50%; background: #eee; overflow: hidden;">
-                            <?php echo get_the_post_thumbnail($t->ID, 'thumbnail', array('style' => 'width:100%; height:100%; object-fit:cover;')); ?>
+                            <?php echo get_the_post_thumbnail($t->ID, 'thumbnail', array('style' => 'width:100%; height:100%; object-fit:cover;', 'loading' => 'lazy')); ?>
                         </div>
                         <div style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: var(--accent-color);"><?php echo get_the_title($t->ID); ?></div>
                     </div>
