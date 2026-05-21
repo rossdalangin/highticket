@@ -20,8 +20,15 @@ Navigate to **Appearance > Customize** to brand your system:
 - **Founder/Coach Profile:** Introduce yourself with a bio and high-authority image.
 - **Strategic Assets:** Link your high-value lead magnets directly to the funnel.
 - **Executive FAQ:** Address common corporate objections directly on your home page.
+- **Engagement Tiers:** Showcase your $10k and $25k packages on ROI Case Study pages.
 
-## 3. Advanced Features
+## 3. Email & Nurture Integration
+To maximize your acquisition engine, follow these steps to connect your email platform:
+1. **The Lead Magnet:** Create a page using the `Lead Magnet / Asset Capture` template.
+2. **ESP Connection:** In the Customizer under `Strategic Assets`, paste your Form Action URL from Mailchimp or Klaviyo.
+3. **The Nurture:** Use the templates in `docs/email-nurture-sequence.md` to build an automated follow-up sequence for anyone who downloads your asset or watches your briefing.
+
+## 4. Advanced Features
 - **Dynamic Text Replacement:** Use `?company=YourTarget` in your URLs to personalize the page for specific institutional leads.
 - **Exit-Intent:** Enable the exit-intent overlay in the "Funnel Flow" section to recover leads who attempt to leave without booking.
 - **GTM Integration:** Enter your GTM ID in "Tracking & Scripts" to instantly track conversion milestones (Lead_Step1, Lead_Qualified, etc.).

@@ -69,6 +69,31 @@ function ea_case_study_index_shortcode() {
 }
 add_shortcode( 'case_studies', 'ea_case_study_index_shortcode' );
 
+// Board-Ready ROI Summary Shortcode
+function ea_roi_summary_shortcode( $atts, $content = null ) {
+    $atts = shortcode_atts( array(
+        'title' => 'Executive ROI Summary',
+        'revenue' => '',
+        'efficiency' => ''
+    ), $atts, 'roi_summary' );
+
+    return '<div class="roi-summary-box" style="margin: 3rem 0; padding: 40px; background: var(--primary-color); color: #fff; border-radius: 4px; border-left: 10px solid var(--accent-color);">
+                <h3 style="color: var(--accent-color); margin-bottom: 25px; font-size: 1.5rem;">' . esc_html($atts['title']) . '</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                    <div>
+                        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">Impacted Revenue</div>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: #fff;">' . esc_html($atts['revenue']) . '</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">Efficiency Gain</div>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: #fff;">' . esc_html($atts['efficiency']) . '</div>
+                    </div>
+                </div>
+                <div style="font-size: 1.1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">' . do_shortcode($content) . '</div>
+            </div>';
+}
+add_shortcode( 'roi_summary', 'ea_roi_summary_shortcode' );
+
 // Logo Bar Shortcode
 function ea_logo_bar_shortcode() {
     $text = get_theme_mod( 'ea_logo_bar_text', 'TRUSTED BY LEADERS AT:' );

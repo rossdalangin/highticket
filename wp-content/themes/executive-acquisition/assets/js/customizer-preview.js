@@ -151,6 +151,13 @@
         });
     }
 
+    // Engagement Tiers
+    for(let i=1; i<=2; i++) {
+        wp.customize('ea_tier_'+i+'_name', function(value) { value.bind(function(newval) { $('.tier-card:nth-child('+i+') span').text(newval); }); });
+        wp.customize('ea_tier_'+i+'_price', function(value) { value.bind(function(newval) { $('.tier-card:nth-child('+i+') div').text(newval); }); });
+        wp.customize('ea_tier_'+i+'_desc', function(value) { value.bind(function(newval) { $('.tier-card:nth-child('+i+') p').text(newval); }); });
+    }
+
     // Final CTA
     wp.customize('ea_cta_title', function(value) { value.bind(function(newval) { $('#cta h2').text(newval); }); });
     wp.customize('ea_cta_subheadline', function(value) { value.bind(function(newval) { $('#cta p').first().text(newval); }); });

@@ -505,7 +505,22 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "Answer {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
     }
 
-    // 12. Final CTA Section
+    // 12. Engagement Tiers (Packages)
+    $wp_customize->add_section( 'ea_tiers_section', array(
+        'title'    => __( 'Engagement Tiers', 'executive-acquisition' ),
+        'priority' => 64,
+    ) );
+
+    for ($i = 1; $i <= 2; $i++) {
+        $wp_customize->add_setting( "ea_tier_{$i}_name", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_tier_{$i}_name", array( 'label' => __( "Tier {$i} Name", 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
+        $wp_customize->add_setting( "ea_tier_{$i}_price", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_tier_{$i}_price", array( 'label' => __( "Tier {$i} Price", 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
+        $wp_customize->add_setting( "ea_tier_{$i}_desc", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_tier_{$i}_desc", array( 'label' => __( "Tier {$i} Description", 'executive-acquisition' ), 'section' => 'ea_tiers_section', 'type' => 'textarea' ) );
+    }
+
+    // 13. Final CTA Section
     $wp_customize->add_section( 'ea_cta_section', array(
         'title'    => __( 'Final CTA / Form Section', 'executive-acquisition' ),
         'priority' => 65,
