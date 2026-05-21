@@ -116,11 +116,32 @@
         }
     });
 
-    // Close menu on link click
-    $('.main-nav .nav-list a').on('click', function() {
+    // Close menu on link click (unless it has children)
+    $('.main-nav .nav-list a').on('click', function(e) {
+        if ($(this).parent().hasClass('menu-item-has-children')) {
+            e.preventDefault();
+            $(this).parent().toggleClass('is-open');
+            $(this).next('.sub-menu').slideToggle(300);
+            return;
+        }
         $('.menu-toggle').attr('aria-expanded', 'false');
         $('.main-nav').removeClass('is-active');
         $('body').css('overflow', '');
+    });
+
+    // 7. Executive Night Mode Toggle (Client-side)
+    const nightModeToggle = $('#ea-night-mode-toggle');
+    if (localStorage.getItem('ea_night_mode') === 'enabled') {
+        $('body').addClass('executive-night-mode');
+    }
+
+    nightModeToggle.on('click', function() {
+        $('body').toggleClass('executive-night-mode');
+        if ($('body').hasClass('executive-night-mode')) {
+            localStorage.setItem('ea_night_mode', 'enabled');
+        } else {
+            localStorage.setItem('ea_night_mode', 'disabled');
+        }
     });
 
 })(jQuery);

@@ -131,6 +131,12 @@ if ( $gtm_id ) : ?>
         </button>
         <nav id="primary-menu" class="main-nav">
             <div class="mobile-nav-header">
+                <div class="mobile-nav-close-row text-center mb-md">
+                    <span class="close-nav-text" style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color);">Close Navigation</span>
+                </div>
+                <div class="mobile-search-row mb-lg">
+                    <?php get_search_form(); ?>
+                </div>
                 <div class="mobile-logo">
                     <?php
                     $logo = get_theme_mod( 'ea_executive_logo' );
@@ -149,12 +155,25 @@ if ( $gtm_id ) : ?>
             ) );
             ?>
             <div class="mobile-nav-footer">
-                <div class="mobile-cta-box mb-lg">
-                    <a href="#cta" class="btn w-100">Access Briefing →</a>
+                <div class="menu-featured-asset mb-lg">
+                    <span class="featured-asset-label">Recommended Strategy</span>
+                    <span class="featured-asset-title"><?php echo esc_html( get_theme_mod('ea_lead_magnet_title', 'The Institutional Intent Roadmap') ); ?></span>
+                    <a href="<?php echo esc_url( get_theme_mod('ea_lead_magnet_url', '#') ); ?>" class="btn btn-small w-100">Download Framework</a>
                 </div>
-                <div class="mobile-social-links">
+                <div class="mobile-cta-box mb-lg">
+                    <a href="#cta" class="btn w-100">Book Diagnostic Session</a>
+                </div>
+                <div class="mobile-social-links mb-lg">
                     <?php if ( get_theme_mod('ea_linkedin_url') ) : ?><a href="<?php echo esc_url(get_theme_mod('ea_linkedin_url')); ?>" class="social-link">LinkedIn</a><?php endif; ?>
                     <?php if ( get_theme_mod('ea_twitter_url') ) : ?><a href="<?php echo esc_url(get_theme_mod('ea_twitter_url')); ?>" class="social-link">X / Twitter</a><?php endif; ?>
+                </div>
+                <div class="mobile-utility-links">
+                    <button id="ea-night-mode-toggle" class="mode-toggle mb-md">
+                        <span class="light-text">Light Mode</span>
+                        <span class="mode-separator">|</span>
+                        <span class="night-text">Executive Night</span>
+                    </button>
+                    <p class="font-xs opacity-50">&copy; <?php echo date('Y'); ?> Executive Acquisition. Built for C-Suite conversion.</p>
                 </div>
             </div>
         </nav>
