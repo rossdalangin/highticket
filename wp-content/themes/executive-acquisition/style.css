@@ -188,6 +188,12 @@ header.scrolled {
     text-decoration: none;
 }
 
+.menu-toggle,
+.mobile-nav-header,
+.mobile-nav-footer {
+    display: none;
+}
+
 /* Hero Section */
 .hero {
     padding: calc(1.5 * var(--section-padding)) 0;
@@ -1258,6 +1264,12 @@ body:not(.executive-night-mode) .logo-grid div {
 }
 
 @media (max-width: 992px) {
+    .menu-toggle,
+    .mobile-nav-header,
+    .mobile-nav-footer {
+        display: flex;
+    }
+
     .menu-toggle {
         display: flex !important;
         position: relative;
@@ -1312,6 +1324,7 @@ body:not(.executive-night-mode) .logo-grid div {
     }
 
     .mobile-nav-header {
+        flex-direction: column;
         margin-bottom: var(--space-xl);
         padding-bottom: var(--space-md);
         border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -1362,6 +1375,7 @@ body:not(.executive-night-mode) .logo-grid div {
     }
 
     .mobile-nav-footer {
+        flex-direction: column;
         margin-top: auto;
         padding-top: var(--space-xl);
         border-top: 1px solid rgba(0,0,0,0.05);
