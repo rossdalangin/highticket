@@ -15,7 +15,12 @@
 
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<?php bloginfo( 'description' ); ?>">
+
+    <?php if ( is_singular() ) : ?>
+        <meta name="description" content="<?php echo esc_attr( wp_trim_words( get_the_excerpt(), 25 ) ); ?>">
+    <?php else : ?>
+        <meta name="description" content="<?php bloginfo( 'description' ); ?>">
+    <?php endif; ?>
 
     <!-- Advanced SEO & Schema -->
     <?php
@@ -45,6 +50,29 @@
         ];
         if ($logo) $schema["image"] = $logo;
         echo '<script type="application/ld+json">' . json_encode($schema) . '</script>';
+
+        // Breadcrumb Schema for SEO
+        if ( is_singular() && !is_front_page() ) {
+            $breadcrumbs = [
+                "@context" => "https://schema.org",
+                "@type" => "BreadcrumbList",
+                "itemListElement" => [
+                    [
+                        "@type" => "ListItem",
+                        "position" => 1,
+                        "name" => "Home",
+                        "item" => home_url()
+                    ],
+                    [
+                        "@type" => "ListItem",
+                        "position" => 2,
+                        "name" => get_the_title(),
+                        "item" => get_permalink()
+                    ]
+                ]
+            ];
+            echo '<script type="application/ld+json">' . json_encode($breadcrumbs) . '</script>';
+        }
     }
     ?>
 
@@ -92,7 +120,10 @@ if ( $gtm_id ) : ?>
                 <?php bloginfo( 'name' ); ?>
             <?php endif; ?>
         </a>
-        <nav class="main-nav">
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" style="display:none; background:none; border:none; color:var(--primary-color); cursor:pointer;">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <nav id="primary-menu" class="main-nav">
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'primary',

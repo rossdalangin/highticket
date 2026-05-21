@@ -80,7 +80,7 @@ if ( $founder_name ) : ?>
             <?php
             $image = get_theme_mod( 'ea_founder_image' );
             if ( $image ) : ?>
-                <img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $founder_name ); ?>" style="max-width: 100%; border-radius: 4px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.15);">
+                <img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $founder_name ); ?>" loading="lazy" style="max-width: 100%; border-radius: 4px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.15);">
             <?php else : ?>
                 <div style="width: 100%; aspect-ratio: 1/1; background: #e2e8f0; border-radius: 4px;"></div>
             <?php endif; ?>

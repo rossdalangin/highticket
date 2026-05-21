@@ -102,4 +102,11 @@
         }
     });
 
+    // 6. Mobile Menu Toggle
+    $('.menu-toggle').on('click', function() {
+        const expanded = $(this).attr('aria-expanded') === 'true' || false;
+        $(this).attr('aria-expanded', !expanded);
+        $('.main-nav').toggleClass('is-active');
+    });
+
 })(jQuery);

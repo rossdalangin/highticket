@@ -28,3 +28,17 @@ The theme utilizes CSS variables for easy styling:
 - `--accent-color`: Executive Gold (Customizable)
 - `--font-heading`: Playfair Display
 - `--font-body`: Inter
+
+## Mobile & SEO Optimization
+The theme is engineered for elite performance and search visibility:
+
+### 1. Mobile-First Architecture
+- **Fluid Grids:** CSS Grid and Flexbox automatically adjust for Executive devices (Tablets/Phones).
+- **Interactive Navigation:** Hamburger menu implemented via `aria-expanded` and lightweight JS.
+- **Fluid Typography:** Uses `clamp()` to scale headlines without breaking layout.
+
+### 2. SEO Best Practices
+- **Automated Metadata:** Generates dynamic meta descriptions from page excerpts.
+- **Schema.org Integration:** Automatically injects `ProfessionalService`, `Person`, and `BreadcrumbList` JSON-LD.
+- **Semantic HTML:** Core templates utilize `<header>`, `<footer>`, `<article>`, and `<section>` correctly.
+- **Lazy Loading:** Critical images are optimized for Core Web Vitals.
