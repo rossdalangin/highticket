@@ -1,45 +1,49 @@
 <?php
 /**
- * Template Name: Resource Asset Library
+ * Template Name: Strategic Asset Library
  */
 get_header(); ?>
 
-<section class="archive-header" style="background-color: var(--light-bg); padding: 80px 0;">
-    <div class="container" style="max-width: 900px; text-align: center;">
-        <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 10px;">Executive Asset Library</span>
-        <h1 style="font-size: 3.5rem; line-height: 1.1;">Institutional Whitepapers & Strategic Frameworks</h1>
-        <p style="font-size: 1.2rem; margin-top: 20px; opacity: 0.8;">Complimentary resources for scaling Founders and C-Suite leaders navigating institutional complexity.</p>
-    </div>
-</section>
-
-<section class="asset-grid" style="padding: 100px 0;">
-    <div class="container">
-        <div class="grid-3">
-            <!-- Sample Asset 1 -->
-            <article class="card animate-in" style="display: flex; flex-direction: column;">
-                <div style="background: var(--primary-color); padding: 30px; border-radius: 4px; margin-bottom: 25px; text-align: center; color: var(--accent-color); font-weight: 900; font-size: 1.5rem;">.PDF</div>
-                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">The 2024 Leadership Retention Audit</h3>
-                <p style="font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1;">A technical breakdown of the 4 primary revenue leaks in mid-market leadership teams.</p>
-                <a href="<?php echo esc_url( get_theme_mod( 'ea_lead_magnet_url', '#' ) ); ?>" class="btn" style="padding: 1rem; text-align: center; font-size: 0.8rem;">Download Framework →</a>
-            </article>
-
-            <!-- Sample Asset 2 -->
-            <article class="card animate-in" style="display: flex; flex-direction: column;">
-                <div style="background: var(--primary-color); padding: 30px; border-radius: 4px; margin-bottom: 25px; text-align: center; color: var(--accent-color); font-weight: 900; font-size: 1.5rem;">.MAP</div>
-                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">The Institutional Intent Roadmap</h3>
-                <p style="font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1;">Map your acquisition sequence from anonymous visitor to $25k engagement.</p>
-                <a href="<?php echo esc_url( get_theme_mod( 'ea_lead_magnet_url', '#' ) ); ?>" class="btn" style="padding: 1rem; text-align: center; font-size: 0.8rem;">Download Roadmap →</a>
-            </article>
-
-            <!-- Sample Asset 3 -->
-            <article class="card animate-in" style="display: flex; flex-direction: column;">
-                <div style="background: var(--primary-color); padding: 30px; border-radius: 4px; margin-bottom: 25px; text-align: center; color: var(--accent-color); font-weight: 900; font-size: 1.5rem;">.DOC</div>
-                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">C-Suite Communication Protocol</h3>
-                <p style="font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1;">Strategic scripts for internal stakeholder buy-in during high-ticket leadership pivots.</p>
-                <a href="<?php echo esc_url( get_theme_mod( 'ea_lead_magnet_url', '#' ) ); ?>" class="btn" style="padding: 1rem; text-align: center; font-size: 0.8rem;">Download Protocol →</a>
-            </article>
+<div class="resources-page animate-in">
+    <section class="archive-header bg-light">
+        <div class="container narrow-container text-center">
+            <span class="section-tag mb-xs">Executive Asset Library</span>
+            <h1 class="mb-sm">Institutional Whitepapers & Strategic Frameworks</h1>
+            <p class="subheadline opacity-80">Complimentary resources for scaling Founders and C-Suite leaders navigating institutional complexity.</p>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="asset-grid-section">
+        <div class="container">
+            <div class="grid-3">
+                <!-- Hardcoded high-authority assets as requested/default -->
+                <article class="card asset-card">
+                    <div class="asset-icon mb-md">.PDF</div>
+                    <h3 class="mb-sm">The 2024 Leadership Retention Audit</h3>
+                    <p class="mb-lg flex-grow">A technical breakdown of the 4 primary revenue leaks in mid-market leadership teams.</p>
+                    <a href="<?php echo esc_url( get_theme_mod( 'ea_lead_magnet_url', '#' ) ); ?>" class="btn btn-small">Download Framework →</a>
+                </article>
+
+                <article class="card asset-card">
+                    <div class="asset-icon mb-md">.MAP</div>
+                    <h3 class="mb-sm">The Institutional Intent Roadmap</h3>
+                    <p class="mb-lg flex-grow">Map your acquisition sequence from anonymous visitor to $25k engagement.</p>
+                    <a href="<?php echo esc_url( get_theme_mod( 'ea_lead_magnet_url', '#' ) ); ?>" class="btn btn-small">Download Roadmap →</a>
+                </article>
+
+                <article class="card asset-card">
+                    <div class="asset-icon mb-md">.DOC</div>
+                    <h3 class="mb-sm">C-Suite Communication Protocol</h3>
+                    <p class="mb-lg flex-grow">Strategic scripts for internal stakeholder buy-in during high-ticket leadership pivots.</p>
+                    <a href="<?php echo esc_url( get_theme_mod( 'ea_lead_magnet_url', '#' ) ); ?>" class="btn btn-small">Download Protocol →</a>
+                </article>
+            </div>
+
+            <div class="dynamic-resources-grid mt-xxl">
+                <?php echo do_shortcode('[resource_grid]'); ?>
+            </div>
+        </div>
+    </section>
+</div>
 
 <?php get_footer(); ?>

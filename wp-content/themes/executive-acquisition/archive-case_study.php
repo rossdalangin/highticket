@@ -1,29 +1,37 @@
 <?php get_header(); ?>
 
-<section class="archive-header animate-in" style="background-color: var(--primary-color); padding: 120px 0; color: #fff; text-align: center;">
-    <div class="container" style="max-width: 900px;">
-        <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 20px;">Institutional Results</span>
-        <h1 style="color: #fff; font-size: clamp(2.5rem, 2rem + 3vw, 4.5rem); line-height: 1.1;">ROI Case Studies & Proof</h1>
-        <p style="margin-top: 30px; font-size: 1.25rem; opacity: 0.8;">Evidence-based leadership transformations for mid-market and enterprise organizations.</p>
+<section class="archive-header bg-light">
+    <div class="container text-center narrow-container">
+        <span class="section-tag mb-xs">ROI & Track Record</span>
+        <h1 class="mb-sm">Institutional Success Stories</h1>
+        <p class="subheadline opacity-80">Documented ROI and strategic transformations delivered via the Institutional Intent Method™.</p>
     </div>
 </section>
 
-<section class="case-study-archive" style="padding: 100px 0;">
-    <div class="container">
-        <div class="grid-3">
-            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                <article class="card">
-                    <?php if ( has_post_thumbnail() ) : ?>
-                        <div style="margin-bottom: 25px;">
-                            <?php the_post_thumbnail('medium', array('style' => 'width:100%; border-radius:2px;')); ?>
+<section class="case-studies-archive">
+    <div class="container post-layout-grid">
+        <div class="archive-main">
+            <div class="archive-posts-grid">
+                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                    <article class="card archive-card case-study-card">
+                        <span class="card-tag mb-xs">Case Study</span>
+                        <h2 class="archive-post-title mb-sm"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                        <div class="case-impact-metric mb-md">
+                            <strong>Impact:</strong> <?php echo esc_html( get_post_meta( get_the_ID(), '_ea_case_revenue', true ) ?: '+300% ROI' ); ?>
                         </div>
-                    <?php endif; ?>
-                    <h2 style="font-size: 1.4rem; margin-bottom: 15px;"><a href="<?php the_permalink(); ?>" style="text-decoration: none; color: var(--primary-color);"><?php the_title(); ?></a></h2>
-                    <div style="font-size: 0.95rem; margin-bottom: 25px; color: #4A5568;"><?php the_excerpt(); ?></div>
-                    <a href="<?php the_permalink(); ?>" style="font-weight: 700; color: var(--accent-color); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">View ROI Proof →</a>
-                </article>
-            <?php endwhile; endif; ?>
+                        <div class="archive-post-excerpt mb-lg"><?php the_excerpt(); ?></div>
+                        <a href="<?php the_permalink(); ?>" class="archive-read-more mt-auto">View ROI Analysis →</a>
+                    </article>
+                <?php endwhile; else : ?>
+                    <div class="no-results-box">
+                        <p><?php esc_html_e( 'No case studies published yet.', 'executive-acquisition' ); ?></p>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
+
+        <!-- Sidebar -->
+        <?php get_sidebar(); ?>
     </div>
 </section>
 

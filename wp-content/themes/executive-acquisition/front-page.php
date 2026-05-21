@@ -4,11 +4,11 @@
 <section id="primary" class="hero animate-in">
     <div class="container hero-grid">
         <div class="hero-content">
-            <span class="pre-headline"><?php echo esc_html( get_theme_mod( 'ea_hero_pre_headline' ) ); ?></span>
-            <h1><?php echo wp_kses_post( get_theme_mod( 'ea_hero_headline' ) ); ?></h1>
-            <p style="font-size: 1.15rem; margin-bottom: 2.5rem;"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline' ) ); ?></p>
+            <span class="pre-headline mb-xs"><?php echo esc_html( get_theme_mod( 'ea_hero_pre_headline' ) ); ?></span>
+            <h1 class="mb-sm"><?php echo wp_kses_post( get_theme_mod( 'ea_hero_headline' ) ); ?></h1>
+            <p class="mb-lg"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline' ) ); ?></p>
             <a href="#cta" class="btn"><?php echo esc_html( get_theme_mod( 'ea_hero_cta_text' ) ); ?></a>
-            <p style="font-size: 0.8rem; margin-top: 1.25rem; opacity: 0.8;">Takes 12 minutes. No 'salesy' fluff. Pure strategy.</p>
+            <p class="hero-micro-copy mt-sm">Takes 12 minutes. No 'salesy' fluff. Pure strategy.</p>
         </div>
         <div class="hero-video">
             <?php
@@ -16,7 +16,7 @@
             if ( $video_url ) : ?>
                 <iframe src="<?php echo esc_url( $video_url ); ?>" fetchpriority="high" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             <?php else : ?>
-                <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: #fff; background: #1a202c;">
+                <div class="video-placeholder">
                     <p>Executive Briefing Video Placeholder</p>
                 </div>
             <?php endif; ?>
@@ -26,28 +26,28 @@
 
 <!-- Logo Bar Section -->
 <?php $is_marquee = get_theme_mod( 'ea_enable_marquee', false ); ?>
-<section class="logo-bar" style="padding: 50px 0; background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.05); overflow: hidden;">
-    <div class="container" style="text-align: center;">
-        <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 30px;"><?php echo esc_html( get_theme_mod( 'ea_logo_bar_text', 'TRUSTED BY LEADERS AT:' ) ); ?></p>
+<section class="logo-bar">
+    <div class="container text-center">
+        <p class="logo-bar-label mb-md"><?php echo esc_html( get_theme_mod( 'ea_logo_bar_text', 'TRUSTED BY LEADERS AT:' ) ); ?></p>
 
         <div class="<?php echo $is_marquee ? 'logo-marquee' : ''; ?>">
-            <div class="logo-grid <?php echo $is_marquee ? 'logo-marquee-content' : ''; ?>" style="<?php echo $is_marquee ? '' : 'display: flex; justify-content: center; gap: 60px; filter: grayscale(1); opacity: 0.6; align-items: center; flex-wrap: wrap;'; ?>">
+            <div class="logo-grid <?php echo $is_marquee ? 'logo-marquee-content' : ''; ?>">
                 <?php
                 $has_custom_logos = false;
                 $logo_items = '';
                 for ($i = 1; $i <= 5; $i++) {
                     $logo = get_theme_mod("ea_logo_{$i}");
                     if ($logo) {
-                        $logo_items .= '<img src="'.esc_url($logo).'" loading="lazy" width="150" height="30" alt="Partner Logo" style="max-height: 30px; width: auto;">';
+                        $logo_items .= '<img src="'.esc_url($logo).'" loading="lazy" width="150" height="30" alt="Partner Logo" class="logo-item">';
                         $has_custom_logos = true;
                     }
                 }
                 if (!$has_custom_logos) {
-                    $logo_items = '<div style="font-weight: 900; font-size: 1.25rem;">FORBES</div>
-                                   <div style="font-weight: 900; font-size: 1.25rem;">INC.</div>
-                                   <div style="font-weight: 900; font-size: 1.25rem;">HBR</div>
-                                   <div style="font-weight: 900; font-size: 1.25rem;">FAST CO.</div>
-                                   <div style="font-weight: 900; font-size: 1.25rem;">DELOITTE</div>';
+                    $logo_items = '<div class="fallback-logo">FORBES</div>
+                                   <div class="fallback-logo">INC.</div>
+                                   <div class="fallback-logo">HBR</div>
+                                   <div class="fallback-logo">FAST CO.</div>
+                                   <div class="fallback-logo">DELOITTE</div>';
                 }
                 echo $logo_items;
                 if ($is_marquee) echo $logo_items; // Duplicate for seamless loop
@@ -58,20 +58,20 @@
 </section>
 
 <!-- Section 2: Agitation (The Pain) -->
-<section class="agitation-section" style="background-color: var(--light-bg);">
+<section class="agitation-section">
     <div class="container">
-        <div class="section-title">
+        <div class="section-title mb-xl">
             <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title' ) ); ?></h2>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline' ) ); ?></p>
+            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline' ) ); ?></p>
         </div>
         <div class="grid-3">
             <?php for ($i = 1; $i <= 3; $i++) :
                 $title = get_theme_mod( "ea_agitation_bullet_{$i}_title" );
                 $text = get_theme_mod( "ea_agitation_bullet_{$i}_text" );
                 ?>
-                <div class="card">
-                    <h3 style="font-size: 1.25rem;"><?php echo esc_html( $title ); ?></h3>
-                    <p style="font-size: 0.95rem; line-height: 1.8; color: #4A5568;"><?php echo esc_html( $text ); ?></p>
+                <div class="card agitation-card">
+                    <h3 class="mb-xs"><?php echo esc_html( $title ); ?></h3>
+                    <p><?php echo esc_html( $text ); ?></p>
                 </div>
             <?php endfor; ?>
         </div>
@@ -82,22 +82,22 @@
 <?php
 $testimonials = get_posts( array('post_type' => 'testimonial', 'posts_per_page' => 3) );
 if ( $testimonials ) : ?>
-<section class="testimonials-cpt" style="background: var(--primary-color); color: #fff; padding: 100px 0;">
+<section class="testimonials-cpt">
     <div class="container">
-        <div class="section-title">
-            <h2 style="color:#fff;">Institutional Praise</h2>
-            <p>What C-Suite leaders are saying about the Intent Method™.</p>
+        <div class="section-title mb-xl">
+            <h2 class="text-white">Institutional Praise</h2>
+            <p class="text-white">What C-Suite leaders are saying about the Intent Method™.</p>
         </div>
         <div class="grid-3">
             <?php foreach ( $testimonials as $t ) : ?>
-                <div class="card" style="background: rgba(255,255,255,0.05); border: none; color: #fff;">
-                    <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: -15px; opacity: 0.5;">“</div>
-                    <div style="font-size: 1.1rem; font-style: italic; margin-bottom: 25px; line-height: 1.7;"><?php echo get_the_content(null, false, $t->ID); ?></div>
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <div style="width: 50px; height: 50px; border-radius: 50%; background: #eee; overflow: hidden;">
-                            <?php echo get_the_post_thumbnail($t->ID, 'thumbnail', array('style' => 'width:100%; height:100%; object-fit:cover;', 'loading' => 'lazy')); ?>
+                <div class="card testimonial-card">
+                    <div class="quote-mark mb-xxs">“</div>
+                    <div class="testimonial-content mb-md"><?php echo get_the_content(null, false, $t->ID); ?></div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <?php echo get_the_post_thumbnail($t->ID, 'thumbnail', array('class' => 'avatar-img', 'loading' => 'lazy')); ?>
                         </div>
-                        <div style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: var(--accent-color);"><?php echo get_the_title($t->ID); ?></div>
+                        <div class="author-meta"><?php echo get_the_title($t->ID); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -107,21 +107,21 @@ if ( $testimonials ) : ?>
 <?php endif; ?>
 
 <!-- Section 3: The Mechanism -->
-<section class="mechanism-section" style="background-color: var(--white);">
+<section class="mechanism-section bg-white">
     <div class="container">
-        <div class="section-title">
+        <div class="section-title mb-xl">
             <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title' ) ); ?></h2>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline' ) ); ?></p>
+            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline' ) ); ?></p>
         </div>
         <div class="grid-3">
             <?php for ($i = 1; $i <= 3; $i++) :
                 $title = get_theme_mod( "ea_mechanism_step_{$i}_title" );
                 $text = get_theme_mod( "ea_mechanism_step_{$i}_text" );
                 ?>
-                <div class="step-card" style="text-align: center; padding: 40px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease;">
-                    <div style="font-size: 3.5rem; color: var(--accent-color); font-weight: 900; margin-bottom: 15px; opacity: 0.15; font-family: var(--font-heading);">0<?php echo $i; ?></div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 20px;"><?php echo esc_html( $title ); ?></h3>
-                    <p style="font-size: 1rem; color: #4A5568; line-height: 1.7;"><?php echo esc_html( $text ); ?></p>
+                <div class="step-card">
+                    <div class="step-number mb-xs">0<?php echo $i; ?></div>
+                    <h3 class="mb-sm"><?php echo esc_html( $title ); ?></h3>
+                    <p><?php echo esc_html( $text ); ?></p>
                 </div>
             <?php endfor; ?>
         </div>
@@ -129,11 +129,11 @@ if ( $testimonials ) : ?>
 </section>
 
 <!-- FAQ Section (CPT Driven) -->
-<section class="faq" style="background-color: var(--light-bg); border-top: 1px solid rgba(0,0,0,0.05);">
+<section class="faq">
     <div class="container">
-        <div class="section-title">
+        <div class="section-title mb-xl">
             <h2><?php echo esc_html( get_theme_mod( 'ea_faq_title' ) ); ?></h2>
-            <p style="font-size: 1.1rem;"><?php echo esc_html( get_theme_mod( 'ea_faq_subheadline' ) ); ?></p>
+            <p><?php echo esc_html( get_theme_mod( 'ea_faq_subheadline' ) ); ?></p>
         </div>
         <div class="faq-container">
             <?php
@@ -161,32 +161,32 @@ if ( $testimonials ) : ?>
 </section>
 
 <!-- Newsletter Section -->
-<section class="newsletter-front" style="padding: 100px 0; background: var(--white); border-top: 1px solid rgba(0,0,0,0.05);">
-    <div class="container" style="max-width: 800px; text-align: center;">
-        <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 20px;">The Institutional Brief</span>
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;"><?php echo esc_html( get_theme_mod('ea_newsletter_title', 'Join 2,400+ C-Suite Leaders') ); ?></h2>
-        <p style="font-size: 1.1rem; color: #4A5568; margin-bottom: 40px;"><?php echo esc_html( get_theme_mod('ea_newsletter_desc', 'Get bi-weekly leadership architecture and acquisition strategies delivered directly to your inbox.') ); ?></p>
+<section class="newsletter-front">
+    <div class="container narrow-container text-center">
+        <span class="section-tag mb-xs">The Institutional Brief</span>
+        <h2 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_newsletter_title', 'Join 2,400+ C-Suite Leaders') ); ?></h2>
+        <p class="mb-lg"><?php echo esc_html( get_theme_mod('ea_newsletter_desc', 'Get bi-weekly leadership architecture and acquisition strategies delivered directly to your inbox.') ); ?></p>
 
-        <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" style="display: flex; gap: 15px; max-width: 600px; margin: 0 auto;">
-            <input type="email" name="EMAIL" placeholder="Work Email Address" style="flex: 2;" required>
-            <button type="submit" class="btn" style="flex: 1; padding: 1.25rem;">Join Briefing →</button>
+        <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" class="newsletter-inline-form">
+            <input type="email" name="EMAIL" placeholder="Work Email Address" required>
+            <button type="submit" class="btn">Join Briefing →</button>
         </form>
     </div>
 </section>
 
 <!-- CTA / Form Section -->
-<section id="cta" style="background-color: var(--primary-color); color: var(--white); padding: 120px 0;">
-    <div class="container" style="max-width: 700px; text-align: center;">
-        <h2 style="color: var(--white); font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem); margin-bottom: 20px;"><?php echo esc_html( get_theme_mod( 'ea_cta_title' ) ); ?></h2>
-        <p style="margin-bottom: 50px; font-size: 1.2rem; opacity: 0.9;"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline' ) ); ?></p>
+<section id="cta" class="final-cta">
+    <div class="container narrow-container text-center">
+        <h2 class="text-white mb-sm"><?php echo esc_html( get_theme_mod( 'ea_cta_title' ) ); ?></h2>
+        <p class="text-white mb-xl opacity-90"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline' ) ); ?></p>
 
         <!-- Form Placeholder -->
-        <div style="background: var(--white); padding: 50px; border-radius: 4px; color: var(--text-color); box-shadow: 0 40px 100px rgba(0,0,0,0.3);">
-            <p style="font-weight: 700; font-size: 1.2rem; margin-bottom: 10px;">[Lead Qualification Form Placeholder]</p>
-            <p style="font-size: 0.95rem; opacity: 0.7;">(Use Step 1: Work Email -> Step 2: Executive Qualifier)</p>
+        <div class="cta-form-container card">
+            <p class="form-placeholder-title mb-xxs">[Lead Qualification Form Placeholder]</p>
+            <p class="form-placeholder-desc">(Use Step 1: Work Email -> Step 2: Executive Qualifier)</p>
         </div>
 
-        <div style="margin-top: 40px; font-size: 0.85rem; opacity: 0.6; letter-spacing: 1px; font-weight: 700;">
+        <div class="compliance-row mt-lg">
             <p>✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED</p>
         </div>
     </div>

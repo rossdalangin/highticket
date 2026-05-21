@@ -4,47 +4,43 @@
  */
 get_header(); ?>
 
-<section class="about-hero animate-in" style="padding: 120px 0; background: var(--primary-color); color: #fff;">
-    <div class="container" style="max-width: 900px; text-align: center;">
-        <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 20px;">The Authority Foundation</span>
-        <h1 style="color: #fff; font-size: clamp(2.5rem, 2rem + 3vw, 4.5rem); line-height: 1.1;"><?php the_title(); ?></h1>
-    </div>
-</section>
-
-<section class="about-content" style="padding: 100px 0;">
-    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
-        <div class="about-main" style="font-size: 1.15rem; line-height: 1.8;">
-            <h2 style="margin-bottom: 30px;">Our Mission</h2>
-            <p style="margin-bottom: 40px; font-size: 1.4rem; font-family: var(--font-heading); font-style: italic; color: var(--primary-color);"><?php echo esc_html( get_theme_mod('ea_about_mission') ); ?></p>
-
-            <h2 style="margin-bottom: 30px;">The Track Record</h2>
-            <div style="color: #4A5568;">
-                <?php echo wp_kses_post( get_theme_mod('ea_about_experience') ); ?>
-            </div>
-
-            <div style="margin-top: 60px;">
-                <?php while ( have_posts() ) : the_post(); the_content(); endwhile; ?>
-            </div>
+<div class="about-page animate-in">
+    <section class="about-hero bg-light">
+        <div class="container narrow-container text-center">
+            <span class="section-tag mb-xs">The Architecture of Authority</span>
+            <h1 class="mb-sm">We Engineer Institutional Trust for Elite Coaches.</h1>
+            <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_about_mission') ); ?></p>
         </div>
+    </section>
 
-        <aside class="about-sidebar">
-            <?php
-            $image = get_theme_mod( 'ea_founder_image' );
-            if ( $image ) : ?>
-                <img src="<?php echo esc_url( $image ); ?>" style="width: 100%; border-radius: 4px; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.15); margin-bottom: 40px;">
-            <?php endif; ?>
+    <section class="about-content">
+        <div class="container post-layout-grid">
+            <div class="about-main post-content">
+                <?php while ( have_posts() ) : the_post(); the_content(); endwhile; ?>
 
-            <div class="card" style="padding: 40px; border-top: 5px solid var(--accent-color);">
-                <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Institutional Standards</h3>
-                <ul style="list-style: none; padding: 0; font-size: 0.95rem; color: #4A5568;">
-                    <li style="margin-bottom: 15px;">✓ Strategic Discretion</li>
-                    <li style="margin-bottom: 15px;">✓ Measurable ROI Mapping</li>
-                    <li style="margin-bottom: 15px;">✓ C-Suite Optimization</li>
-                </ul>
-                <a href="<?php echo home_url('/#cta'); ?>" class="btn" style="width: 100%; margin-top: 20px;">View Briefing</a>
+                <div class="experience-box mt-xl card">
+                    <h3 class="mb-md">The Track Record</h3>
+                    <p><?php echo esc_html( get_theme_mod('ea_about_experience') ); ?></p>
+                </div>
             </div>
-        </aside>
-    </div>
-</section>
+
+            <aside class="about-sidebar">
+                <div class="founder-card card">
+                    <div class="author-avatar mb-md">
+                        <?php
+                        $f_img = get_theme_mod('ea_founder_image');
+                        if ($f_img) echo '<img src="'.esc_url($f_img).'" class="avatar-img">';
+                        ?>
+                    </div>
+                    <h4 class="mb-xs"><?php echo esc_html(get_theme_mod('ea_founder_name')); ?></h4>
+                    <p class="author-bio-small"><?php echo esc_html(get_theme_mod('ea_founder_bio')); ?></p>
+                    <div class="footer-social mt-md">
+                        <?php if ( get_theme_mod('ea_linkedin_url') ) : ?><a href="<?php echo esc_url(get_theme_mod('ea_linkedin_url')); ?>" class="social-link">LinkedIn</a><?php endif; ?>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+</div>
 
 <?php get_footer(); ?>
