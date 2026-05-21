@@ -113,40 +113,41 @@ if ( $gtm_id ) : ?>
 
 <?php wp_body_open(); ?>
 
-<header>
+<header class="site-header">
     <div class="container header-inner">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
             <?php
             $logo = get_theme_mod( 'ea_executive_logo' );
             if ( $logo ) : ?>
-                <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>" style="max-height: 40px; width: auto;">
+                <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>">
             <?php else : ?>
                 <?php bloginfo( 'name' ); ?>
             <?php endif; ?>
         </a>
+
         <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
         </button>
+
         <nav id="primary-menu" class="main-nav">
             <div class="mobile-nav-header">
                 <div class="mobile-nav-close-row text-center mb-md">
-                    <span class="close-nav-text" style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color);">Close Navigation</span>
+                    <span class="close-nav-text">Close Navigation</span>
                 </div>
                 <div class="mobile-search-row mb-lg">
                     <?php get_search_form(); ?>
                 </div>
                 <div class="mobile-logo">
-                    <?php
-                    $logo = get_theme_mod( 'ea_executive_logo' );
-                    if ( $logo ) : ?>
+                    <?php if ( $logo ) : ?>
                         <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>">
                     <?php else : ?>
                         <?php bloginfo( 'name' ); ?>
                     <?php endif; ?>
                 </div>
             </div>
+
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'primary',
@@ -154,6 +155,7 @@ if ( $gtm_id ) : ?>
                 'menu_class'     => 'nav-list',
             ) );
             ?>
+
             <div class="mobile-nav-footer">
                 <div class="menu-featured-asset mb-lg">
                     <span class="featured-asset-label">Recommended Strategy</span>
@@ -177,11 +179,7 @@ if ( $gtm_id ) : ?>
                 </div>
             </div>
         </nav>
-        <a href="#cta" class="btn btn-small">Get Started</a>
+
+        <a href="#cta" class="btn btn-small header-cta">Get Started</a>
     </div>
 </header>
-<style>
-    .nav-list { display: flex; list-style: none; gap: 20px; }
-    .nav-list a { text-decoration: none; color: var(--primary-color); font-weight: 600; font-size: 0.9rem; }
-    .btn-small { padding: 0.5rem 1.2rem; font-size: 0.8rem; }
-</style>

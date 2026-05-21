@@ -114,7 +114,7 @@ p {
 }
 
 /* Header & Navigation */
-header {
+.site-header {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     padding: var(--space-md) 0;
@@ -125,7 +125,7 @@ header {
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-header.scrolled {
+.site-header.scrolled {
     padding: var(--space-xs) 0;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
@@ -191,7 +191,7 @@ header.scrolled {
 .menu-toggle,
 .mobile-nav-header,
 .mobile-nav-footer {
-    display: none;
+    display: none !important;
 }
 
 /* Hero Section */
@@ -1267,7 +1267,7 @@ body:not(.executive-night-mode) .logo-grid div {
     .menu-toggle,
     .mobile-nav-header,
     .mobile-nav-footer {
-        display: flex;
+        display: flex !important;
     }
 
     .menu-toggle {
@@ -1339,14 +1339,15 @@ body:not(.executive-night-mode) .logo-grid div {
     }
 
     .nav-list li {
-        opacity: 0;
-        transform: translateX(30px);
-        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        opacity: 0 !important;
+        transform: translateX(30px) !important;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+        display: block !important;
     }
 
     .main-nav.is-active .nav-list li {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 1 !important;
+        transform: translateX(0) !important;
     }
 
     .main-nav.is-active .nav-list li:nth-child(1) { transition-delay: 0.1s; }
@@ -1399,6 +1400,17 @@ body:not(.executive-night-mode) .logo-grid div {
     }
 
     .mode-separator { opacity: 0.2; }
+
+    .mobile-search-row .search-form-inner {
+        background: var(--light-bg);
+        border-radius: var(--border-radius);
+    }
+
+    .mobile-search-row .search-field {
+        background: transparent;
+        border: none;
+        height: 50px;
+    }
 
     body.executive-night-mode .main-nav {
         background: rgba(11, 29, 51, 0.98);
@@ -1474,7 +1486,7 @@ body:not(.executive-night-mode) .logo-grid div {
 }
 
 @media (max-width: 768px) {
-    header {
+    .site-header {
         position: static !important; /* Force static on mobile for header with H1 pages */
     }
 
