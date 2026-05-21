@@ -127,3 +127,33 @@ function ea_theme_activation_redirect() {
     }
 }
 add_action( 'admin_init', 'ea_theme_activation_redirect' );
+
+/**
+ * Add Dashboard Widget for Executive Acquisition
+ */
+function ea_add_dashboard_widgets() {
+    wp_add_dashboard_widget(
+        'ea_dashboard_widget',
+        __( 'Executive Funnel Command Center', 'executive-acquisition' ),
+        'ea_dashboard_widget_function'
+    );
+}
+add_action( 'wp_dashboard_setup', 'ea_add_dashboard_widgets' );
+
+function ea_dashboard_widget_function() {
+    ?>
+    <div class="ea-dashboard-content">
+        <p style="font-size: 1.1rem; font-weight: 700; color: #0B1D33;"><?php _e( 'Your Acquisition Infrastructure is Active.', 'executive-acquisition' ); ?></p>
+        <div style="margin: 20px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <a href="<?php echo admin_url('admin.php?page=ea-setup'); ?>" class="button button-primary" style="text-align: center;"><?php _e( 'Funnel Setup', 'executive-acquisition' ); ?></a>
+            <a href="<?php echo admin_url('customize.php'); ?>" class="button" style="text-align: center;"><?php _e( 'Brand Editor', 'executive-acquisition' ); ?></a>
+        </div>
+        <hr>
+        <p><strong><?php _e( 'High-Leverage Actions:', 'executive-acquisition' ); ?></strong></p>
+        <ul style="list-style: dash; padding-left: 20px;">
+            <li><a href="<?php echo admin_url('post-new.php'); ?>"><?php _e( 'Publish Authority Insight', 'executive-acquisition' ); ?></a></li>
+            <li><a href="<?php echo home_url('/?company=TARGET_ORG&name=LEAD_NAME'); ?>" target="_blank"><?php _e( 'Generate Personalized Link', 'executive-acquisition' ); ?></a></li>
+        </ul>
+    </div>
+    <?php
+}

@@ -42,6 +42,12 @@
         });
     });
 
+    wp.customize('ea_hero_subheadline', function(value) {
+        value.bind(function(newval) {
+            $('.hero-content p').first().text(newval);
+        });
+    });
+
     wp.customize('ea_hero_cta_text', function(value) {
         value.bind(function(newval) {
             $('.hero-content .btn').text(newval);
@@ -67,10 +73,23 @@
         });
     });
 
+    // Lead Magnet
+    wp.customize('ea_lead_magnet_title', function(value) {
+        value.bind(function(newval) {
+            $('.asset-preview h2').text(newval);
+        });
+    });
+
     // Agitation
     wp.customize('ea_agitation_title', function(value) {
         value.bind(function(newval) {
-            $('section:has(.grid-3) h2').first().text(newval);
+            $('.agitation-section h2').first().text(newval);
+        });
+    });
+
+    wp.customize('ea_agitation_subheadline', function(value) {
+        value.bind(function(newval) {
+            $('.agitation-section .section-title p').text(newval);
         });
     });
 
@@ -78,12 +97,12 @@
     for(let i=1; i<=3; i++) {
         wp.customize('ea_agitation_bullet_'+i+'_title', function(value) {
             value.bind(function(newval) {
-                $('.card:nth-child('+i+') h3').text(newval);
+                $('.agitation-section .card:nth-child('+i+') h3').text(newval);
             });
         });
         wp.customize('ea_agitation_bullet_'+i+'_text', function(value) {
             value.bind(function(newval) {
-                $('.card:nth-child('+i+') p').text(newval);
+                $('.agitation-section .card:nth-child('+i+') p').text(newval);
             });
         });
     }
@@ -95,21 +114,30 @@
         });
     });
 
+    wp.customize('ea_mechanism_subheadline', function(value) {
+        value.bind(function(newval) {
+            $('.mechanism-section .section-title p').text(newval);
+        });
+    });
+
     // Mechanism Steps - Loop for 3
     for(let i=1; i<=3; i++) {
         wp.customize('ea_mechanism_step_'+i+'_title', function(value) {
             value.bind(function(newval) {
-                $('.step-card:nth-child('+i+') h3').text(newval);
+                $('.mechanism-section .step-card:nth-child('+i+') h3').text(newval);
             });
         });
         wp.customize('ea_mechanism_step_'+i+'_text', function(value) {
             value.bind(function(newval) {
-                $('.step-card:nth-child('+i+') p').text(newval);
+                $('.mechanism-section .step-card:nth-child('+i+') p').text(newval);
             });
         });
     }
 
     // FAQ - Comprehensive Preview for all 4
+    wp.customize('ea_faq_title', function(value) { value.bind(function(newval) { $('.faq h2').text(newval); }); });
+    wp.customize('ea_faq_subheadline', function(value) { value.bind(function(newval) { $('.faq .section-title p').text(newval); }); });
+
     for(let i=1; i<=4; i++) {
         wp.customize('ea_faq_q_'+i, function(value) {
             value.bind(function(newval) {
@@ -123,12 +151,9 @@
         });
     }
 
-    // Compliance
-    wp.customize('ea_cookie_notice', function(value) {
-        value.bind(function(newval) {
-            console.log('Compliance Update:', newval);
-        });
-    });
+    // Final CTA
+    wp.customize('ea_cta_title', function(value) { value.bind(function(newval) { $('#cta h2').text(newval); }); });
+    wp.customize('ea_cta_subheadline', function(value) { value.bind(function(newval) { $('#cta p').first().text(newval); }); });
 
     // Brand Assets
     wp.customize('ea_executive_logo', function(value) {

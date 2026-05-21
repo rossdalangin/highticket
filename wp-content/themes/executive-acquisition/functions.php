@@ -156,6 +156,16 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'textarea',
     ) );
 
+    $wp_customize->add_setting( 'ea_hero_subheadline', array(
+        'default'   => 'Our proprietary "Client Acquisition Infrastructure" identifies anonymous corporate decision-makers in your ecosystem and builds instant institutional trust.',
+        'transport' => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'ea_hero_subheadline', array(
+        'label'    => __( 'Sub-Headline', 'executive-acquisition' ),
+        'section'  => 'ea_hero_section',
+        'type'     => 'textarea',
+    ) );
+
     $wp_customize->add_setting( 'ea_hero_cta_text', array(
         'default'   => 'Access the Private Executive Briefing →',
         'transport' => 'postMessage',
@@ -191,6 +201,14 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'section'  => 'ea_social_proof',
         'type'     => 'text',
     ) );
+
+    for ($i = 1; $i <= 5; $i++) {
+        $wp_customize->add_setting( "ea_logo_{$i}", array( 'default' => '', 'transport' => 'refresh' ) );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "ea_logo_{$i}", array(
+            'label'    => __( "Partner Logo {$i}", 'executive-acquisition' ),
+            'section'  => 'ea_social_proof',
+        ) ) );
+    }
 
     $wp_customize->add_setting( 'ea_testimonial_quote', array(
         'default'   => 'This system eliminated our lead quality bottleneck within 90 days. We now command the authority we deserve in the mid-market segment.',
@@ -357,6 +375,16 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
+    $wp_customize->add_setting( 'ea_agitation_subheadline', array(
+        'default'   => "Despite your experience, your current acquisition strategy is likely leaking revenue in three critical areas:",
+        'transport' => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'ea_agitation_subheadline', array(
+        'label'    => __( 'Section Sub-headline', 'executive-acquisition' ),
+        'section'  => 'ea_agitation_section',
+        'type'     => 'textarea',
+    ) );
+
     $agitation_defaults = array(
         1 => array('t' => 'The "Content Hamster Wheel" Burnout', 'd' => 'You’re spending hours crafting "thought leadership" that gets likes from peers but is ignored by the VPs and Founders who actually have the budget to hire you.'),
         2 => array('t' => 'The "Cold Outreach" Reputation Tax', 'd' => 'Using automated LinkedIn bots or generic email blasts doesn’t just fail; it actively burns your brand with the C-Suite. High-level leaders value discretion.'),
@@ -400,6 +428,16 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
+    $wp_customize->add_setting( 'ea_mechanism_subheadline', array(
+        'default'   => "A 3-Step Predictive System to Turn Anonymous Decision-Makers into High-Value Partners.",
+        'transport' => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'ea_mechanism_subheadline', array(
+        'label'    => __( 'Section Sub-headline', 'executive-acquisition' ),
+        'section'  => 'ea_mechanism_section',
+        'type'     => 'textarea',
+    ) );
+
     $mechanism_defaults = array(
         1 => array('t' => 'The Decision-Maker Beacon', 'd' => 'We identify the exact VPs and Founders who are currently searching for leadership solutions using intent-based data.'),
         2 => array('t' => 'The Authority Infrastructure', 'd' => 'We replace your "sales funnel" with an Institutional Asset—a high-level briefing that builds 6 months of trust in 12 minutes.'),
@@ -433,6 +471,26 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 60,
     ) );
 
+    $wp_customize->add_setting( 'ea_faq_title', array(
+        'default'   => "Common Objections & Executive FAQ",
+        'transport' => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'ea_faq_title', array(
+        'label'    => __( 'Section Title', 'executive-acquisition' ),
+        'section'  => 'ea_faq_section',
+        'type'     => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'ea_faq_subheadline', array(
+        'default'   => "Addressing the critical questions about the Institutional Intent Method™.",
+        'transport' => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'ea_faq_subheadline', array(
+        'label'    => __( 'Section Sub-headline', 'executive-acquisition' ),
+        'section'  => 'ea_faq_section',
+        'type'     => 'textarea',
+    ) );
+
     $faq_defaults = array(
         1 => array('q' => 'How much time is required to manage this system?', 'a' => 'The system is designed for high-leverage. After the initial 14-day setup, your only responsibility is showing up for pre-qualified diagnostic sessions.'),
         2 => array('q' => 'Does this work for specialized coaching niches?', 'a' => 'Yes. The Institutional Intent Method™ is niche-agnostic; it identifies intent based on specific problem searches, not general industry terms.'),
@@ -447,7 +505,19 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "Answer {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
     }
 
-    // 12. Compliance Section
+    // 12. Final CTA Section
+    $wp_customize->add_section( 'ea_cta_section', array(
+        'title'    => __( 'Final CTA / Form Section', 'executive-acquisition' ),
+        'priority' => 65,
+    ) );
+
+    $wp_customize->add_setting( 'ea_cta_title', array( 'default' => 'Apply for Your Private Executive Briefing', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_cta_title', array( 'label' => __( 'Section Title', 'executive-acquisition' ), 'section' => 'ea_cta_section' ) );
+
+    $wp_customize->add_setting( 'ea_cta_subheadline', array( 'default' => 'Select a time below to see the architecture behind the Institutional Intent Method™ and how it can be applied to your coaching practice.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_cta_subheadline', array( 'label' => __( 'Section Sub-headline', 'executive-acquisition' ), 'section' => 'ea_cta_section', 'type' => 'textarea' ) );
+
+    // 13. Compliance Section
     $wp_customize->add_section( 'ea_compliance_section', array(
         'title'    => __( 'Privacy & Compliance', 'executive-acquisition' ),
         'priority' => 70,
@@ -463,7 +533,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
-    // 13. Premium Animations
+    // 14. Premium Animations
     $wp_customize->add_section( 'ea_animations_section', array(
         'title'    => __( 'Premium Animations', 'executive-acquisition' ),
         'priority' => 80,
