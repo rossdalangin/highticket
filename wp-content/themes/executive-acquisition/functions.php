@@ -53,6 +53,11 @@ require get_template_directory() . '/functions-generator.php';
 require get_template_directory() . '/functions-admin.php';
 
 /**
+ * Include Custom Post Types
+ */
+require get_template_directory() . '/functions-cpt.php';
+
+/**
  * Customizer settings for the Acquisition System
  */
 function executive_acquisition_customize_register( $wp_customize ) {
@@ -119,7 +124,31 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'description' => __( 'The action URL for your lead magnet capture form.', 'executive-acquisition' )
     ) );
 
-    // 3. Founder/Coach Profile
+    // 3. About Page Settings
+    $wp_customize->add_section( 'ea_about_section', array(
+        'title'    => __( 'About Us Page', 'executive-acquisition' ),
+        'priority' => 25.5,
+    ) );
+
+    $wp_customize->add_setting( 'ea_about_mission', array( 'default' => 'Our mission is to engineer high-ticket authority for the world\'s most impactful leaders.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_mission', array( 'label' => __( 'Mission Statement', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'ea_about_experience', array( 'default' => 'Over 15 years of institutional leadership architecture.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_experience', array( 'label' => __( 'Experience / Track Record', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
+
+    // 4. Contact Page Settings
+    $wp_customize->add_section( 'ea_contact_section', array(
+        'title'    => __( 'Contact Us Page', 'executive-acquisition' ),
+        'priority' => 25.6,
+    ) );
+
+    $wp_customize->add_setting( 'ea_contact_inquiry_text', array( 'default' => 'For institutional inquiries and partnership requests, please use the secure channel below.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_contact_inquiry_text', array( 'label' => __( 'Inquiry Instructions', 'executive-acquisition' ), 'section' => 'ea_contact_section', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'ea_contact_office', array( 'default' => 'Executive Suite 500, Financial District', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_contact_office', array( 'label' => __( 'Office Location', 'executive-acquisition' ), 'section' => 'ea_contact_section', 'type' => 'text' ) );
+
+    // 5. Founder/Coach Profile
     $wp_customize->add_section( 'ea_profile_section', array(
         'title'    => __( 'Founder/Coach Profile', 'executive-acquisition' ),
         'priority' => 26,

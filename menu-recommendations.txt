@@ -6,9 +6,11 @@ For a high-ticket coaching practice, your menu should minimize friction and anch
 The goal is to provide proof and insights without distracting from the main funnel.
 
 - **HOME:** The core high-conversion landing page.
+- **ABOUT US:** The authority foundation and track record.
 - **ROI CASE STUDY:** A deep dive into institutional results (use the ROI Case Study template).
 - **ASSET LIBRARY:** High-value whitepapers and frameworks (use the Asset Library template).
 - **BLOG / INSIGHTS:** Strategy pieces that build authority.
+- **CONTACT US:** Secure inquiry channel for partners.
 - **[CTA BUTTON]:** "GET STARTED" or "BOOK DIAGNOSTIC" - Link directly to the #cta anchor on the home page.
 
 ## 2. COMPLIANCE & RECOVERY (Footer)

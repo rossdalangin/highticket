@@ -6,7 +6,7 @@
         <div class="hero-content">
             <span class="pre-headline"><?php echo esc_html( get_theme_mod( 'ea_hero_pre_headline' ) ); ?></span>
             <h1><?php echo wp_kses_post( get_theme_mod( 'ea_hero_headline' ) ); ?></h1>
-            <p style="font-size: 1.15rem; margin-bottom: 2.5rem;"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline', 'Our proprietary "Client Acquisition Infrastructure" identifies anonymous corporate decision-makers in your ecosystem and builds instant institutional trust.' ) ); ?></p>
+            <p style="font-size: 1.15rem; margin-bottom: 2.5rem;"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline' ) ); ?></p>
             <a href="#cta" class="btn"><?php echo esc_html( get_theme_mod( 'ea_hero_cta_text' ) ); ?></a>
             <p style="font-size: 0.8rem; margin-top: 1.25rem; opacity: 0.8;">Takes 12 minutes. No 'salesy' fluff. Pure strategy.</p>
         </div>
@@ -62,7 +62,7 @@
     <div class="container">
         <div class="section-title">
             <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title' ) ); ?></h2>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline', 'Despite your experience, your current acquisition strategy is likely leaking revenue in three critical areas:' ) ); ?></p>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline' ) ); ?></p>
         </div>
         <div class="grid-3">
             <?php for ($i = 1; $i <= 3; $i++) :
@@ -78,41 +78,30 @@
     </div>
 </section>
 
-<!-- Founder Section -->
+<!-- Testimonials (CPT Driven) -->
 <?php
-$founder_name = get_theme_mod( 'ea_founder_name' );
-if ( $founder_name ) : ?>
-<section class="founder-section" style="background-color: var(--white); border-top: 1px solid rgba(0,0,0,0.05);">
-    <div class="container hero-grid">
-        <div class="founder-image" style="text-align: center;">
-            <?php
-            $image = get_theme_mod( 'ea_founder_image' );
-            if ( $image ) : ?>
-                <img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $founder_name ); ?>" loading="lazy" style="max-width: 100%; border-radius: 4px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.15);">
-            <?php else : ?>
-                <div style="width: 100%; aspect-ratio: 1/1; background: #e2e8f0; border-radius: 4px;"></div>
-            <?php endif; ?>
+$testimonials = get_posts( array('post_type' => 'testimonial', 'posts_per_page' => 3) );
+if ( $testimonials ) : ?>
+<section class="testimonials-cpt" style="background: var(--primary-color); color: #fff; padding: 100px 0;">
+    <div class="container">
+        <div class="section-title">
+            <h2 style="color:#fff;">Institutional Praise</h2>
+            <p>What C-Suite leaders are saying about the Intent Method™.</p>
         </div>
-        <div class="founder-content">
-            <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 15px;">The Architect Behind the Method</span>
-            <h2 style="font-size: 2.75rem; line-height: 1.1; margin-bottom: 25px;"><?php echo esc_html( $founder_name ); ?></h2>
-            <div style="font-size: 1.15rem; line-height: 1.85; color: #4A5568;">
-                <?php echo wp_kses_post( get_theme_mod( 'ea_founder_bio' ) ); ?>
-            </div>
+        <div class="grid-3">
+            <?php foreach ( $testimonials as $t ) : ?>
+                <div class="card" style="background: rgba(255,255,255,0.05); border: none; color: #fff;">
+                    <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: -15px; opacity: 0.5;">“</div>
+                    <div style="font-size: 1.1rem; font-style: italic; margin-bottom: 25px; line-height: 1.7;"><?php echo get_the_content(null, false, $t->ID); ?></div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: #eee; overflow: hidden;">
+                            <?php echo get_the_post_thumbnail($t->ID, 'thumbnail', array('style' => 'width:100%; height:100%; object-fit:cover;')); ?>
+                        </div>
+                        <div style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: var(--accent-color);"><?php echo get_the_title($t->ID); ?></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-    </div>
-</section>
-<?php endif; ?>
-
-<!-- Featured Testimonial -->
-<?php
-$quote = get_theme_mod( 'ea_testimonial_quote' );
-if ( $quote ) : ?>
-<section class="testimonial-featured" style="background: var(--primary-color); color: var(--white); padding: 120px 0;">
-    <div class="container" style="max-width: 900px; text-align: center;">
-        <div style="font-size: 5rem; font-family: var(--font-heading); line-height: 1; color: var(--accent-color); margin-bottom: -10px; opacity: 0.3;">“</div>
-        <blockquote style="font-size: clamp(1.5rem, 1.25rem + 1vw, 2.25rem); font-family: var(--font-heading); font-style: italic; line-height: 1.4; margin-bottom: 40px; color: #fff;"><?php echo esc_html( $quote ); ?></blockquote>
-        <p style="font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-size: 0.9rem;"><?php echo esc_html( get_theme_mod( 'ea_testimonial_author' ) ); ?></p>
     </div>
 </section>
 <?php endif; ?>
@@ -122,7 +111,7 @@ if ( $quote ) : ?>
     <div class="container">
         <div class="section-title">
             <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title' ) ); ?></h2>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline', 'A 3-Step Predictive System to Turn Anonymous Decision-Makers into High-Value Partners.' ) ); ?></p>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline' ) ); ?></p>
         </div>
         <div class="grid-3">
             <?php for ($i = 1; $i <= 3; $i++) :
@@ -139,24 +128,34 @@ if ( $quote ) : ?>
     </div>
 </section>
 
-<!-- FAQ Section -->
+<!-- FAQ Section (CPT Driven) -->
 <section class="faq" style="background-color: var(--light-bg); border-top: 1px solid rgba(0,0,0,0.05);">
     <div class="container">
         <div class="section-title">
-            <h2><?php echo esc_html( get_theme_mod( 'ea_faq_title', 'Common Objections & Executive FAQ' ) ); ?></h2>
-            <p style="font-size: 1.1rem;"><?php echo esc_html( get_theme_mod( 'ea_faq_subheadline', 'Addressing the critical questions about the Institutional Intent Method™.' ) ); ?></p>
+            <h2><?php echo esc_html( get_theme_mod( 'ea_faq_title' ) ); ?></h2>
+            <p style="font-size: 1.1rem;"><?php echo esc_html( get_theme_mod( 'ea_faq_subheadline' ) ); ?></p>
         </div>
         <div class="faq-container">
-            <?php for ($i = 1; $i <= 4; $i++) :
-                $q = get_theme_mod( "ea_faq_q_{$i}" );
-                $a = get_theme_mod( "ea_faq_a_{$i}" );
-
-                if ($q) : ?>
+            <?php
+            $faqs = get_posts( array('post_type' => 'faq', 'posts_per_page' => -1) );
+            if ($faqs) :
+                foreach ( $faqs as $f ) : ?>
                 <div class="faq-item animate-in">
-                    <span class="faq-question"><?php echo esc_html($q); ?></span>
-                    <div class="faq-answer"><?php echo esc_html($a); ?></div>
+                    <span class="faq-question"><?php echo get_the_title($f->ID); ?></span>
+                    <div class="faq-answer"><?php echo apply_filters('the_content', $f->post_content); ?></div>
                 </div>
-            <?php endif; endfor; ?>
+            <?php endforeach; else: ?>
+                <!-- Fallback to Customizer FAQ if no CPTs exist yet -->
+                <?php for ($i = 1; $i <= 4; $i++) :
+                    $q = get_theme_mod( "ea_faq_q_{$i}" );
+                    $a = get_theme_mod( "ea_faq_a_{$i}" );
+                    if ($q) : ?>
+                    <div class="faq-item animate-in">
+                        <span class="faq-question"><?php echo esc_html($q); ?></span>
+                        <div class="faq-answer"><?php echo esc_html($a); ?></div>
+                    </div>
+                <?php endif; endfor; ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>
@@ -164,8 +163,8 @@ if ( $quote ) : ?>
 <!-- CTA / Form Section -->
 <section id="cta" style="background-color: var(--primary-color); color: var(--white); padding: 120px 0;">
     <div class="container" style="max-width: 700px; text-align: center;">
-        <h2 style="color: var(--white); font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem); margin-bottom: 20px;"><?php echo esc_html( get_theme_mod( 'ea_cta_title', 'Apply for Your Private Executive Briefing' ) ); ?></h2>
-        <p style="margin-bottom: 50px; font-size: 1.2rem; opacity: 0.9;"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline', 'Select a time below to see the architecture behind the Institutional Intent Method™ and how it can be applied to your coaching practice.' ) ); ?></p>
+        <h2 style="color: var(--white); font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem); margin-bottom: 20px;"><?php echo esc_html( get_theme_mod( 'ea_cta_title' ) ); ?></h2>
+        <p style="margin-bottom: 50px; font-size: 1.2rem; opacity: 0.9;"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline' ) ); ?></p>
 
         <!-- Form Placeholder -->
         <div style="background: var(--white); padding: 50px; border-radius: 4px; color: var(--text-color); box-shadow: 0 40px 100px rgba(0,0,0,0.3);">
