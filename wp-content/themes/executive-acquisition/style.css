@@ -342,6 +342,20 @@ body:not(.executive-night-mode) .logo-grid div {
     color: var(--charcoal);
 }
 
+.archive-post-date {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
 .archive-read-more {
     font-weight: 700;
     color: var(--accent-color);
@@ -601,6 +615,15 @@ body:not(.executive-night-mode) .logo-grid div {
     opacity: 0.5;
     margin-bottom: 0;
     color: var(--white);
+}
+
+.no-results-box {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    background: var(--light-bg);
+    border-radius: var(--border-radius);
+    border: 1px dashed rgba(0,0,0,0.1);
 }
 
 /* Funnel Specifics */
