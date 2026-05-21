@@ -98,7 +98,7 @@
         <?php endif; ?>
     </style>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class( get_theme_mod( 'ea_enable_night_mode' ) ? 'executive-night-mode' : '' ); ?>>
 <?php
 if ( $gtm_id ) : ?>
     <!-- Google Tag Manager (noscript) -->

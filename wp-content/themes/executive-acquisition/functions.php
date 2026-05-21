@@ -83,6 +83,16 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
+    $wp_customize->add_setting( 'ea_enable_night_mode', array(
+        'default'   => false,
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_enable_night_mode', array(
+        'label'    => __( 'Executive Night Mode (Dark Mode)', 'executive-acquisition' ),
+        'section'  => 'ea_brand_section',
+        'type'     => 'checkbox',
+    ) );
+
     $wp_customize->add_setting( 'ea_executive_logo', array( 'default' => '', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_executive_logo', array(
         'label'    => __( 'Executive Logo (Header)', 'executive-acquisition' ),
@@ -209,6 +219,16 @@ function executive_acquisition_customize_register( $wp_customize ) {
             'section'  => 'ea_social_proof',
         ) ) );
     }
+
+    $wp_customize->add_setting( 'ea_enable_marquee', array(
+        'default'   => false,
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_enable_marquee', array(
+        'label'    => __( 'Enable Scrolling Marquee Animation', 'executive-acquisition' ),
+        'section'  => 'ea_social_proof',
+        'type'     => 'checkbox',
+    ) );
 
     $wp_customize->add_setting( 'ea_testimonial_quote', array(
         'default'   => 'This system eliminated our lead quality bottleneck within 90 days. We now command the authority we deserve in the mid-market segment.',

@@ -25,26 +25,34 @@
 </section>
 
 <!-- Logo Bar Section -->
-<section class="logo-bar" style="padding: 50px 0; background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.05);">
+<?php $is_marquee = get_theme_mod( 'ea_enable_marquee', false ); ?>
+<section class="logo-bar" style="padding: 50px 0; background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.05); overflow: hidden;">
     <div class="container" style="text-align: center;">
         <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 30px;"><?php echo esc_html( get_theme_mod( 'ea_logo_bar_text', 'TRUSTED BY LEADERS AT:' ) ); ?></p>
-        <div class="logo-grid" style="display: flex; justify-content: center; gap: 60px; filter: grayscale(1); opacity: 0.6; align-items: center; flex-wrap: wrap;">
-            <?php
-            $has_custom_logos = false;
-            for ($i = 1; $i <= 5; $i++) {
-                $logo = get_theme_mod("ea_logo_{$i}");
-                if ($logo) {
-                    echo '<img src="'.esc_url($logo).'" style="max-height: 30px; width: auto;">';
-                    $has_custom_logos = true;
+
+        <div class="<?php echo $is_marquee ? 'logo-marquee' : ''; ?>">
+            <div class="logo-grid <?php echo $is_marquee ? 'logo-marquee-content' : ''; ?>" style="<?php echo $is_marquee ? '' : 'display: flex; justify-content: center; gap: 60px; filter: grayscale(1); opacity: 0.6; align-items: center; flex-wrap: wrap;'; ?>">
+                <?php
+                $has_custom_logos = false;
+                $logo_items = '';
+                for ($i = 1; $i <= 5; $i++) {
+                    $logo = get_theme_mod("ea_logo_{$i}");
+                    if ($logo) {
+                        $logo_items .= '<img src="'.esc_url($logo).'" style="max-height: 30px; width: auto;">';
+                        $has_custom_logos = true;
+                    }
                 }
-            }
-            if (!$has_custom_logos) : ?>
-                <div style="font-weight: 900; font-size: 1.25rem;">FORBES</div>
-                <div style="font-weight: 900; font-size: 1.25rem;">INC.</div>
-                <div style="font-weight: 900; font-size: 1.25rem;">HBR</div>
-                <div style="font-weight: 900; font-size: 1.25rem;">FAST CO.</div>
-                <div style="font-weight: 900; font-size: 1.25rem;">DELOITTE</div>
-            <?php endif; ?>
+                if (!$has_custom_logos) {
+                    $logo_items = '<div style="font-weight: 900; font-size: 1.25rem;">FORBES</div>
+                                   <div style="font-weight: 900; font-size: 1.25rem;">INC.</div>
+                                   <div style="font-weight: 900; font-size: 1.25rem;">HBR</div>
+                                   <div style="font-weight: 900; font-size: 1.25rem;">FAST CO.</div>
+                                   <div style="font-weight: 900; font-size: 1.25rem;">DELOITTE</div>';
+                }
+                echo $logo_items;
+                if ($is_marquee) echo $logo_items; // Duplicate for seamless loop
+                ?>
+            </div>
         </div>
     </div>
 </section>

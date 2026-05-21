@@ -18,6 +18,24 @@ Text Domain: executive-acquisition
     --font-body: 'Inter', sans-serif;
 }
 
+body.executive-night-mode {
+    --primary-color: #FFFFFF;
+    --text-color: #E2E8F0;
+    --light-bg: #1A202C;
+    --white: #0B1D33;
+    --charcoal: #A0AEC0;
+    background-color: var(--white);
+}
+
+body.executive-night-mode header {
+    background-color: rgba(11, 29, 51, 0.95);
+    border-bottom-color: rgba(255,255,255,0.05);
+}
+
+body.executive-night-mode .logo, body.executive-night-mode .nav-list a {
+    color: #fff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -194,6 +212,31 @@ label {
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.logo-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.logo-marquee-content {
+    display: flex;
+    gap: 80px;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+body:not(.executive-night-mode) .logo-grid img,
+body:not(.executive-night-mode) .logo-grid div {
+    filter: grayscale(1);
+    opacity: 0.6;
 }
 
 .faq-item {

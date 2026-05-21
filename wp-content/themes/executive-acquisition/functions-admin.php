@@ -45,19 +45,19 @@ function ea_render_setup_page() {
                     <h2><?php _e( '2. Executive Launch Checklist', 'executive-acquisition' ); ?></h2>
                     <div style="margin-top: 20px;">
                         <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
-                            <input type="checkbox" checked disabled> <span style="font-weight: 700;">Infrastructure:</span> Core pages generated & templates assigned.
+                            <input type="checkbox" checked disabled> <span><span style="font-weight: 700;">Infrastructure:</span> Core pages generated & templates assigned.</span>
                         </div>
                         <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
-                            <input type="checkbox"> <span style="font-weight: 700;">Identity:</span> Global colors, logo, and founder bio configured.
+                            <input type="checkbox"> <span><span style="font-weight: 700;">Identity:</span> <a href="<?php echo admin_url('customize.php?autofocus[section]=ea_brand_section'); ?>">Configure global colors, logo, and founder bio.</a></span>
                         </div>
                         <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
-                            <input type="checkbox"> <span style="font-weight: 700;">Briefing:</span> Video URLs for Bridge and Briefing pages added.
+                            <input type="checkbox"> <span><span style="font-weight: 700;">Briefing:</span> <a href="<?php echo admin_url('customize.php?autofocus[section]=ea_funnel_flow'); ?>">Add video URLs for Bridge and Briefing pages.</a></span>
                         </div>
                         <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
-                            <input type="checkbox"> <span style="font-weight: 700;">Conversion:</span> Diagnostic session booking link connected.
+                            <input type="checkbox"> <span><span style="font-weight: 700;">Conversion:</span> <a href="<?php echo admin_url('customize.php?autofocus[section]=ea_funnel_flow'); ?>">Connect diagnostic session booking link.</a></span>
                         </div>
                         <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
-                            <input type="checkbox"> <span style="font-weight: 700;">Tracking:</span> GTM ID and Conversion API (CAPI) events verified.
+                            <input type="checkbox"> <span><span style="font-weight: 700;">Tracking:</span> <a href="<?php echo admin_url('customize.php?autofocus[section]=ea_tracking_section'); ?>">Verify GTM ID and tracking events.</a></span>
                         </div>
                     </div>
                 </div>

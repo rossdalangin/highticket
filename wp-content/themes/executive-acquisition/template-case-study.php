@@ -17,9 +17,33 @@ get_header(); ?>
         <div class="main-content" style="font-size: 1.15rem; line-height: 1.8;">
             <?php while ( have_posts() ) : the_post(); the_content(); endwhile; ?>
 
+            <!-- Board-Ready ROI Calculator UI (Interactive-ready) -->
+            <div class="roi-calculator-ui card" style="margin-top: 60px; padding: 50px; background: #fff; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 40px 100px -20px rgba(0,0,0,0.1);">
+                <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; display: block; margin-bottom: 10px;">Board-Ready Visual</span>
+                <h3 style="margin-bottom: 30px;">Leadership ROI Mapping</h3>
+                <div style="background: #f8fafc; padding: 30px; border-radius: 4px; margin-bottom: 30px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <span>Current Manual Outreach Hours / Month</span>
+                        <strong style="color: var(--primary-color);">120 hrs</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <span>Cost per Executive Hour</span>
+                        <strong style="color: var(--primary-color);">$250</strong>
+                    </div>
+                    <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; display: flex; justify-content: space-between; font-weight: 900;">
+                        <span>Annual ' Hamster Wheel' Tax</span>
+                        <span style="color: #e53e3e;">$360,000</span>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.95rem; margin-bottom: 25px;">Eliminate the tax. Predict your pipeline. Anchor your authority.</p>
+                    <a href="<?php echo home_url('/#cta'); ?>" class="btn" style="width: 100%;">Map Your ROI →</a>
+                </div>
+            </div>
+
             <!-- Engagement Tiers -->
             <?php if ( get_theme_mod('ea_tier_1_name') ) : ?>
-            <div class="engagement-tiers" style="margin-top: 60px; padding: 60px; background: var(--light-bg); border-radius: 4px;">
+            <div class="engagement-tiers" style="margin-top: 80px; padding: 60px; background: var(--light-bg); border-radius: 4px;">
                 <h3 style="margin-bottom: 40px; text-align: center;">Institutional Engagement Options</h3>
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                     <div class="tier-card card" style="text-align: center;">
