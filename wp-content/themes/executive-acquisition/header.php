@@ -124,10 +124,23 @@ if ( $gtm_id ) : ?>
                 <?php bloginfo( 'name' ); ?>
             <?php endif; ?>
         </a>
-        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" style="display:none; background:none; border:none; color:var(--primary-color); cursor:pointer;">
-            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
         </button>
         <nav id="primary-menu" class="main-nav">
+            <div class="mobile-nav-header">
+                <div class="mobile-logo">
+                    <?php
+                    $logo = get_theme_mod( 'ea_executive_logo' );
+                    if ( $logo ) : ?>
+                        <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>">
+                    <?php else : ?>
+                        <?php bloginfo( 'name' ); ?>
+                    <?php endif; ?>
+                </div>
+            </div>
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'primary',
@@ -135,6 +148,15 @@ if ( $gtm_id ) : ?>
                 'menu_class'     => 'nav-list',
             ) );
             ?>
+            <div class="mobile-nav-footer">
+                <div class="mobile-cta-box mb-lg">
+                    <a href="#cta" class="btn w-100">Access Briefing →</a>
+                </div>
+                <div class="mobile-social-links">
+                    <?php if ( get_theme_mod('ea_linkedin_url') ) : ?><a href="<?php echo esc_url(get_theme_mod('ea_linkedin_url')); ?>" class="social-link">LinkedIn</a><?php endif; ?>
+                    <?php if ( get_theme_mod('ea_twitter_url') ) : ?><a href="<?php echo esc_url(get_theme_mod('ea_twitter_url')); ?>" class="social-link">X / Twitter</a><?php endif; ?>
+                </div>
+            </div>
         </nav>
         <a href="#cta" class="btn btn-small">Get Started</a>
     </div>

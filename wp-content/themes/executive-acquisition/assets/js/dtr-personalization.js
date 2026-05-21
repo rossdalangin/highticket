@@ -107,6 +107,20 @@
         const expanded = $(this).attr('aria-expanded') === 'true' || false;
         $(this).attr('aria-expanded', !expanded);
         $('.main-nav').toggleClass('is-active');
+
+        // Lock body scroll
+        if (!expanded) {
+            $('body').css('overflow', 'hidden');
+        } else {
+            $('body').css('overflow', '');
+        }
+    });
+
+    // Close menu on link click
+    $('.main-nav .nav-list a').on('click', function() {
+        $('.menu-toggle').attr('aria-expanded', 'false');
+        $('.main-nav').removeClass('is-active');
+        $('body').css('overflow', '');
     });
 
 })(jQuery);
