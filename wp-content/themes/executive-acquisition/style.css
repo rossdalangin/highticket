@@ -84,7 +84,7 @@ header {
     border-bottom: 1px solid rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 99999; /* Absolute layer above all content */
     transition: all 0.3s ease;
 }
 
@@ -328,7 +328,7 @@ footer {
 }
 
 @media (max-width: 992px) {
-    .menu-toggle { display: block !important; }
+    .menu-toggle { display: block !important; position: relative; z-index: 100001; }
     .main-nav {
         display: none;
         position: absolute;
@@ -336,9 +336,10 @@ footer {
         left: 0;
         width: 100%;
         background: #fff;
-        padding: 20px;
+        padding: 40px 20px;
         border-bottom: 1px solid #eee;
-        z-index: 100;
+        z-index: 100000; /* Layer above all but under toggle */
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
     .main-nav.is-active { display: block; }
     .nav-list { flex-direction: column; gap: 15px; }
