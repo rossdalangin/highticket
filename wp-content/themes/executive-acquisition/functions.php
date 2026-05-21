@@ -511,12 +511,17 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 64,
     ) );
 
+    $tier_defaults = array(
+        1 => array('n' => 'Strategic Intensive', 'p' => '$10,000', 'd' => 'A focused 30-day leadership pivot for mid-market Founders facing rapid institutional scale.'),
+        2 => array('n' => 'Institutional Transformation', 'p' => '$25,000', 'd' => 'A comprehensive 90-day infrastructure build for C-Suite teams protecting retention revenue.')
+    );
+
     for ($i = 1; $i <= 2; $i++) {
-        $wp_customize->add_setting( "ea_tier_{$i}_name", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_setting( "ea_tier_{$i}_name", array( 'default' => $tier_defaults[$i]['n'], 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_tier_{$i}_name", array( 'label' => __( "Tier {$i} Name", 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
-        $wp_customize->add_setting( "ea_tier_{$i}_price", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_setting( "ea_tier_{$i}_price", array( 'default' => $tier_defaults[$i]['p'], 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_tier_{$i}_price", array( 'label' => __( "Tier {$i} Price", 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
-        $wp_customize->add_setting( "ea_tier_{$i}_desc", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_setting( "ea_tier_{$i}_desc", array( 'default' => $tier_defaults[$i]['d'], 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_tier_{$i}_desc", array( 'label' => __( "Tier {$i} Description", 'executive-acquisition' ), 'section' => 'ea_tiers_section', 'type' => 'textarea' ) );
     }
 

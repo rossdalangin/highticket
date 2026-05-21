@@ -25,5 +25,10 @@ These pages should NOT be in your main navigation as they require previous conte
 - **THANK YOU / AUTHORITY BRIDGE:** The page shown immediately after form submission.
 - **EXECUTIVE BRIEFING:** The VSL page containing the 12-minute ROI briefing.
 
+## 4. AUTOMATED SETUP
+The "Infrastructure Generator" in the Theme Setup page (or Customizer) automatically builds these menus for you:
+- **Executive Primary Menu:** (Home, ROI Case Study, Asset Library, Blog)
+- **Executive Footer Menu:** (Privacy Policy, Terms of Service)
+
 ---
 Built by Jules (Elite CRO Architect)
