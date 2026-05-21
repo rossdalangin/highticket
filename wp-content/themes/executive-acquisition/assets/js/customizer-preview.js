@@ -20,12 +20,68 @@
     wp.customize('ea_founder_name', function(value) {
         value.bind(function(newval) {
             $('.founder-content h2').text(newval);
+            $('.sidebar-block h3').first().text(newval);
         });
     });
 
     wp.customize('ea_founder_bio', function(value) {
         value.bind(function(newval) {
             $('.founder-content div').html(newval);
+        });
+    });
+
+    // About Page
+    wp.customize('ea_about_mission', function(value) {
+        value.bind(function(newval) {
+            $('.about-main p').first().text(newval);
+            $('.footer-brand p').text(newval);
+        });
+    });
+
+    wp.customize('ea_about_experience', function(value) {
+        value.bind(function(newval) {
+            $('.about-main div').first().html(newval);
+        });
+    });
+
+    // Contact Page
+    wp.customize('ea_contact_inquiry_text', function(value) {
+        value.bind(function(newval) {
+            $('.contact-hero p').text(newval);
+        });
+    });
+
+    wp.customize('ea_contact_office', function(value) {
+        value.bind(function(newval) {
+            $('.contact-details p').first().text(newval);
+            $('.footer-contact p').first().html('<strong>Location:</strong> ' + newval);
+        });
+    });
+
+    // Sidebar
+    wp.customize('ea_sidebar_cta_title', function(value) {
+        value.bind(function(newval) {
+            $('#secondary .widget-box:nth-child(2) h3').text(newval);
+        });
+    });
+
+    wp.customize('ea_sidebar_cta_desc', function(value) {
+        value.bind(function(newval) {
+            $('#secondary .widget-box:nth-child(2) p').text(newval);
+        });
+    });
+
+    wp.customize('ea_newsletter_title', function(value) {
+        value.bind(function(newval) {
+            $('.newsletter-front h2').text(newval);
+            $('#secondary .widget-box:nth-child(3) h3').text(newval);
+        });
+    });
+
+    wp.customize('ea_newsletter_desc', function(value) {
+        value.bind(function(newval) {
+            $('.newsletter-front p').text(newval);
+            $('#secondary .widget-box:nth-child(3) p').text(newval);
         });
     });
 
@@ -167,6 +223,7 @@
         value.bind(function(newval) {
             if(newval) {
                 $('.logo').html('<img src="'+newval+'" style="max-height: 40px; width: auto;">');
+                $('.footer-logo').html('<img src="'+newval+'" style="max-height: 40px; filter: brightness(0) invert(1);">');
             }
         });
     });

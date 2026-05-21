@@ -105,3 +105,30 @@ function ea_logo_bar_shortcode() {
             </div>';
 }
 add_shortcode( 'logo_bar', 'ea_logo_bar_shortcode' );
+
+// Resource Grid Shortcode
+function ea_resource_grid_shortcode() {
+    $url = get_theme_mod( 'ea_lead_magnet_url', '#' );
+    $output = '<div class="grid-3">
+                <article class="card">
+                    <div style="background: var(--primary-color); padding: 20px; border-radius: 2px; margin-bottom: 20px; text-align: center; color: var(--accent-color); font-weight: 900;">.PDF</div>
+                    <h3>Leadership Audit</h3>
+                    <p style="font-size: 0.85rem;">Audit your current retention revenue.</p>
+                    <a href="' . esc_url($url) . '" class="btn" style="width: 100%; padding: 0.8rem; font-size: 0.75rem;">Download</a>
+                </article>
+                <article class="card">
+                    <div style="background: var(--primary-color); padding: 20px; border-radius: 2px; margin-bottom: 20px; text-align: center; color: var(--accent-color); font-weight: 900;">.MAP</div>
+                    <h3>Intent Roadmap</h3>
+                    <p style="font-size: 0.85rem;">Map your high-ticket funnel architecture.</p>
+                    <a href="' . esc_url($url) . '" class="btn" style="width: 100%; padding: 0.8rem; font-size: 0.75rem;">Download</a>
+                </article>
+                <article class="card">
+                    <div style="background: var(--primary-color); padding: 20px; border-radius: 2px; margin-bottom: 20px; text-align: center; color: var(--accent-color); font-weight: 900;">.DOC</div>
+                    <h3>C-Suite Scripts</h3>
+                    <p style="font-size: 0.85rem;">Buy-in scripts for institutional pivots.</p>
+                    <a href="' . esc_url($url) . '" class="btn" style="width: 100%; padding: 0.8rem; font-size: 0.75rem;">Download</a>
+                </article>
+            </div>';
+    return $output;
+}
+add_shortcode( 'resource_grid', 'ea_resource_grid_shortcode' );

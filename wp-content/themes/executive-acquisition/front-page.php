@@ -160,6 +160,20 @@ if ( $testimonials ) : ?>
     </div>
 </section>
 
+<!-- Newsletter Section -->
+<section class="newsletter-front" style="padding: 100px 0; background: var(--white); border-top: 1px solid rgba(0,0,0,0.05);">
+    <div class="container" style="max-width: 800px; text-align: center;">
+        <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 20px;">The Institutional Brief</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;"><?php echo esc_html( get_theme_mod('ea_newsletter_title', 'Join 2,400+ C-Suite Leaders') ); ?></h2>
+        <p style="font-size: 1.1rem; color: #4A5568; margin-bottom: 40px;"><?php echo esc_html( get_theme_mod('ea_newsletter_desc', 'Get bi-weekly leadership architecture and acquisition strategies delivered directly to your inbox.') ); ?></p>
+
+        <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" style="display: flex; gap: 15px; max-width: 600px; margin: 0 auto;">
+            <input type="email" name="EMAIL" placeholder="Work Email Address" style="flex: 2;" required>
+            <button type="submit" class="btn" style="flex: 1; padding: 1.25rem;">Join Briefing →</button>
+        </form>
+    </div>
+</section>
+
 <!-- CTA / Form Section -->
 <section id="cta" style="background-color: var(--primary-color); color: var(--white); padding: 120px 0;">
     <div class="container" style="max-width: 700px; text-align: center;">

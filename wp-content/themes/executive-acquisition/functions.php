@@ -148,7 +148,37 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_contact_office', array( 'default' => 'Executive Suite 500, Financial District', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_contact_office', array( 'label' => __( 'Office Location', 'executive-acquisition' ), 'section' => 'ea_contact_section', 'type' => 'text' ) );
 
-    // 5. Founder/Coach Profile
+    // 5. Executive Social Identity
+    $wp_customize->add_section( 'ea_social_section', array(
+        'title'    => __( 'Executive Social Identity', 'executive-acquisition' ),
+        'priority' => 25.7,
+    ) );
+
+    $wp_customize->add_setting( 'ea_linkedin_url', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_linkedin_url', array( 'label' => __( 'LinkedIn Profile URL', 'executive-acquisition' ), 'section' => 'ea_social_section', 'type' => 'url' ) );
+
+    $wp_customize->add_setting( 'ea_twitter_url', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_twitter_url', array( 'label' => __( 'X (Twitter) URL', 'executive-acquisition' ), 'section' => 'ea_social_section', 'type' => 'url' ) );
+
+    // 6. Sidebar & Newsletter Settings
+    $wp_customize->add_section( 'ea_sidebar_section', array(
+        'title'    => __( 'Sidebar & Newsletter', 'executive-acquisition' ),
+        'priority' => 25.8,
+    ) );
+
+    $wp_customize->add_setting( 'ea_sidebar_cta_title', array( 'default' => 'Predict Your Pipeline', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_sidebar_cta_title', array( 'label' => __( 'Sidebar CTA Title', 'executive-acquisition' ), 'section' => 'ea_sidebar_section' ) );
+
+    $wp_customize->add_setting( 'ea_sidebar_cta_desc', array( 'default' => 'Access the 12-minute briefing on the Institutional Intent Method™.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_sidebar_cta_desc', array( 'label' => __( 'Sidebar CTA Description', 'executive-acquisition' ), 'section' => 'ea_sidebar_section', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'ea_newsletter_title', array( 'default' => 'The Institutional Brief', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_newsletter_title', array( 'label' => __( 'Newsletter Section Title', 'executive-acquisition' ), 'section' => 'ea_sidebar_section' ) );
+
+    $wp_customize->add_setting( 'ea_newsletter_desc', array( 'default' => 'Bi-weekly strategic insights for mid-market Founders navigating institutional scale.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_newsletter_desc', array( 'label' => __( 'Newsletter Description', 'executive-acquisition' ), 'section' => 'ea_sidebar_section', 'type' => 'textarea' ) );
+
+    // 7. Founder/Coach Profile
     $wp_customize->add_section( 'ea_profile_section', array(
         'title'    => __( 'Founder/Coach Profile', 'executive-acquisition' ),
         'priority' => 26,

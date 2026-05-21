@@ -5,12 +5,22 @@
         <?php get_search_form(); ?>
     </div>
 
-    <!-- CTA Widget -->
-    <div class="widget-box" style="margin-bottom: 50px; padding: 40px; background: var(--primary-color); border-radius: 4px; color: #fff; text-align: center;">
+    <!-- Dynamic CTA Widget -->
+    <div class="widget-box" style="margin-bottom: 50px; padding: 40px; background: var(--primary-color); border-radius: var(--border-radius); color: #fff; text-align: center;">
         <span style="color: var(--accent-color); font-weight: 700; letter-spacing: 1px; font-size: 0.75rem; text-transform: uppercase;">Next Step</span>
-        <h3 style="color: #fff; font-size: 1.3rem; margin: 15px 0;">Predict Your Pipeline</h3>
-        <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 25px;">Access the 12-minute briefing on the Institutional Intent Method™.</p>
+        <h3 style="color: #fff; font-size: 1.3rem; margin: 15px 0;"><?php echo esc_html( get_theme_mod('ea_sidebar_cta_title', 'Predict Your Pipeline') ); ?></h3>
+        <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 25px;"><?php echo esc_html( get_theme_mod('ea_sidebar_cta_desc', 'Access the 12-minute briefing on the Institutional Intent Method™.') ); ?></p>
         <a href="<?php echo home_url('/#cta'); ?>" class="btn" style="padding: 0.8rem 1.5rem; font-size: 0.75rem; width: 100%;">View Briefing</a>
+    </div>
+
+    <!-- Newsletter Widget -->
+    <div class="widget-box" style="margin-bottom: 50px; padding: 30px; border: 1px solid #eee; border-radius: var(--border-radius);">
+        <h3 style="font-size: 1.1rem; margin-bottom: 15px;"><?php echo esc_html( get_theme_mod('ea_newsletter_title', 'The Institutional Brief') ); ?></h3>
+        <p style="font-size: 0.85rem; color: #4A5568; margin-bottom: 20px;"><?php echo esc_html( get_theme_mod('ea_newsletter_desc', 'Bi-weekly strategic insights.') ); ?></p>
+        <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST">
+            <input type="email" name="EMAIL" placeholder="Work Email" style="padding: 10px; font-size: 0.85rem; margin-bottom: 10px;" required>
+            <button type="submit" class="btn" style="width: 100%; padding: 0.8rem; font-size: 0.8rem;">Join Briefing →</button>
+        </form>
     </div>
 
     <!-- Categories Widget -->
