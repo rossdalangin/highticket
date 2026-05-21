@@ -1324,18 +1324,30 @@ body:not(.executive-night-mode) .logo-grid div {
     }
 
     .mobile-nav-header {
-        flex-direction: column;
-        margin-bottom: var(--space-xl);
-        padding-bottom: var(--space-md);
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        display: flex !important;
+        flex-direction: column !important;
+        margin-bottom: var(--space-xl) !important;
+        padding-bottom: var(--space-md) !important;
+        border-bottom: 1px solid rgba(0,0,0,0.05) !important;
     }
 
     .mobile-logo img { max-height: 35px; width: auto; }
 
+    .close-nav-text {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent-color);
+        display: block;
+    }
+
     .nav-list {
-        flex-direction: column;
-        gap: var(--space-md);
-        margin-bottom: var(--space-xl);
+        display: flex !important;
+        flex-direction: column !important;
+        gap: var(--space-md) !important;
+        margin-bottom: var(--space-xl) !important;
+        padding: 0 !important;
     }
 
     .nav-list li {
@@ -1343,6 +1355,7 @@ body:not(.executive-night-mode) .logo-grid div {
         transform: translateX(30px) !important;
         transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
         display: block !important;
+        width: 100% !important;
     }
 
     .main-nav.is-active .nav-list li {
@@ -1376,10 +1389,11 @@ body:not(.executive-night-mode) .logo-grid div {
     }
 
     .mobile-nav-footer {
-        flex-direction: column;
-        margin-top: auto;
-        padding-top: var(--space-xl);
-        border-top: 1px solid rgba(0,0,0,0.05);
+        display: flex !important;
+        flex-direction: column !important;
+        margin-top: auto !important;
+        padding-top: var(--space-xl) !important;
+        border-top: 1px solid rgba(0,0,0,0.05) !important;
     }
 
     .mode-toggle {
@@ -1480,8 +1494,8 @@ body:not(.executive-night-mode) .logo-grid div {
         justify-content: center;
     }
 
-    header .btn-small {
-        display: none;
+    header .btn-small, .header-cta {
+        display: none !important;
     }
 }
 
