@@ -445,20 +445,32 @@ body:not(.executive-night-mode) .logo-grid div {
 }
 
 /* Search Form */
+.search-form {
+    width: 100%;
+}
+
 .search-form-inner {
     display: flex;
     position: relative;
+    width: 100%;
+}
+
+.search-form-inner label {
+    flex-grow: 1;
+    margin-bottom: 0;
 }
 
 .search-field {
-    padding-right: 60px !important;
+    padding-right: 70px !important;
+    height: 55px;
+    font-size: 0.95rem;
 }
 
 .search-submit {
     position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
+    right: 5px;
+    top: 5px;
+    height: 45px;
     width: 55px;
     background: var(--accent-color);
     border: none;
@@ -467,12 +479,128 @@ body:not(.executive-night-mode) .logo-grid div {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    transition: background 0.3s ease;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    z-index: 2;
 }
 
 .search-submit:hover {
-    background: #b08e4a;
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.search-submit svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: left;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 80px;
+    padding: 100px 0;
+}
+
+.footer-logo {
+    margin-bottom: 30px;
+}
+
+.footer-logo img {
+    max-height: 45px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.footer-mission {
+    font-size: 1rem;
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    color: var(--white);
+}
+
+.footer-social {
+    display: flex;
+    gap: 25px;
+}
+
+.social-link {
+    color: var(--accent-color);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover {
+    opacity: 0.7;
+}
+
+.footer-heading {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+.contact-info {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+.contact-info strong {
+    color: var(--accent-color);
+}
+
+.footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav-list li {
+    margin-bottom: 15px;
+}
+
+.footer-nav-list a {
+    text-decoration: none;
+    color: var(--white);
+    opacity: 0.7;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.footer-nav-list a:hover {
+    opacity: 1;
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    margin-bottom: 0;
+    color: var(--white);
 }
 
 /* Funnel Specifics */
@@ -537,13 +665,6 @@ body:not(.executive-night-mode) .logo-grid div {
     box-shadow: 0 20px 40px -15px rgba(0,0,0,0.12);
 }
 
-/* Footer */
-footer {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 60px 0;
-    text-align: center;
-}
 
 /* Responsive */
 @media (max-width: 992px) {
@@ -603,6 +724,25 @@ footer {
         border-left: none;
         border-top: 1px solid rgba(0,0,0,0.05);
         padding-top: 60px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+        padding: 60px 0;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-nav-list a:hover {
+        padding-left: 0;
+    }
+
+    .search-field {
+        font-size: 16px; /* Prevent iOS zoom */
     }
 
     .grid-3, .grid-2 {
