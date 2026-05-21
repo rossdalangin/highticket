@@ -1,0 +1,29 @@
+# EXECUTIVE ACQUISITION: MENU ARCHITECTURE RECOMMENDATIONS
+
+For a high-ticket coaching practice, your menu should minimize friction and anchor institutional trust.
+
+## 1. PRIMARY NAVIGATION (Header)
+The goal is to provide proof and insights without distracting from the main funnel.
+
+- **HOME:** The core high-conversion landing page.
+- **ROI CASE STUDY:** A deep dive into institutional results (use the ROI Case Study template).
+- **ASSET LIBRARY:** High-value whitepapers and frameworks (use the Asset Library template).
+- **BLOG / INSIGHTS:** Strategy pieces that build authority.
+- **[CTA BUTTON]:** "GET STARTED" or "BOOK DIAGNOSTIC" - Link directly to the #cta anchor on the home page.
+
+## 2. COMPLIANCE & RECOVERY (Footer)
+The footer is where you handle administration and secondary recovery.
+
+- **PRIVACY POLICY:** Essential for institutional trust and compliance (GDPR/CCPA).
+- **TERMS OF SERVICE:** Outlines the diagnostic session expectations.
+- **ROI DIAGNOSTIC:** Link to the booking page/anchor.
+- **SUPPORT / CONTACT:** Provide an executive-level contact email.
+
+## 3. HIDDEN FUNNEL PAGES (Not in Menus)
+These pages should NOT be in your main navigation as they require previous context:
+
+- **THANK YOU / AUTHORITY BRIDGE:** The page shown immediately after form submission.
+- **EXECUTIVE BRIEFING:** The VSL page containing the 12-minute ROI briefing.
+
+---
+Built by Jules (Elite CRO Architect)

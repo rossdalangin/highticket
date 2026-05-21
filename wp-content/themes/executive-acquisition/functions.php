@@ -9,6 +9,7 @@ if ( ! function_exists( 'executive_acquisition_setup' ) ) :
         add_theme_support( 'post-thumbnails' );
         register_nav_menus( array(
             'primary' => __( 'Primary Menu', 'executive-acquisition' ),
+            'footer'  => __( 'Footer Menu', 'executive-acquisition' ),
         ) );
     }
 endif;
@@ -94,7 +95,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 24,
     ) );
 
-    $wp_customize->add_setting( 'ea_lead_magnet_title', array( 'default' => '', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_lead_magnet_title', array( 'default' => 'The Institutional Intent Roadmap', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_lead_magnet_title', array( 'label' => __( 'Asset Title', 'executive-acquisition' ), 'section' => 'ea_assets_section' ) );
 
     $wp_customize->add_setting( 'ea_lead_magnet_url', array( 'default' => '', 'transport' => 'refresh' ) );
@@ -114,10 +115,13 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 26,
     ) );
 
-    $wp_customize->add_setting( 'ea_founder_name', array( 'default' => '', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_founder_name', array( 'default' => 'Executive Strategist', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_founder_name', array( 'label' => __( 'Founder Name', 'executive-acquisition' ), 'section' => 'ea_profile_section' ) );
 
-    $wp_customize->add_setting( 'ea_founder_bio', array( 'default' => '', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_founder_bio', array(
+        'default' => 'Specializing in leadership architecture for $5M+ scaling organizations. We bridge the gap between founder vision and institutional execution.',
+        'transport' => 'postMessage'
+    ) );
     $wp_customize->add_control( 'ea_founder_bio', array( 'label' => __( 'Brief Bio (Authority focus)', 'executive-acquisition' ), 'section' => 'ea_profile_section', 'type' => 'textarea' ) );
 
     $wp_customize->add_setting( 'ea_founder_image', array( 'default' => '', 'transport' => 'refresh' ) );
@@ -189,7 +193,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'ea_testimonial_quote', array(
-        'default'   => '',
+        'default'   => 'This system eliminated our lead quality bottleneck within 90 days. We now command the authority we deserve in the mid-market segment.',
         'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_testimonial_quote', array(
@@ -199,7 +203,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'ea_testimonial_author', array(
-        'default'   => '',
+        'default'   => 'VP OPERATIONS, FORTUNE 500 COMPANY',
         'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_testimonial_author', array(
@@ -353,9 +357,15 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
+    $agitation_defaults = array(
+        1 => array('t' => 'The "Content Hamster Wheel" Burnout', 'd' => 'You’re spending hours crafting "thought leadership" that gets likes from peers but is ignored by the VPs and Founders who actually have the budget to hire you.'),
+        2 => array('t' => 'The "Cold Outreach" Reputation Tax', 'd' => 'Using automated LinkedIn bots or generic email blasts doesn’t just fail; it actively burns your brand with the C-Suite. High-level leaders value discretion.'),
+        3 => array('t' => 'The "Discovery Call" Trap', 'd' => 'Your calendar is filled with "free consults" that lead to "let me think about it." You’re wasting executive time on prospects who can’t afford your $10k+ engagements.')
+    );
+
     for ($i = 1; $i <= 3; $i++) {
         $wp_customize->add_setting( "ea_agitation_bullet_{$i}_title", array(
-            'default'   => '',
+            'default'   => $agitation_defaults[$i]['t'],
             'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_agitation_bullet_{$i}_title", array(
@@ -364,7 +374,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
             'type'     => 'text',
         ) );
         $wp_customize->add_setting( "ea_agitation_bullet_{$i}_text", array(
-            'default'   => '',
+            'default'   => $agitation_defaults[$i]['d'],
             'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_agitation_bullet_{$i}_text", array(
@@ -390,9 +400,15 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'type'     => 'text',
     ) );
 
+    $mechanism_defaults = array(
+        1 => array('t' => 'The Decision-Maker Beacon', 'd' => 'We identify the exact VPs and Founders who are currently searching for leadership solutions using intent-based data.'),
+        2 => array('t' => 'The Authority Infrastructure', 'd' => 'We replace your "sales funnel" with an Institutional Asset—a high-level briefing that builds 6 months of trust in 12 minutes.'),
+        3 => array('t' => 'The Frictionless Conversion Gate', 'd' => 'We implement a qualification protocol that filters out everyone except those ready to engage at your $5k–$25k price point.')
+    );
+
     for ($i = 1; $i <= 3; $i++) {
         $wp_customize->add_setting( "ea_mechanism_step_{$i}_title", array(
-            'default'   => '',
+            'default'   => $mechanism_defaults[$i]['t'],
             'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_mechanism_step_{$i}_title", array(
@@ -401,7 +417,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
             'type'     => 'text',
         ) );
         $wp_customize->add_setting( "ea_mechanism_step_{$i}_text", array(
-            'default'   => '',
+            'default'   => $mechanism_defaults[$i]['d'],
             'transport' => 'postMessage',
         ) );
         $wp_customize->add_control( "ea_mechanism_step_{$i}_text", array(
@@ -417,10 +433,17 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 60,
     ) );
 
+    $faq_defaults = array(
+        1 => array('q' => 'How much time is required to manage this system?', 'a' => 'The system is designed for high-leverage. After the initial 14-day setup, your only responsibility is showing up for pre-qualified diagnostic sessions.'),
+        2 => array('q' => 'Does this work for specialized coaching niches?', 'a' => 'Yes. The Institutional Intent Method™ is niche-agnostic; it identifies intent based on specific problem searches, not general industry terms.'),
+        3 => array('q' => 'How does this compare to LinkedIn automation?', 'a' => 'Automation burns brand equity. Our method uses "Inbound Institutional Assets" that make prospects ask to speak with you, rather than you chasing them.'),
+        4 => array('q' => 'What is the typical ROI on these engagements?', 'a' => 'Our clients typically book 3-5 corporate engagements monthly, with average contract values ranging from $10k to $25k.')
+    );
+
     for ($i = 1; $i <= 4; $i++) {
-        $wp_customize->add_setting( "ea_faq_q_{$i}", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_setting( "ea_faq_q_{$i}", array( 'default' => $faq_defaults[$i]['q'], 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_faq_q_{$i}", array( 'label' => __( "Question {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'text' ) );
-        $wp_customize->add_setting( "ea_faq_a_{$i}", array( 'default' => '', 'transport' => 'postMessage' ) );
+        $wp_customize->add_setting( "ea_faq_a_{$i}", array( 'default' => $faq_defaults[$i]['a'], 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "Answer {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
     }
 

@@ -43,7 +43,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                 </button>
                 <span class="spinner" style="float:none; vertical-align: middle;"></span>
                 <p class="description" style="margin-top: 10px;">
-                    <?php _e( 'This will create: Home, Thank You, Briefing, Blog, ROI Proof, and a Primary Menu.', 'executive-acquisition' ); ?>
+                    <?php _e( 'This will create: Home, Thank You, Briefing, Blog, ROI Proof, and Navigation Menus.', 'executive-acquisition' ); ?>
                 </p>
             </label>
             <script type="text/javascript">
@@ -99,9 +99,12 @@ function ea_ajax_generate_pages() {
     }
 
     // 2. Delete old menus
-    $old_menu = wp_get_nav_menu_object( 'Executive Primary Menu' );
-    if ( $old_menu ) {
-        wp_delete_nav_menu( $old_menu->term_id );
+    $menus_to_delete = array('Executive Primary Menu', 'Executive Footer Menu');
+    foreach($menus_to_delete as $m_name) {
+        $old_menu = wp_get_nav_menu_object( $m_name );
+        if ( $old_menu ) {
+            wp_delete_nav_menu( $old_menu->term_id );
+        }
     }
 
     // 3. Generate new pages
@@ -131,12 +134,27 @@ function ea_ajax_generate_pages() {
                             <h3>The Engineered Solution</h3>
                             <p>By deploying the Authority Infrastructure, we replaced manual outreach with a surgical intent-based beacon.</p>',
         ),
+        'Asset Library' => array(
+            'template' => 'template-resources.php',
+            'content'  => '<!-- Static Grid Handled via template-resources.php -->',
+        ),
+        'Privacy Policy' => array(
+            'template' => 'page.php',
+            'content'  => '<p>We respect executive privacy. All data collected via this infrastructure is strictly confidential.</p>',
+        ),
+        'Terms of Service' => array(
+            'template' => 'page.php',
+            'content'  => '<p>Standard institutional terms of service for engagement diagnostic sessions.</p>',
+        ),
     );
 
-    // Create Menu
-    $menu_id = wp_create_nav_menu( 'Executive Primary Menu' );
+    // Create Menus
+    $primary_menu_id = wp_create_nav_menu( 'Executive Primary Menu' );
+    $footer_menu_id = wp_create_nav_menu( 'Executive Footer Menu' );
+
     $locations = get_theme_mod( 'nav_menu_locations' );
-    $locations['primary'] = $menu_id;
+    $locations['primary'] = $primary_menu_id;
+    $locations['footer'] = $footer_menu_id;
     set_theme_mod( 'nav_menu_locations', $locations );
 
     // 4. Generate Sample Blog Post
@@ -163,9 +181,22 @@ function ea_ajax_generate_pages() {
             update_post_meta( $page_id, '_wp_page_template', $data['template'] );
             update_post_meta( $page_id, '_ea_generated_page', '1' );
 
-            // Add to Menu
-            if ( $title !== 'Thank You' && $title !== 'Executive Briefing' ) {
-                wp_update_nav_menu_item( $menu_id, 0, array(
+            // Add to Primary Menu
+            $primary_titles = array('Home', 'ROI Case Study', 'Asset Library', 'Blog');
+            if ( in_array($title, $primary_titles) ) {
+                wp_update_nav_menu_item( $primary_menu_id, 0, array(
+                    'menu-item-title'     => $title,
+                    'menu-item-object'    => 'page',
+                    'menu-item-object-id' => $page_id,
+                    'menu-item-type'      => 'post_type',
+                    'menu-item-status'    => 'publish',
+                ) );
+            }
+
+            // Add to Footer Menu
+            $footer_titles = array('Privacy Policy', 'Terms of Service');
+            if ( in_array($title, $footer_titles) ) {
+                wp_update_nav_menu_item( $footer_menu_id, 0, array(
                     'menu-item-title'     => $title,
                     'menu-item-object'    => 'page',
                     'menu-item-object-id' => $page_id,
@@ -186,6 +217,6 @@ function ea_ajax_generate_pages() {
         }
     }
 
-    wp_send_json_success( array( 'message' => sprintf( __( 'Success! %d funnel pages and Primary Menu generated with sample authority content.', 'executive-acquisition' ), $created_count ) ) );
+    wp_send_json_success( array( 'message' => sprintf( __( 'Success! %d pages and 2 specialized menus generated.', 'executive-acquisition' ), $created_count ) ) );
 }
 add_action( 'wp_ajax_ea_generate_pages', 'ea_ajax_generate_pages' );
