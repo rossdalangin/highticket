@@ -389,6 +389,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+    header {
+        position: relative !important; /* Disable sticky on mobile */
+        top: auto !important;
+    }
+
     .grid-3, .grid-2 {
         grid-template-columns: 1fr !important;
     }
