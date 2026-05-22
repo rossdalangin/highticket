@@ -1,99 +1,42 @@
 (function($) {
+    'use strict';
+
     /**
-     * Executive Acquisition: Funnel Logic, Aesthetics & Security
+     * Executive Acquisition: Navigation & Funnel Interactions
      */
 
-    // 1. GTM DataLayer Tracking
-    window.dataLayer = window.dataLayer || [];
+    // Mobile Menu Toggle
+    $('.menu-toggle').on('click', function(e) {
+        e.preventDefault();
+        var $nav = $('.main-navigation');
+        var isExpanded = $(this).attr('aria-expanded') === 'true';
 
-    $(document).on('submit', 'form', function() {
-        const email = $(this).find('input[type="email"]').val();
-        if (email) {
-            window.dataLayer.push({
-                'event': 'Lead_Step1',
-                'lead_source': 'Landing_Page_Funnel'
-            });
-        }
+        $nav.toggleClass('toggled');
+        $('body').toggleClass('menu-open');
+        $(this).attr('aria-expanded', !isExpanded);
 
-        const fee = $(this).find('select[name*="fee"]').val();
-        if (fee && fee !== '<$2,500') {
-            window.dataLayer.push({
-                'event': 'Lead_Qualified',
-                'lead_value': fee
-            });
+        if (!isExpanded) {
+            $('body').css('overflow', 'hidden');
+        } else {
+            $('body').css('overflow', '');
         }
     });
 
-    $('#delayed-cta a').on('click', function() {
-        window.dataLayer.push({
-            'event': 'CTA_Click_Booking',
-            'intent': 'Diagnostic_Session'
-        });
+    // Close menu when clicking the overlay
+    $('.mobile-overlay').on('click', function() {
+        $('.main-navigation').removeClass('toggled');
+        $('body').removeClass('menu-open').css('overflow', '');
+        $('.menu-toggle').attr('aria-expanded', 'false');
     });
 
-    // 2. Secure Dynamic Text Replacement (DTR)
-    // Sanitizes input to prevent DOM-based XSS
-    function sanitize(str) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const replacements = {
-        'company': sanitize(urlParams.get('company') || 'your organization'),
-        'name': sanitize(urlParams.get('name') || 'Executive')
-    };
-
-    // Performance & Security Fix:
-    // Only search within headlines, paragraphs and spans that likely contain placeholders
-    $('h1, h2, h3, p, span, .btn').each(function() {
-        let el = $(this);
-        // We use text replacement logic to avoid breaking existing HTML structure
-        let content = el.html();
-        if (content && content.includes('{')) {
-            let hasReplaced = false;
-            for (const [key, value] of Object.entries(replacements)) {
-                const regex = new RegExp(`{${key}}`, 'g');
-                if (regex.test(content)) {
-                    content = content.replace(regex, value);
-                    hasReplaced = true;
-                }
-            }
-            if (hasReplaced) {
-                el.html(content);
-            }
-        }
+    // Close menu on link click
+    $('.nav-menu a').on('click', function() {
+        $('.main-navigation').removeClass('toggled');
+        $('body').removeClass('menu-open').css('overflow', '');
+        $('.menu-toggle').attr('aria-expanded', 'false');
     });
 
-    // 3. Animate In (Intersection Observer)
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                $(entry.target).addClass('animate-in');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    $('.card, .step-card, .section-title, .hero-content, .founder-section').each(function() {
-        observer.observe(this);
-    });
-
-    // 4. Exit-Intent Logic
-    let exitIntentShown = false;
-    $(document).on('mouseleave', function(e) {
-        if (e.clientY < 0 && !exitIntentShown) {
-            $('#ea-exit-intent').css('display', 'flex');
-            exitIntentShown = true;
-            window.dataLayer.push({'event': 'Exit_Intent_Triggered'});
-        }
-    });
-
-    $('#close-exit').on('click', function() {
-        $('#ea-exit-intent').fadeOut();
-    });
-
-    // 5. Header Scroll Class
+    // Sticky Header Scroll
     $(window).on('scroll', function() {
         if ($(window).scrollTop() > 50) {
             $('.site-header').addClass('scrolled');
@@ -102,45 +45,25 @@
         }
     });
 
-    // 6. Mobile Menu Toggle
-    $('.menu-toggle').on('click', function() {
-        const expanded = $(this).attr('aria-expanded') === 'true' || false;
-        $(this).attr('aria-expanded', !expanded);
-        $('.main-nav').toggleClass('is-active');
-
-        // Lock body scroll
-        if (!expanded) {
-            $('body').css('overflow', 'hidden');
-        } else {
-            $('body').css('overflow', '');
-        }
+    // GTM DataLayer for Forms
+    $(document).on('submit', 'form', function() {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'form_submission',
+            'form_id': $(this).attr('id') || 'unspecified'
+        });
     });
 
-    // Close menu on link click (unless it has children)
-    $('.main-nav .nav-list a').on('click', function(e) {
-        if ($(this).parent().hasClass('menu-item-has-children')) {
-            e.preventDefault();
-            $(this).parent().toggleClass('is-open');
-            $(this).next('.sub-menu').slideToggle(300);
-            return;
-        }
-        $('.menu-toggle').attr('aria-expanded', 'false');
-        $('.main-nav').removeClass('is-active');
-        $('body').css('overflow', '');
-    });
-
-    // 7. Executive Night Mode Toggle (Client-side)
-    const nightModeToggle = $('#ea-night-mode-toggle');
-    if (localStorage.getItem('ea_night_mode') === 'enabled') {
-        $('body').addClass('executive-night-mode');
-    }
-
-    nightModeToggle.on('click', function() {
-        $('body').toggleClass('executive-night-mode');
-        if ($('body').hasClass('executive-night-mode')) {
-            localStorage.setItem('ea_night_mode', 'enabled');
-        } else {
-            localStorage.setItem('ea_night_mode', 'disabled');
+    /**
+     * Dynamic Text Replacement (DTR)
+     * Replaces content of elements with class 'dtr' based on URL parameters.
+     * Example: ?name=John will replace <span class="dtr" data-dtr="name">Friend</span> with John.
+     */
+    const urlParams = new URLSearchParams(window.location.search);
+    $('.dtr').each(function() {
+        const key = $(this).data('dtr');
+        if (urlParams.has(key)) {
+            $(this).text(urlParams.get(key));
         }
     });
 
