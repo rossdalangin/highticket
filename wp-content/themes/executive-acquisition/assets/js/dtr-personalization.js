@@ -96,9 +96,9 @@
     // 5. Header Scroll Class
     $(window).on('scroll', function() {
         if ($(window).scrollTop() > 50) {
-            $('header').addClass('scrolled');
+            $('.site-header').addClass('scrolled');
         } else {
-            $('header').removeClass('scrolled');
+            $('.site-header').removeClass('scrolled');
         }
     });
 
