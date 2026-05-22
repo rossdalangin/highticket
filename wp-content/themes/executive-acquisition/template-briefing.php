@@ -21,34 +21,40 @@ get_header(); ?>
                         <iframe src="<?php echo esc_url( $vsl_url ); ?>" fetchpriority="high" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     <?php else : ?>
                         <div class="video-placeholder">
-                            <p>Strategic Briefing Video Placeholder (12 Minutes)</p>
+                            <p>Strategic Briefing: The Institutional Intent Method™</p>
+                            <span class="opacity-60">[Duration: 12 Minutes]</span>
                         </div>
                     <?php endif; ?>
                 </div>
 
-                <div class="briefing-content post-content">
+                <div class="briefing-content post-content card">
                     <?php the_content(); ?>
 
                     <div class="learning-points mt-lg">
-                        <h3 class="mb-md">Key Strategic Deliverables:</h3>
-                        <ul class="check-list">
-                            <li><span>✓</span> <span>The exact 3-step architecture for inbound institutional trust.</span></li>
-                            <li><span>✓</span> <span>How to identify "Searching" decision-makers before your competition.</span></li>
-                            <li><span>✓</span> <span>The 'Frictionless Gate' protocol for qualifying $25k engagements.</span></li>
-                        </ul>
+                        <h3 class="mb-md">Strategic Deliverables:</h3>
+                        <div class="grid-2">
+                            <div class="point-item">
+                                <strong class="text-accent d-block mb-xxs">01. Intent Architecture</strong>
+                                <p class="font-sm">Identifying VPs and Founders during their search cycle.</p>
+                            </div>
+                            <div class="point-item">
+                                <strong class="text-accent d-block mb-xxs">02. Authority Infrastructure</strong>
+                                <p class="font-sm">Building instant trust without manual outreach.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <aside class="briefing-sidebar">
-                <div id="delayed-cta" class="sidebar-booking-card card" style="display: none;">
-                    <h3 class="mb-sm">Ready to Engineer Your System?</h3>
-                    <p class="mb-md opacity-80">Book your 1:1 Institutional Diagnostic session to map your custom acquisition roadmap.</p>
-                    <a href="<?php echo esc_url( get_theme_mod( 'ea_booking_url', '#' ) ); ?>" class="btn w-100">Schedule Diagnostic →</a>
+                <div id="delayed-cta" class="sidebar-booking-card card border-accent-top" style="display: none;">
+                    <h3 class="mb-sm">Engineer Your Acquisition Pipeline</h3>
+                    <p class="mb-md opacity-80 font-sm">Schedule your 1:1 Institutional Diagnostic to map your custom roadmap.</p>
+                    <a href="<?php echo esc_url( get_theme_mod( 'ea_booking_url', '#' ) ); ?>" class="btn w-100 btn-small">Schedule Diagnostic →</a>
                 </div>
 
                 <div class="briefing-authority-box card mt-lg">
-                    <h4 class="mb-sm">Strategic Architect</h4>
+                    <h4 class="mb-sm">Strategic Lead</h4>
                     <div class="author-info">
                         <div class="author-avatar mb-sm">
                             <?php
@@ -57,7 +63,7 @@ get_header(); ?>
                             ?>
                         </div>
                         <p class="author-name mb-xs"><strong><?php echo esc_html(get_theme_mod('ea_founder_name')); ?></strong></p>
-                        <p class="author-bio-small"><?php echo esc_html(get_theme_mod('ea_founder_bio')); ?></p>
+                        <p class="author-bio-small font-sm"><?php echo esc_html(get_theme_mod('ea_founder_bio')); ?></p>
                     </div>
                 </div>
             </aside>
@@ -65,8 +71,16 @@ get_header(); ?>
     </div>
 </div>
 
+<style>
+    .briefing-video-wrapper { box-shadow: var(--shadow-bold); border: 1px solid var(--border-soft); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .border-accent-top { border-top: 5px solid var(--accent-color); }
+    .font-sm { font-size: 0.9rem; }
+    .d-block { display: block; }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+
 <script>
-    // Delayed CTA Logic
     (function() {
         const delay = <?php echo (int) get_theme_mod( 'ea_briefing_cta_delay', 480 ); ?> * 1000;
         setTimeout(function() {
@@ -74,6 +88,7 @@ get_header(); ?>
             if (cta) {
                 cta.style.display = 'block';
                 cta.classList.add('animate-in');
+                cta.classList.add('visible');
             }
         }, delay);
     })();
