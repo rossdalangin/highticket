@@ -72,6 +72,7 @@
 <section class="agitation-section bg-light">
     <div class="container">
         <div class="section-title mb-xl text-center">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod('ea_agitation_pre_headline', 'The Cost of Invisibility') ); ?></span>
             <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title', "The 'High-Ticket' Paradox: Why Your Expertise Isn't Converting" ) ); ?></h2>
             <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline', "The hidden costs of the content hamster wheel." ) ); ?></p>
         </div>
@@ -136,6 +137,7 @@ if ( $testimonials ) : ?>
 <section class="mechanism-section bg-white">
     <div class="container">
         <div class="section-title mb-xl text-center">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod('ea_mechanism_pre_headline', 'The Institutional Intent Engine™') ); ?></span>
             <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title', 'The Institutional Intent Engine' ) ); ?></h2>
             <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline', 'A predictable, intent-driven acquisition system.' ) ); ?></p>
         </div>
@@ -197,6 +199,56 @@ if ( $testimonials ) : ?>
                     </div>
                 <?php endif; endfor; ?>
             <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies Preview -->
+<?php
+$home_cases = get_posts( array('post_type' => 'case_study', 'posts_per_page' => 3) );
+if ( $home_cases ) : ?>
+<section class="home-case-studies bg-light">
+    <div class="container">
+        <div class="section-title mb-xl text-center">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod('ea_case_studies_tag', 'Proof of Impact') ); ?></span>
+            <h2><?php echo esc_html( get_theme_mod('ea_case_studies_title', 'Measurable Institutional ROI') ); ?></h2>
+        </div>
+        <div class="grid-3">
+            <?php foreach ( $home_cases as $hc ) : ?>
+                <div class="card case-card animate-in">
+                    <h3 class="mb-sm"><?php echo get_the_title($hc->ID); ?></h3>
+                    <p class="mb-lg opacity-80"><?php echo get_the_excerpt($hc->ID); ?></p>
+                    <a href="<?php echo get_permalink($hc->ID); ?>" class="text-accent font-bold">View ROI Analysis →</a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<!-- Authority Tiers / Engagement Logic -->
+<section class="engagement-tiers bg-white">
+    <div class="container">
+        <div class="section-title mb-xl text-center">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod('ea_tiers_tag', 'Strategic Engagement') ); ?></span>
+            <h2><?php echo esc_html( get_theme_mod('ea_tiers_title', 'Institutional Engagement Tiers') ); ?></h2>
+            <p class="subheadline"><?php echo esc_html( get_theme_mod('ea_tiers_subheadline', 'Quantifiable ROI for Every Stage of Organizational Growth.') ); ?></p>
+        </div>
+        <div class="grid-2">
+            <?php for ($i = 1; $i <= 2; $i++) :
+                $name = get_theme_mod( "ea_tier_{$i}_name", "Tier $i Name" );
+                $price = get_theme_mod( "ea_tier_{$i}_price", "$5,000" );
+                $desc = get_theme_mod( "ea_tier_{$i}_desc", "Tier $i description." );
+                ?>
+                <div class="card tier-card animate-in">
+                    <div class="tier-header mb-md">
+                        <h3 class="mb-xxs"><?php echo esc_html( $name ); ?></h3>
+                        <div class="tier-price text-accent"><?php echo esc_html( $price ); ?><span class="price-suffix">/ engagement</span></div>
+                    </div>
+                    <p class="mb-lg"><?php echo esc_html( $desc ); ?></p>
+                    <a href="#cta" class="btn btn-small w-100">Inquire for Availability →</a>
+                </div>
+            <?php endfor; ?>
         </div>
     </div>
 </section>

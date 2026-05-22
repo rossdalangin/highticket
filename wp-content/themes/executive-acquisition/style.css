@@ -45,6 +45,7 @@ Text Domain: executive-acquisition
     --border-radius: 2px;
     --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
     --shadow-bold: 0 20px 60px rgba(11, 29, 51, 0.1);
+    --border-accent-glow: 0 0 15px rgba(197, 160, 89, 0.15);
 }
 
 body.executive-night-mode {
@@ -118,6 +119,24 @@ p {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.tier-card {
+    border-top: 5px solid var(--accent-color);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.tier-price { font-size: 2.5rem; font-weight: 900; line-height: 1; }
+.price-suffix { font-size: 1rem; opacity: 0.5; font-weight: 400; margin-left: 10px; }
+
+@media (max-width: 768px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1100px) {
@@ -301,6 +320,24 @@ form button[type="submit"], .btn-submit {
 
 /* Sections */
 section { padding: var(--section-padding) 0; overflow: hidden; }
+
+.logo-marquee { overflow: hidden; white-space: nowrap; position: relative; width: 100%; }
+.logo-marquee-content {
+    display: inline-flex;
+    gap: 80px;
+    animation: marquee 30s linear infinite;
+    align-items: center;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.logo-item { max-height: 40px; width: auto; opacity: 0.5; filter: grayscale(1); transition: opacity 0.3s; }
+.logo-item:hover { opacity: 1; }
+
+.fallback-logo { font-weight: 900; font-size: 1.2rem; opacity: 0.2; letter-spacing: 2px; }
 .bg-light { background-color: var(--bg-light); color: var(--text-main); }
 .bg-dark { background-color: var(--primary-color); color: var(--white); }
 
@@ -400,8 +437,8 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-bold);
-    border-color: var(--border-accent);
+    box-shadow: var(--shadow-bold), var(--border-accent-glow);
+    border-color: var(--accent-color);
 }
 
 .testimonial-card {

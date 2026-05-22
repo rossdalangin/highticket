@@ -126,6 +126,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_resources_subheadline', array( 'default' => 'Complimentary resources for scaling Founders and C-Suite leaders navigating institutional complexity.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_resources_subheadline', array( 'label' => __( 'Library Subheadline', 'executive-acquisition' ), 'section' => 'ea_resources_section', 'type' => 'textarea' ) );
+    $wp_customize->add_setting( 'ea_form_action_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_form_action_url', array(
         'label' => __( 'ESP Form Action URL (e.g. Mailchimp/Klaviyo)', 'executive-acquisition' ),
         'section' => 'ea_assets_section',
@@ -257,7 +258,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'ea_hero_pre_headline', array( 'label' => __( 'Pre-Headline', 'executive-acquisition' ), 'section' => 'ea_hero_section' ) );
 
     $wp_customize->add_setting( 'ea_hero_headline', array(
-        'default'   => 'Book 3-5 High-Ticket Corporate Engagements Every Month Using an Institutional Intent Engine.',
+        'default'   => 'Book $25k+ Corporate Engagements Every Month Using Institutional Intent Mapping.',
         'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_hero_headline', array(
@@ -267,7 +268,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'ea_hero_subheadline', array(
-        'default'   => 'Identifies anonymous corporate decision-makers and builds instant institutional trust without the content hamster wheel.',
+        'default'   => 'Engineer predictable inbound acquisition that identifies anonymous C-Suite decision-makers and builds institutional trust entirely on autopilot.',
         'transport' => 'postMessage',
     ) );
     $wp_customize->add_control( 'ea_hero_subheadline', array(
@@ -340,6 +341,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_control( "ea_agitation_bullet_{$i}_text", array( 'label' => __( "Bullet {$i} Text", 'executive-acquisition' ), 'section' => 'ea_agitation_section', 'type' => 'textarea' ) );
     }
 
+$wp_customize->add_setting( 'ea_agitation_pre_headline', array( 'default' => 'The Cost of Invisibility', 'transport' => 'postMessage' ) );
+$wp_customize->add_control( 'ea_agitation_pre_headline', array( 'label' => __( 'Section Pre-headline', 'executive-acquisition' ), 'section' => 'ea_agitation_section' ) );
+
     $wp_customize->add_setting( 'ea_agitation_image', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_agitation_image', array(
         'label'    => __( 'Agitation Section Side Image', 'executive-acquisition' ),
@@ -352,6 +356,15 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 34,
     ) );
 
+    $wp_customize->add_setting( 'ea_tiers_tag', array( 'default' => 'Strategic Engagement', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_tiers_tag', array( 'label' => __( 'Section Tag', 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
+
+    $wp_customize->add_setting( 'ea_tiers_title', array( 'default' => 'Institutional Engagement Tiers', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_tiers_title', array( 'label' => __( 'Section Title', 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
+
+    $wp_customize->add_setting( 'ea_tiers_subheadline', array( 'default' => 'Quantifiable ROI for Every Stage of Organizational Growth.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_tiers_subheadline', array( 'label' => __( 'Section Subheadline', 'executive-acquisition' ), 'section' => 'ea_tiers_section', 'type' => 'textarea' ) );
+
     for ($i = 1; $i <= 2; $i++) {
         $wp_customize->add_setting( "ea_tier_{$i}_name", array( 'default' => "Tier {$i} Name", 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_tier_{$i}_name", array( 'label' => __( "Tier {$i} Name", 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
@@ -360,6 +373,18 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_setting( "ea_tier_{$i}_desc", array( 'default' => "Tier {$i} description.", 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_tier_{$i}_desc", array( 'label' => __( "Tier {$i} Description", 'executive-acquisition' ), 'section' => 'ea_tiers_section', 'type' => 'textarea' ) );
     }
+
+    // 10.1 Case Studies Section (Homepage)
+    $wp_customize->add_section( 'ea_case_studies_home_section', array(
+        'title'    => __( 'Homepage Case Studies', 'executive-acquisition' ),
+        'priority' => 34,
+    ) );
+
+    $wp_customize->add_setting( 'ea_case_studies_tag', array( 'default' => 'Proof of Impact', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_case_studies_tag', array( 'label' => __( 'Section Tag', 'executive-acquisition' ), 'section' => 'ea_case_studies_home_section' ) );
+
+    $wp_customize->add_setting( 'ea_case_studies_title', array( 'default' => 'Measurable Institutional ROI', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_case_studies_title', array( 'label' => __( 'Section Title', 'executive-acquisition' ), 'section' => 'ea_case_studies_home_section' ) );
 
     // 11. The Mechanism (3-Step System)
     $wp_customize->add_section( 'ea_mechanism_section', array(
@@ -379,6 +404,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_setting( "ea_mechanism_step_{$i}_text", array( 'default' => "Description for step {$i}.", 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_mechanism_step_{$i}_text", array( 'label' => __( "Step {$i} Text", 'executive-acquisition' ), 'section' => 'ea_mechanism_section', 'type' => 'textarea' ) );
     }
+
+$wp_customize->add_setting( 'ea_mechanism_pre_headline', array( 'default' => 'The Institutional Intent Engine™', 'transport' => 'postMessage' ) );
+$wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( 'Section Pre-headline', 'executive-acquisition' ), 'section' => 'ea_mechanism_section' ) );
 
     $wp_customize->add_setting( 'ea_mechanism_image', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_mechanism_image', array(

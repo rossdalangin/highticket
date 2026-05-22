@@ -31,5 +31,14 @@ function ea_register_cpts() {
         'menu_icon'   => 'dashicons-testimonial',
         'supports'    => array( 'title', 'editor', 'thumbnail' ),
     ));
+
+    // Resources
+    register_post_type( 'resource', array(
+        'labels'      => array( 'name' => 'Strategic Resources', 'singular_name' => 'Resource' ),
+        'public'      => true,
+        'has_archive' => false,
+        'menu_icon'   => 'dashicons-media-document',
+        'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+    ));
 }
 add_action( 'init', 'ea_register_cpts' );
