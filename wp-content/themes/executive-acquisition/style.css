@@ -300,7 +300,7 @@ form button[type="submit"], .btn-submit {
 .nav-menu a:hover::after { width: 100%; }
 
 /* Sections */
-section { padding: var(--section-padding) 0; }
+section { padding: var(--section-padding) 0; overflow: hidden; }
 .bg-light { background-color: var(--bg-light); color: var(--text-main); }
 .bg-dark { background-color: var(--primary-color); color: var(--white); }
 
@@ -355,8 +355,8 @@ section { padding: var(--section-padding) 0; }
 
 .side-image-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 100px;
     align-items: center;
 }
 

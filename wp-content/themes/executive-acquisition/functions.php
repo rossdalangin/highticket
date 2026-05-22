@@ -103,6 +103,29 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_lead_magnet_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_lead_magnet_url', array( 'label' => __( 'Asset Download URL', 'executive-acquisition' ), 'section' => 'ea_assets_section', 'type' => 'url' ) );
+
+    $wp_customize->add_setting( 'ea_lm_headline', array( 'default' => 'Download the Executive Framework', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_lm_headline', array( 'label' => __( 'Lead Magnet Headline', 'executive-acquisition' ), 'section' => 'ea_assets_section' ) );
+
+    for ($i = 1; $i <= 3; $i++) {
+        $wp_customize->add_setting( "ea_lm_benefit_{$i}", array( 'default' => "Executive benefit {$i}.", 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_lm_benefit_{$i}", array( 'label' => __( "Benefit {$i}", 'executive-acquisition' ), 'section' => 'ea_assets_section' ) );
+    }
+
+    $wp_customize->add_setting( 'ea_lm_form_code', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_lm_form_code', array( 'label' => __( 'Lead Magnet Form Code (Shortcode/HTML)', 'executive-acquisition' ), 'section' => 'ea_assets_section', 'type' => 'textarea' ) );
+
+    // 2.1 Resources Library
+    $wp_customize->add_section( 'ea_resources_section', array(
+        'title'    => __( 'Resources Library', 'executive-acquisition' ),
+        'priority' => 27,
+    ) );
+
+    $wp_customize->add_setting( 'ea_resources_headline', array( 'default' => 'Institutional Whitepapers & Strategic Frameworks', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_resources_headline', array( 'label' => __( 'Library Headline', 'executive-acquisition' ), 'section' => 'ea_resources_section' ) );
+
+    $wp_customize->add_setting( 'ea_resources_subheadline', array( 'default' => 'Complimentary resources for scaling Founders and C-Suite leaders navigating institutional complexity.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_resources_subheadline', array( 'label' => __( 'Library Subheadline', 'executive-acquisition' ), 'section' => 'ea_resources_section', 'type' => 'textarea' ) );
     $wp_customize->add_control( 'ea_form_action_url', array(
         'label' => __( 'ESP Form Action URL (e.g. Mailchimp/Klaviyo)', 'executive-acquisition' ),
         'section' => 'ea_assets_section',

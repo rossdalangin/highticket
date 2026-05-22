@@ -78,27 +78,43 @@ function ea_ajax_generate_pages() {
             'template' => 'page.php',
             'content' => get_theme_mod('ea_gen_content_terms', '<p>By engaging with our briefing, you agree to absolute confidentiality.</p>')
         ),
+        'Lead Magnet' => array(
+            'template' => 'template-lead-magnet.php',
+            'content' => ''
+        ),
+        'Strategic Assets' => array(
+            'template' => 'template-resources.php',
+            'content' => ''
+        ),
     );
 
-    // Create/Get Menu
+    // 1. Header Menu
     $menu_name = 'Executive Primary Menu';
     $menu_exists = wp_get_nav_menu_object( $menu_name );
-    if ( ! $menu_exists ) {
-        $menu_id = wp_create_nav_menu( $menu_name );
-    } else {
+    if ( ! $menu_exists ) { $menu_id = wp_create_nav_menu( $menu_name ); }
+    else {
         $menu_id = $menu_exists->term_id;
-        // Clean existing menu items to avoid duplicates
         $menu_items = wp_get_nav_menu_items( $menu_id );
-        if ( $menu_items ) {
-            foreach ( $menu_items as $item ) {
-                wp_delete_post( $item->ID, true );
-            }
-        }
+        if ( $menu_items ) { foreach ( $menu_items as $item ) { wp_delete_post( $item->ID, true ); } }
     }
-
     if ( ! is_wp_error( $menu_id ) ) {
         $locations = get_theme_mod( 'nav_menu_locations' );
         $locations['primary'] = $menu_id;
+        set_theme_mod( 'nav_menu_locations', $locations );
+    }
+
+    // 2. Footer Menu
+    $footer_menu_name = 'Executive Footer Menu';
+    $footer_menu_exists = wp_get_nav_menu_object( $footer_menu_name );
+    if ( ! $footer_menu_exists ) { $footer_menu_id = wp_create_nav_menu( $footer_menu_name ); }
+    else {
+        $footer_menu_id = $footer_menu_exists->term_id;
+        $footer_menu_items = wp_get_nav_menu_items( $footer_menu_id );
+        if ( $footer_menu_items ) { foreach ( $footer_menu_items as $item ) { wp_delete_post( $item->ID, true ); } }
+    }
+    if ( ! is_wp_error( $footer_menu_id ) ) {
+        $locations = get_theme_mod( 'nav_menu_locations' );
+        $locations['footer'] = $footer_menu_id;
         set_theme_mod( 'nav_menu_locations', $locations );
     }
 
@@ -108,8 +124,31 @@ function ea_ajax_generate_pages() {
             update_post_meta( $pid, '_wp_page_template', $data['template'] );
             update_post_meta( $pid, '_ea_gen', '1' );
 
-            if ( ! is_wp_error( $menu_id ) ) {
+            // Strategic Menu Logic: Only high-leverage pages in Header
+            $header_pages = array(
+                'Home',
+                get_theme_mod('ea_gen_title_about', 'The Architecture of Authority'),
+                'Strategic Assets',
+                get_theme_mod('ea_gen_title_strategy', 'Private Strategy Session')
+            );
+
+            if ( ! is_wp_error( $menu_id ) && in_array($title, $header_pages) ) {
                 wp_update_nav_menu_item( $menu_id, 0, array(
+                    'menu-item-title'     => $title,
+                    'menu-item-object'    => 'page',
+                    'menu-item-object-id' => $pid,
+                    'menu-item-type'      => 'post_type',
+                    'menu-item-status'    => 'publish'
+                ) );
+            }
+
+            // Footer Menu Logic: Privacy, Terms, Legal
+            $footer_pages = array(
+                get_theme_mod('ea_gen_title_privacy', 'Privacy Policy'),
+                get_theme_mod('ea_gen_title_terms', 'Terms of Service')
+            );
+            if ( ! is_wp_error( $footer_menu_id ) && in_array($title, $footer_pages) ) {
+                wp_update_nav_menu_item( $footer_menu_id, 0, array(
                     'menu-item-title'     => $title,
                     'menu-item-object'    => 'page',
                     'menu-item-object-id' => $pid,

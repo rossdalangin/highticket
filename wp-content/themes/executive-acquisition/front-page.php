@@ -37,7 +37,7 @@
 
 <!-- Logo Bar Section -->
 <?php $is_marquee = get_theme_mod( 'ea_enable_marquee', false ); ?>
-<section class="logo-bar">
+<section class="logo-bar bg-white" style="border-bottom: 1px solid var(--border-soft); padding: 60px 0;">
     <div class="container text-center">
         <p class="logo-bar-label mb-md"><?php echo esc_html( get_theme_mod( 'ea_logo_bar_text', 'TRUSTED BY LEADERS AT:' ) ); ?></p>
 
@@ -202,7 +202,7 @@ if ( $testimonials ) : ?>
 </section>
 
 <!-- Newsletter Section -->
-<section class="newsletter-front">
+<section class="newsletter-front bg-light">
     <div class="container narrow-container text-center">
         <span class="section-tag mb-xs"><?php echo esc_html( get_theme_mod('ea_newsletter_tag', 'The Institutional Brief') ); ?></span>
         <h2 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_newsletter_title', 'Join 2,400+ C-Suite Leaders') ); ?></h2>

@@ -12,31 +12,40 @@ get_header(); ?>
                 <h2 class="text-white mt-sm"><?php the_title(); ?></h2>
             </div>
             <div class="asset-details">
-                <h3 class="mb-md">What's Inside:</h3>
+                <h3 class="mb-md"><?php esc_html_e("What's Inside:", 'executive-acquisition'); ?></h3>
                 <ul class="check-list">
-                    <li><span>✓</span> <span>Phase-by-phase ROI mapping framework.</span></li>
-                    <li><span>✓</span> <span>Internal C-Suite buy-in scripts.</span></li>
-                    <li><span>✓</span> <span>Benchmark data for mid-market leadership.</span></li>
+                    <?php for ($i = 1; $i <= 3; $i++) :
+                        $benefit = get_theme_mod("ea_lm_benefit_{$i}");
+                        if ($benefit) : ?>
+                            <li><span>✓</span> <span><?php echo esc_html($benefit); ?></span></li>
+                        <?php endif;
+                    endfor; ?>
                 </ul>
             </div>
         </div>
 
         <div class="capture-section">
             <div class="capture-form card">
-                <span class="section-tag mb-xs">Executive Access</span>
-                <h2 class="mb-lg">Download the Framework</h2>
+                <span class="section-tag mb-xs"><?php esc_html_e('Executive Access', 'executive-acquisition'); ?></span>
+                <h2 class="mb-lg"><?php echo esc_html( get_theme_mod('ea_lm_headline', 'Download the Executive Framework') ); ?></h2>
 
-                <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" class="vertical-form">
-                    <div class="form-group mb-sm">
-                        <input type="text" name="FNAME" placeholder="First Name" required>
-                    </div>
-                    <div class="form-group mb-lg">
-                        <input type="email" name="EMAIL" placeholder="Work Email Address" required>
-                    </div>
-                    <button type="submit" class="btn w-100">Instant Access →</button>
-                </form>
+                <?php
+                $lm_form = get_theme_mod('ea_lm_form_code');
+                if ( $lm_form ) :
+                    echo '<div class="lm-form-wrapper">' . do_shortcode($lm_form) . '</div>';
+                else : ?>
+                    <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" class="vertical-form">
+                        <div class="form-group mb-sm">
+                            <input type="text" name="FNAME" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_name', 'First Name') ); ?>" required>
+                        </div>
+                        <div class="form-group mb-lg">
+                            <input type="email" name="EMAIL" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_email', 'Work Email Address') ); ?>" required>
+                        </div>
+                        <button type="submit" class="btn w-100"><?php echo esc_html( get_theme_mod('ea_newsletter_btn', 'Instant Access →') ); ?></button>
+                    </form>
+                <?php endif; ?>
 
-                <p class="form-micro-copy mt-md text-center">✓ Secure & Confidential | ✓ No Spam</p>
+                <p class="form-micro-copy mt-md text-center"><?php echo esc_html( get_theme_mod('ea_cta_compliance', '✓ Secure & Confidential | ✓ No Spam') ); ?></p>
             </div>
         </div>
     </div>
