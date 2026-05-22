@@ -262,6 +262,19 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_hero_video_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_hero_video_url', array( 'label' => __( 'Hero Video URL (YouTube/Vimeo)', 'executive-acquisition' ), 'section' => 'ea_hero_section', 'type' => 'url' ) );
 
+    $wp_customize->add_setting( 'ea_hero_image', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_hero_image', array(
+        'label'    => __( 'Hero Alternative Image (If no video)', 'executive-acquisition' ),
+        'section'  => 'ea_hero_section',
+    ) ) );
+
+    $wp_customize->add_setting( 'ea_hero_form_code', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_hero_form_code', array(
+        'label'    => __( 'Hero Form Shortcode or HTML', 'executive-acquisition' ),
+        'section'  => 'ea_hero_section',
+        'type'     => 'textarea',
+    ) );
+
     // 8. Social Proof & Authority
     $wp_customize->add_section( 'ea_social_proof', array(
         'title'    => __( 'Social Proof & Authority', 'executive-acquisition' ),
@@ -304,6 +317,12 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_control( "ea_agitation_bullet_{$i}_text", array( 'label' => __( "Bullet {$i} Text", 'executive-acquisition' ), 'section' => 'ea_agitation_section', 'type' => 'textarea' ) );
     }
 
+    $wp_customize->add_setting( 'ea_agitation_image', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_agitation_image', array(
+        'label'    => __( 'Agitation Section Side Image', 'executive-acquisition' ),
+        'section'  => 'ea_agitation_section',
+    ) ) );
+
     // 10. Engagement Tiers
     $wp_customize->add_section( 'ea_tiers_section', array(
         'title'    => __( 'Engagement Tiers', 'executive-acquisition' ),
@@ -337,6 +356,12 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_setting( "ea_mechanism_step_{$i}_text", array( 'default' => "Description for step {$i}.", 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_mechanism_step_{$i}_text", array( 'label' => __( "Step {$i} Text", 'executive-acquisition' ), 'section' => 'ea_mechanism_section', 'type' => 'textarea' ) );
     }
+
+    $wp_customize->add_setting( 'ea_mechanism_image', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_mechanism_image', array(
+        'label'    => __( 'Mechanism Section Side Image', 'executive-acquisition' ),
+        'section'  => 'ea_mechanism_section',
+    ) ) );
 
     // 12. FAQ Section
     $wp_customize->add_section( 'ea_faq_section', array(
@@ -372,6 +397,13 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_cta_compliance', array( 'default' => '✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_cta_compliance', array( 'label' => __( 'CTA Compliance Text', 'executive-acquisition' ), 'section' => 'ea_final_cta_section' ) );
 
+    $wp_customize->add_setting( 'ea_cta_form_code', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_cta_form_code', array(
+        'label'    => __( 'Final CTA Form Shortcode or HTML', 'executive-acquisition' ),
+        'section'  => 'ea_final_cta_section',
+        'type'     => 'textarea',
+    ) );
+
     // 14. Newsletter Section
     $wp_customize->add_section( 'ea_newsletter_section', array(
         'title'    => __( 'Newsletter Section', 'executive-acquisition' ),
@@ -401,7 +433,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'about' => 'The Architecture of Authority',
         'contact' => 'Initiate Diagnostic',
         'briefing' => 'Institutional Briefing',
-        'case_study' => 'ROI & Impact Proof'
+        'case_study' => 'ROI & Impact Proof',
+        'privacy' => 'Privacy Policy',
+        'terms' => 'Terms of Service'
     );
 
     foreach ($blueprint_pages as $slug => $label) {
@@ -411,6 +445,18 @@ function executive_acquisition_customize_register( $wp_customize ) {
         $wp_customize->add_setting( "ea_gen_content_{$slug}", array( 'default' => '', 'transport' => 'refresh' ) );
         $wp_customize->add_control( "ea_gen_content_{$slug}", array( 'label' => __( "{$label} Initial Content", 'executive-acquisition' ), 'section' => 'ea_blueprint_section', 'type' => 'textarea' ) );
     }
+
+    // 15.1 Strategy Session Page
+    $wp_customize->add_section( 'ea_strategy_session_section', array(
+        'title'    => __( 'Strategy Session Page', 'executive-acquisition' ),
+        'priority' => 11,
+    ) );
+
+    $wp_customize->add_setting( 'ea_gen_title_strategy', array( 'default' => 'Private Strategy Session', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_gen_title_strategy', array( 'label' => __( 'Strategy Session Title', 'executive-acquisition' ), 'section' => 'ea_strategy_session_section' ) );
+
+    $wp_customize->add_setting( 'ea_gen_content_strategy', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_gen_content_strategy', array( 'label' => __( 'Strategy Session Initial Content', 'executive-acquisition' ), 'section' => 'ea_strategy_session_section', 'type' => 'textarea' ) );
 
     // 16. Form Architecture
     $wp_customize->add_section( 'ea_forms_section', array(
@@ -446,6 +492,13 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_form_btn_contact', array( 'default' => 'Send Inquiry →', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_form_btn_contact', array( 'label' => __( 'Contact Form Button Text', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
 
+    $wp_customize->add_setting( 'ea_contact_form_code', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_contact_form_code', array(
+        'label'    => __( 'Contact Page Form Shortcode or HTML', 'executive-acquisition' ),
+        'section'  => 'ea_forms_section',
+        'type'     => 'textarea',
+    ) );
+
     // Landing Page Form (Bottom of page)
     $wp_customize->add_setting( 'ea_form_title_cta', array( 'default' => '[Lead Qualification Form Placeholder]', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_form_title_cta', array( 'label' => __( 'LP Form Placeholder Title', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
@@ -479,6 +532,32 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'section' => 'ea_tracking_section',
         'type' => 'textarea'
     ) );
+
+    // 18. Footer Redesign
+    $wp_customize->add_section( 'ea_footer_redesign', array(
+        'title'    => __( 'Footer & Trust Seals', 'executive-acquisition' ),
+        'priority' => 90,
+    ) );
+
+    $wp_customize->add_setting( 'ea_footer_trust_label', array( 'default' => 'SECURE INFRASTRUCTURE:', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_footer_trust_label', array( 'label' => __( 'Trust Seal Label', 'executive-acquisition' ), 'section' => 'ea_footer_redesign' ) );
+
+    for ($i = 1; $i <= 3; $i++) {
+        $wp_customize->add_setting( "ea_footer_seal_{$i}", array( 'default' => '', 'transport' => 'refresh' ) );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "ea_footer_seal_{$i}", array( 'label' => __( "Trust Seal {$i}", 'executive-acquisition' ), 'section' => 'ea_footer_redesign' ) ) );
+    }
+
+    $wp_customize->add_setting( 'ea_footer_col2_title', array( 'default' => 'Infrastructure', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_footer_col2_title', array( 'label' => __( 'Column 2 Title', 'executive-acquisition' ), 'section' => 'ea_footer_redesign' ) );
+
+    $wp_customize->add_setting( 'ea_footer_col3_title', array( 'default' => 'Institutional Access', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_footer_col3_title', array( 'label' => __( 'Column 3 Title', 'executive-acquisition' ), 'section' => 'ea_footer_redesign' ) );
+
+    $wp_customize->add_setting( 'ea_footer_col4_title', array( 'default' => 'Legal & Trust', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_footer_col4_title', array( 'label' => __( 'Column 4 Title', 'executive-acquisition' ), 'section' => 'ea_footer_redesign' ) );
+
+    $wp_customize->add_setting( 'ea_footer_legal_text', array( 'default' => 'All leadership engagements are subject to a strict Mutual Non-Disclosure Agreement.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_footer_legal_text', array( 'label' => __( 'Footer Legal Text', 'executive-acquisition' ), 'section' => 'ea_footer_redesign', 'type' => 'textarea' ) );
 }
 add_action( 'customize_register', 'executive_acquisition_customize_register' );
 

@@ -1,5 +1,6 @@
 <footer class="site-footer">
     <div class="container footer-grid">
+        <!-- Col 1: Brand -->
         <div class="footer-brand">
             <div class="footer-logo">
                 <?php
@@ -17,23 +18,44 @@
             </div>
         </div>
 
-        <div class="footer-contact">
-            <h3 class="footer-heading">Institutional Access</h3>
-            <p class="contact-info"><strong>Location:</strong> <?php echo esc_html( get_theme_mod('ea_contact_office', 'Executive Suite, Financial District') ); ?></p>
-            <p class="contact-info"><strong>Inquiries:</strong> support@<?php echo $_SERVER['HTTP_HOST']; ?></p>
-        </div>
-
+        <!-- Col 2: Navigation -->
         <div class="footer-nav-col">
-            <h3 class="footer-heading">Infrastructure</h3>
+            <h3 class="footer-heading"><?php echo esc_html( get_theme_mod('ea_footer_col2_title', 'Infrastructure') ); ?></h3>
             <nav class="footer-nav">
                 <?php
                 wp_nav_menu( array(
                     'theme_location' => 'footer',
                     'container'      => false,
                     'menu_class'     => 'footer-nav-list',
+                    'fallback_cb'    => false
                 ) );
                 ?>
             </nav>
+        </div>
+
+        <!-- Col 3: Contact -->
+        <div class="footer-contact">
+            <h3 class="footer-heading"><?php echo esc_html( get_theme_mod('ea_footer_col3_title', 'Institutional Access') ); ?></h3>
+            <p class="contact-info"><strong>Location:</strong> <?php echo esc_html( get_theme_mod('ea_contact_office', 'Executive Suite, Financial District') ); ?></p>
+            <p class="contact-info"><strong>Inquiries:</strong> support@<?php echo $_SERVER['HTTP_HOST']; ?></p>
+        </div>
+
+        <!-- Col 4: Trust & Legal -->
+        <div class="footer-trust">
+            <h3 class="footer-heading"><?php echo esc_html( get_theme_mod('ea_footer_col4_title', 'Legal & Trust') ); ?></h3>
+            <p class="footer-legal-text mb-md"><?php echo esc_html( get_theme_mod('ea_footer_legal_text', 'All leadership engagements are subject to a strict Mutual Non-Disclosure Agreement.') ); ?></p>
+
+            <div class="footer-trust-seals">
+                <p class="trust-label mb-xs"><?php echo esc_html(get_theme_mod('ea_footer_trust_label', 'SECURE INFRASTRUCTURE:')); ?></p>
+                <div class="seals-grid">
+                    <?php for ($i = 1; $i <= 3; $i++) :
+                        $seal = get_theme_mod("ea_footer_seal_{$i}");
+                        if ($seal) : ?>
+                            <img src="<?php echo esc_url($seal); ?>" alt="Trust Seal" class="footer-seal">
+                        <?php endif;
+                    endfor; ?>
+                </div>
+            </div>
         </div>
     </div>
 

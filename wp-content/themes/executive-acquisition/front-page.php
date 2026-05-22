@@ -10,13 +10,24 @@
             <a href="#cta" class="btn"><?php echo esc_html( get_theme_mod( 'ea_hero_cta_text', 'Access the Private Executive Briefing →' ) ); ?></a>
             <p class="hero-micro-copy mt-sm"><?php echo esc_html( get_theme_mod( 'ea_hero_micro_copy', 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.' ) ); ?></p>
         </div>
-        <div class="hero-video">
+        <div class="hero-media">
             <?php
             $video_url = get_theme_mod( 'ea_hero_video_url' );
-            if ( $video_url ) : ?>
-                <iframe src="<?php echo esc_url( $video_url ); ?>" fetchpriority="high" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            $hero_img = get_theme_mod( 'ea_hero_image' );
+            $hero_form = get_theme_mod( 'ea_hero_form_code' );
+
+            if ( $hero_form ) :
+                echo '<div class="hero-form-wrapper card">' . do_shortcode( $hero_form ) . '</div>';
+            elseif ( $video_url ) : ?>
+                <div class="hero-video">
+                    <iframe src="<?php echo esc_url( $video_url ); ?>" fetchpriority="high" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            <?php elseif ( $hero_img ) : ?>
+                <div class="hero-image-box">
+                    <img src="<?php echo esc_url( $hero_img ); ?>" alt="Executive Briefing" class="img-fluid hero-main-img">
+                </div>
             <?php else : ?>
-                <div class="video-placeholder">
+                <div class="hero-video video-placeholder">
                     <p>Executive Briefing Video Placeholder</p>
                 </div>
             <?php endif; ?>
@@ -60,20 +71,35 @@
 <!-- Section 2: Agitation (The Pain) -->
 <section class="agitation-section bg-light">
     <div class="container">
-        <div class="section-title mb-xl">
+        <div class="section-title mb-xl text-center">
             <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title', "The 'High-Ticket' Paradox: Why Your Expertise Isn't Converting" ) ); ?></h2>
             <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline', "The hidden costs of the content hamster wheel." ) ); ?></p>
         </div>
-        <div class="grid-3">
-            <?php for ($i = 1; $i <= 3; $i++) :
+
+        <div class="side-image-layout reverse">
+            <div class="content-side">
+                <div class="agitation-bullets">
+                    <?php for ($i = 1; $i <= 3; $i++) :
                 $title = get_theme_mod( "ea_agitation_bullet_{$i}_title", "Pain Point $i" );
                 $text = get_theme_mod( "ea_agitation_bullet_{$i}_text", "Description of pain point $i." );
                 ?>
-                <div class="card agitation-card">
-                    <h3 class="mb-xs"><?php echo esc_html( $title ); ?></h3>
-                    <p><?php echo esc_html( $text ); ?></p>
+                        <div class="card agitation-card mb-md">
+                            <h3 class="mb-xs"><?php echo esc_html( $title ); ?></h3>
+                            <p><?php echo esc_html( $text ); ?></p>
+                        </div>
+                    <?php endfor; ?>
                 </div>
-            <?php endfor; ?>
+            </div>
+            <div class="image-side">
+                <?php $ag_img = get_theme_mod('ea_agitation_image'); ?>
+                <div class="side-img-wrapper card">
+                    <?php if ($ag_img) : ?>
+                        <img src="<?php echo esc_url($ag_img); ?>" alt="Market Frustration" class="img-fluid">
+                    <?php else : ?>
+                        <div class="img-placeholder">High-Impact Executive Imagery</div>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -109,21 +135,36 @@ if ( $testimonials ) : ?>
 <!-- Section 3: The Mechanism -->
 <section class="mechanism-section bg-white">
     <div class="container">
-        <div class="section-title mb-xl">
+        <div class="section-title mb-xl text-center">
             <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title', 'The Institutional Intent Engine' ) ); ?></h2>
             <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline', 'A predictable, intent-driven acquisition system.' ) ); ?></p>
         </div>
-        <div class="grid-3">
-            <?php for ($i = 1; $i <= 3; $i++) :
-                $title = get_theme_mod( "ea_mechanism_step_{$i}_title", "Step $i Title" );
-                $text = get_theme_mod( "ea_mechanism_step_{$i}_text", "Description for step $i." );
-                ?>
-                <div class="step-card">
-                    <div class="step-number mb-xs">0<?php echo $i; ?></div>
-                    <h3 class="mb-sm"><?php echo esc_html( $title ); ?></h3>
-                    <p><?php echo esc_html( $text ); ?></p>
+
+        <div class="side-image-layout">
+            <div class="content-side">
+                <div class="steps-list">
+                    <?php for ($i = 1; $i <= 3; $i++) :
+                        $title = get_theme_mod( "ea_mechanism_step_{$i}_title", "Step $i Title" );
+                        $text = get_theme_mod( "ea_mechanism_step_{$i}_text", "Description for step $i." );
+                        ?>
+                        <div class="step-card mb-lg">
+                            <div class="step-number mb-xs">0<?php echo $i; ?></div>
+                            <h3 class="mb-sm"><?php echo esc_html( $title ); ?></h3>
+                            <p><?php echo esc_html( $text ); ?></p>
+                        </div>
+                    <?php endfor; ?>
                 </div>
-            <?php endfor; ?>
+            </div>
+            <div class="image-side">
+                <?php $mech_img = get_theme_mod('ea_mechanism_image'); ?>
+                <div class="side-img-wrapper card">
+                    <?php if ($mech_img) : ?>
+                        <img src="<?php echo esc_url($mech_img); ?>" alt="Strategic Mechanism" class="img-fluid">
+                    <?php else : ?>
+                        <div class="img-placeholder">Proprietary Framework Visualization</div>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -180,11 +221,17 @@ if ( $testimonials ) : ?>
         <h2 class="text-white mb-sm"><?php echo esc_html( get_theme_mod( 'ea_cta_title', 'Ready to exit the content hamster wheel?' ) ); ?></h2>
         <p class="text-white mb-xl opacity-90"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline', 'Book your strategic diagnostic session today.' ) ); ?></p>
 
-        <!-- Form Placeholder -->
-        <div class="cta-form-container card">
-            <p class="form-placeholder-title mb-xxs"><?php echo esc_html( get_theme_mod('ea_form_title_cta', '[Lead Qualification Form Placeholder]') ); ?></p>
-            <p class="form-placeholder-desc"><?php echo esc_html( get_theme_mod('ea_form_desc_cta', '(Use Step 1: Work Email -> Step 2: Executive Qualifier)') ); ?></p>
-        </div>
+        <?php
+        $cta_form = get_theme_mod('ea_cta_form_code');
+        if ( $cta_form ) :
+            echo '<div class="cta-form-container">' . do_shortcode($cta_form) . '</div>';
+        else : ?>
+            <!-- Form Placeholder -->
+            <div class="cta-form-container card">
+                <p class="form-placeholder-title mb-xxs"><?php echo esc_html( get_theme_mod('ea_form_title_cta', '[Lead Qualification Form Placeholder]') ); ?></p>
+                <p class="form-placeholder-desc"><?php echo esc_html( get_theme_mod('ea_form_desc_cta', '(Use Step 1: Work Email -> Step 2: Executive Qualifier)') ); ?></p>
+            </div>
+        <?php endif; ?>
 
         <div class="compliance-row mt-lg">
             <p><?php echo esc_html( get_theme_mod( 'ea_cta_compliance', '✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED' ) ); ?></p>

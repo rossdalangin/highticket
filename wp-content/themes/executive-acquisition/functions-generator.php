@@ -66,6 +66,18 @@ function ea_ajax_generate_pages() {
             'template' => 'template-case-study.php',
             'content' => get_theme_mod('ea_gen_content_case_study', '[roi_callout value="+140%" label="Leadership Efficiency"]<h3>The Challenge of Scale</h3><p>Before implementing the Intent Method, the leadership team was trapped on the content hamster wheel, resulting in unqualified leads and wasted executive hours.</p>')
         ),
+        get_theme_mod('ea_gen_title_strategy', 'Private Strategy Session') => array(
+            'template' => 'template-contact.php',
+            'content' => get_theme_mod('ea_gen_content_strategy', '')
+        ),
+        get_theme_mod('ea_gen_title_privacy', 'Privacy Policy') => array(
+            'template' => 'page.php',
+            'content' => get_theme_mod('ea_gen_content_privacy', '<p>This policy outlines our commitment to your institutional data privacy.</p>')
+        ),
+        get_theme_mod('ea_gen_title_terms', 'Terms of Service') => array(
+            'template' => 'page.php',
+            'content' => get_theme_mod('ea_gen_content_terms', '<p>By engaging with our briefing, you agree to absolute confidentiality.</p>')
+        ),
     );
 
     // Create/Get Menu
