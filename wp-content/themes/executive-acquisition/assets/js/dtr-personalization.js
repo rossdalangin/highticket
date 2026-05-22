@@ -36,6 +36,16 @@
         $('.menu-toggle').attr('aria-expanded', 'false');
     });
 
+    // FAQ Accordion
+    $('.faq-question').on('click', function() {
+        var $item = $(this).closest('.faq-item');
+        $item.toggleClass('active');
+        $item.find('.faq-answer').slideToggle(300);
+
+        // Optional: Close others
+        // $item.siblings().removeClass('active').find('.faq-answer').slideUp(300);
+    });
+
     // Sticky Header Scroll
     $(window).on('scroll', function() {
         if ($(window).scrollTop() > 50) {
@@ -44,6 +54,25 @@
             $('.site-header').removeClass('scrolled');
         }
     });
+
+    // Intersection Observer for Animations
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        $('.animate-in').each(function() {
+            observer.observe(this);
+        });
+    } else {
+        // Fallback for older browsers
+        $('.animate-in').addClass('visible');
+    }
 
     // GTM DataLayer for Forms
     $(document).on('submit', 'form', function() {

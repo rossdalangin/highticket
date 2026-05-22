@@ -96,12 +96,6 @@ if ( $gtm_id ) : ?>
         </a>
 
         <nav id="site-navigation" class="main-navigation">
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-                <span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'executive-acquisition' ); ?></span>
-            </button>
             <div class="menu-container">
                 <?php
                 wp_nav_menu( array(
@@ -113,6 +107,13 @@ if ( $gtm_id ) : ?>
                 ?>
             </div>
         </nav>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+            <span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'executive-acquisition' ); ?></span>
+        </button>
 
         <a href="#cta" class="btn btn-small header-cta">Get Started</a>
     </div>
