@@ -5,6 +5,7 @@
 get_header(); ?>
 
 <div class="lead-magnet-page animate-in">
+    <?php if ( get_theme_mod('ea_lm_headline') || get_theme_mod('ea_lm_benefit_1') ) : ?>
     <div class="container narrow-grid-layout">
         <div class="asset-preview">
             <div class="asset-visual card mb-lg">
@@ -49,6 +50,11 @@ get_header(); ?>
             </div>
         </div>
     </div>
+    <?php else : ?>
+        <div class="container text-center py-xl">
+            <p>Lead Magnet content is currently being updated. Please check back shortly.</p>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?php get_footer(); ?>

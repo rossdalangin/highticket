@@ -80,11 +80,11 @@ function ea_ajax_generate_pages() {
         ),
         'Lead Magnet' => array(
             'template' => 'template-lead-magnet.php',
-            'content' => ''
+            'content' => '<h3>The ROI of Institutional Trust</h3><p>Download our proprietary framework for identifying anonymous C-Suite decision-makers and building authority without manual outreach.</p>'
         ),
         'Strategic Assets' => array(
             'template' => 'template-resources.php',
-            'content' => ''
+            'content' => '<p>A curated library of frameworks, whitepapers, and audits designed for the mid-market leadership segment.</p>'
         ),
     );
 
@@ -164,6 +164,38 @@ function ea_ajax_generate_pages() {
         }
     }
 
-    wp_send_json_success( array( 'message' => 'Elite Infrastructure Deployed.' ) );
+    // Create Sample Strategic Resources
+    $resource_samples = array(
+        'The 2024 Leadership Retention Audit' => 'A technical breakdown of the 4 primary revenue leaks in mid-market leadership teams.',
+        'The Institutional Intent Roadmap' => 'Map your acquisition sequence from anonymous visitor to $25k engagement.',
+        'C-Suite Communication Protocol' => 'Strategic scripts for internal stakeholder buy-in during high-ticket leadership pivots.'
+    );
+
+    foreach ( $resource_samples as $title => $excerpt ) {
+        wp_insert_post( array(
+            'post_title'   => $title,
+            'post_excerpt' => $excerpt,
+            'post_content' => 'Full strategy details would be placed here by the coach.',
+            'post_status'  => 'publish',
+            'post_type'    => 'resource'
+        ) );
+    }
+
+    // Create Sample Testimonials
+    $testimonial_samples = array(
+        'VP of Strategy, Global Tech' => 'The Intent Engine identified our needs before we even launched the hiring search.',
+        'Founder, ScaleUp Ventures' => 'Finally, a system that understands the discretion required at our level.'
+    );
+
+    foreach ( $testimonial_samples as $name => $content ) {
+        wp_insert_post( array(
+            'post_title'   => $name,
+            'post_content' => $content,
+            'post_status'  => 'publish',
+            'post_type'    => 'testimonial'
+        ) );
+    }
+
+    wp_send_json_success( array( 'message' => 'Elite Infrastructure & Sample Content Deployed.' ) );
 }
 add_action( 'wp_ajax_ea_generate_pages', 'ea_ajax_generate_pages' );

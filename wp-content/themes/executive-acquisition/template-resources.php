@@ -5,13 +5,17 @@
 get_header(); ?>
 
 <div class="resources-page animate-in">
+    <?php if ( get_theme_mod('ea_resources_headline') ) : ?>
     <section class="archive-header bg-light">
         <div class="container narrow-container text-center">
             <span class="section-tag mb-xs"><?php esc_html_e('Executive Asset Library', 'executive-acquisition'); ?></span>
-            <h1 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_resources_headline', 'Institutional Whitepapers & Strategic Frameworks') ); ?></h1>
-            <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_resources_subheadline', 'Complimentary resources for scaling Founders and C-Suite leaders navigating institutional complexity.') ); ?></p>
+            <h1 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_resources_headline') ); ?></h1>
+            <?php if ($r_sub = get_theme_mod('ea_resources_subheadline')) : ?>
+                <p class="subheadline opacity-80"><?php echo esc_html($r_sub); ?></p>
+            <?php endif; ?>
         </div>
     </section>
+    <?php endif; ?>
 
     <section class="asset-grid-section">
         <div class="container">

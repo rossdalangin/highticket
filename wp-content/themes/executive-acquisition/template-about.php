@@ -7,9 +7,15 @@ get_header(); ?>
 <div class="about-page animate-in">
     <section class="about-hero bg-light">
         <div class="container narrow-container text-center">
-            <span class="section-tag mb-xs"><?php echo esc_html( get_theme_mod('ea_about_tag', 'The Architecture of Authority') ); ?></span>
-            <h1 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_about_headline', 'We Engineer Institutional Trust for Elite Coaches.') ); ?></h1>
-            <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_about_mission', "We engineer institutional trust for the world's most impactful leadership architects.") ); ?></p>
+            <?php if ($a_tag = get_theme_mod('ea_about_tag')) : ?>
+                <span class="section-tag mb-xs"><?php echo esc_html($a_tag); ?></span>
+            <?php endif; ?>
+            <?php if ($a_h1 = get_theme_mod('ea_about_headline')) : ?>
+                <h1 class="mb-sm"><?php echo esc_html($a_h1); ?></h1>
+            <?php endif; ?>
+            <?php if ($a_miss = get_theme_mod('ea_about_mission')) : ?>
+                <p class="subheadline opacity-80"><?php echo esc_html($a_miss); ?></p>
+            <?php endif; ?>
         </div>
     </section>
 
