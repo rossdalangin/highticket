@@ -106,7 +106,7 @@ function ea_ajax_generate_pages() {
         }
     }
 
-    // 3. Generate new pages
+    // 3. Generate new pages with High-Authority Content
     $pages_to_create = array(
         'Home' => array(
             'template' => 'front-page.php',
@@ -114,7 +114,7 @@ function ea_ajax_generate_pages() {
         ),
         'About Us' => array(
             'template' => 'template-about.php',
-            'content'  => '<p>Since 2012, we have been the silent architects behind the leadership transitions of over 150 mid-market organizations. Our focus is absolute: measurable ROI through institutional authority.</p>',
+            'content'  => '<h3>The Silent Architecture of Leadership</h3><p>Since 2012, we have been the silent architects behind the leadership transitions of over 150 mid-market organizations. Our focus is absolute: measurable ROI through institutional authority. We do not chase attention; we engineer intent.</p>',
         ),
         'Contact Us' => array(
             'template' => 'template-contact.php',
@@ -122,7 +122,7 @@ function ea_ajax_generate_pages() {
         ),
         'Thank You' => array(
             'template' => 'template-thank-you.php',
-            'content'  => '',
+            'content'  => '<h3>Your Request Has Been Encrypted & Filed.</h3><p>An executive strategist will review your diagnostic request within 24 hours. Please watch for a secure briefing link in your inbox.</p>',
         ),
         'Executive Briefing' => array(
             'template' => 'template-briefing.php',
@@ -135,9 +135,9 @@ function ea_ajax_generate_pages() {
         'ROI Case Study' => array(
             'template' => 'template-case-study.php',
             'content'  => '[roi_callout value="+140%" label="Leadership Efficiency"]
-                            [exec_quote author="VP Operations, Fortune 500"]This system eliminated our lead quality bottleneck within 90 days.[/exec_quote]
+                            [exec_quote author="VP Operations, Fortune 500"]This system eliminated our lead quality bottleneck within 90 days. We now command the authority we deserve in the mid-market segment.[/exec_quote]
                             <h3>The Institutional Challenge</h3>
-                            <p>Before implementing the method, the leadership team was trapped on the content hamster wheel, resulting in unqualified leads and wasted executive hours.</p>
+                            <p>Before implementing the Intent Method, the leadership team was trapped on the content hamster wheel, resulting in unqualified leads and wasted executive hours.</p>
                             <h3>The Engineered Solution</h3>
                             <p>By deploying the Authority Infrastructure, we replaced manual outreach with a surgical intent-based beacon.</p>',
         ),
@@ -147,11 +147,11 @@ function ea_ajax_generate_pages() {
         ),
         'Privacy Policy' => array(
             'template' => 'page.php',
-            'content'  => '<p>We respect executive privacy. All data collected via this infrastructure is strictly confidential.</p>',
+            'content'  => '<h3>Executive Data Discretion</h3><p>We respect executive privacy. All data collected via this infrastructure is strictly confidential and protected by enterprise-grade encryption protocols.</p>',
         ),
         'Terms of Service' => array(
             'template' => 'page.php',
-            'content'  => '<p>Standard institutional terms of service for engagement diagnostic sessions.</p>',
+            'content'  => '<p>Standard institutional terms of service for engagement diagnostic sessions and authority audits.</p>',
         ),
     );
 

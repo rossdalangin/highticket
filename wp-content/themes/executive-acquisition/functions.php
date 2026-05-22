@@ -18,9 +18,9 @@ endif;
 add_action( 'after_setup_theme', 'executive_acquisition_setup' );
 
 function executive_acquisition_scripts() {
-    wp_enqueue_style( 'executive-acquisition-style', get_stylesheet_uri(), array(), '1.0.0' );
-    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700;900&display=swap', array(), null );
-    wp_enqueue_script( 'ea-dtr', get_template_directory_uri() . '/assets/js/dtr-personalization.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_style( 'executive-acquisition-style', get_stylesheet_uri(), array(), '1.1.4' );
+    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap', array(), null );
+    wp_enqueue_script( 'ea-dtr', get_template_directory_uri() . '/assets/js/dtr-personalization.js', array('jquery'), '1.1.4', true );
 }
 add_action( 'wp_enqueue_scripts', 'executive_acquisition_scripts' );
 
@@ -76,7 +76,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'sanitize_callback' => 'sanitize_hex_color',
     ) );
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'ea_accent_color', array(
-        'label'    => __( 'Accent Color (Gold)', 'executive-acquisition' ),
+        'label'    => __( 'Accent Color (Executive Gold)', 'executive-acquisition' ),
         'section'  => 'ea_brand_section',
     ) ) );
 
@@ -126,28 +126,38 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'description' => __( 'The action URL for your lead magnet capture form.', 'executive-acquisition' )
     ) );
 
-    // 3. About Page Settings
+    // 3. About Page Settings (Enhanced)
     $wp_customize->add_section( 'ea_about_section', array(
         'title'    => __( 'About Us Page', 'executive-acquisition' ),
         'priority' => 25.5,
     ) );
 
-    $wp_customize->add_setting( 'ea_about_mission', array( 'default' => 'Our mission is to engineer high-ticket authority for the world\'s most impactful leaders.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_about_mission', array( 'default' => 'Our mission is to engineer high-ticket authority for the world\'s most impactful leadership coaches and consultants.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_mission', array( 'label' => __( 'Mission Statement', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
 
-    $wp_customize->add_setting( 'ea_about_experience', array( 'default' => 'Over 15 years of institutional leadership architecture.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_about_p1_title', array( 'default' => 'Institutional Integrity', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_p1_title', array( 'label' => __( 'Pillar 1 Title', 'executive-acquisition' ), 'section' => 'ea_about_section' ) );
+    $wp_customize->add_setting( 'ea_about_p1_desc', array( 'default' => 'We believe executive coaching acquisition should mirror the discretion and authority of the boardroom.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_p1_desc', array( 'label' => __( 'Pillar 1 Desc', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'ea_about_p2_title', array( 'default' => 'Predictable Precision', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_p2_title', array( 'label' => __( 'Pillar 2 Title', 'executive-acquisition' ), 'section' => 'ea_about_section' ) );
+    $wp_customize->add_setting( 'ea_about_p2_desc', array( 'default' => 'Replacing generic outreach with surgical intent-based beacons that identify your ideal partners.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_p2_desc', array( 'label' => __( 'Pillar 2 Desc', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'ea_about_experience', array( 'default' => 'Since 2012, we have been the silent architects behind the leadership transitions of over 150 mid-market organizations.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_experience', array( 'label' => __( 'Experience / Track Record', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
 
-    // 4. Contact Page Settings
+    // 4. Contact Page Settings (Enhanced)
     $wp_customize->add_section( 'ea_contact_section', array(
         'title'    => __( 'Contact Us Page', 'executive-acquisition' ),
         'priority' => 25.6,
     ) );
 
-    $wp_customize->add_setting( 'ea_contact_inquiry_text', array( 'default' => 'For institutional inquiries and partnership requests, please use the secure channel below.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_contact_inquiry_text', array( 'default' => 'For institutional inquiries, diagnostic requests, or partnership opportunities, please utilize our secure channel below. All submissions are handled with absolute executive discretion.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_contact_inquiry_text', array( 'label' => __( 'Inquiry Instructions', 'executive-acquisition' ), 'section' => 'ea_contact_section', 'type' => 'textarea' ) );
 
-    $wp_customize->add_setting( 'ea_contact_office', array( 'default' => 'Executive Suite 500, Financial District', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_contact_office', array( 'default' => 'Executive Suite 500, Financial District, London', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_contact_office', array( 'label' => __( 'Office Location', 'executive-acquisition' ), 'section' => 'ea_contact_section', 'type' => 'text' ) );
 
     // 5. Executive Social Identity
@@ -186,11 +196,11 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 26,
     ) );
 
-    $wp_customize->add_setting( 'ea_founder_name', array( 'default' => 'Executive Strategist', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_founder_name', array( 'default' => 'Lead Executive Strategist', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_founder_name', array( 'label' => __( 'Founder Name', 'executive-acquisition' ), 'section' => 'ea_profile_section' ) );
 
     $wp_customize->add_setting( 'ea_founder_bio', array(
-        'default' => 'Specializing in leadership architecture for $5M+ scaling organizations. We bridge the gap between founder vision and institutional execution.',
+        'default' => 'Specializing in leadership architecture for $5M+ scaling organizations. We bridge the gap between founder vision and institutional execution through engineered trust.',
         'transport' => 'postMessage'
     ) );
     $wp_customize->add_control( 'ea_founder_bio', array( 'label' => __( 'Brief Bio (Authority focus)', 'executive-acquisition' ), 'section' => 'ea_profile_section', 'type' => 'textarea' ) );
@@ -656,6 +666,6 @@ add_action( 'customize_register', 'executive_acquisition_customize_register' );
  * Enqueue Customizer Preview JS
  */
 function ea_customize_preview_js() {
-    wp_enqueue_script( 'ea-customizer-preview', get_template_directory_uri() . '/assets/js/customizer-preview.js', array( 'customize-preview', 'jquery' ), '1.0.0', true );
+    wp_enqueue_script( 'ea-customizer-preview', get_template_directory_uri() . '/assets/js/customizer-preview.js', array( 'customize-preview', 'jquery' ), '1.1.4', true );
 }
 add_action( 'customize_preview_init', 'ea_customize_preview_js' );
