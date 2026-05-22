@@ -7,10 +7,10 @@ get_header(); ?>
 <div class="case-study-template animate-in">
     <header class="case-study-hero">
         <div class="container narrow-container">
-            <span class="section-tag">ROI & Result Case Study</span>
+            <span class="section-tag"><?php esc_html_e('ROI & Result Case Study', 'executive-acquisition'); ?></span>
             <h1 class="mb-md"><?php the_title(); ?></h1>
             <div class="case-study-meta font-sm">
-                Published with Permission | Institutional Confidentiality Maintained
+                <?php esc_html_e('Published with Permission | Institutional Confidentiality Maintained', 'executive-acquisition'); ?>
             </div>
         </div>
     </header>

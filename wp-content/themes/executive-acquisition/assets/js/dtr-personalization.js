@@ -11,6 +11,7 @@
         var $nav = $('.main-navigation');
         var isExpanded = $(this).attr('aria-expanded') === 'true';
 
+        $(this).toggleClass('toggled');
         $nav.toggleClass('toggled');
         $('body').toggleClass('menu-open');
         $(this).attr('aria-expanded', !isExpanded);
@@ -25,6 +26,7 @@
     // Close menu when clicking the overlay
     $('.mobile-overlay').on('click', function() {
         $('.main-navigation').removeClass('toggled');
+        $('.menu-toggle').removeClass('toggled');
         $('body').removeClass('menu-open').css('overflow', '');
         $('.menu-toggle').attr('aria-expanded', 'false');
     });
@@ -32,6 +34,7 @@
     // Close menu on link click
     $('.nav-menu a').on('click', function() {
         $('.main-navigation').removeClass('toggled');
+        $('.menu-toggle').removeClass('toggled');
         $('body').removeClass('menu-open').css('overflow', '');
         $('.menu-toggle').attr('aria-expanded', 'false');
     });

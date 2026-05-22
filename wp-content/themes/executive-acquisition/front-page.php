@@ -81,14 +81,15 @@
             <div class="content-side">
                 <div class="agitation-bullets">
                     <?php for ($i = 1; $i <= 3; $i++) :
-                $title = get_theme_mod( "ea_agitation_bullet_{$i}_title", "Pain Point $i" );
-                $text = get_theme_mod( "ea_agitation_bullet_{$i}_text", "Description of pain point $i." );
-                ?>
+                        $title = get_theme_mod( "ea_agitation_bullet_{$i}_title" );
+                        $text = get_theme_mod( "ea_agitation_bullet_{$i}_text" );
+                        if ( $title || $text ) :
+                        ?>
                         <div class="card agitation-card mb-md">
-                            <h3 class="mb-xs"><?php echo esc_html( $title ); ?></h3>
-                            <p><?php echo esc_html( $text ); ?></p>
+                            <?php if ($title) : ?><h3 class="mb-xs"><?php echo esc_html( $title ); ?></h3><?php endif; ?>
+                            <?php if ($text) : ?><p><?php echo esc_html( $text ); ?></p><?php endif; ?>
                         </div>
-                    <?php endfor; ?>
+                    <?php endif; endfor; ?>
                 </div>
             </div>
             <div class="image-side">
@@ -146,15 +147,16 @@ if ( $testimonials ) : ?>
             <div class="content-side">
                 <div class="steps-list">
                     <?php for ($i = 1; $i <= 3; $i++) :
-                        $title = get_theme_mod( "ea_mechanism_step_{$i}_title", "Step $i Title" );
-                        $text = get_theme_mod( "ea_mechanism_step_{$i}_text", "Description for step $i." );
+                        $title = get_theme_mod( "ea_mechanism_step_{$i}_title" );
+                        $text = get_theme_mod( "ea_mechanism_step_{$i}_text" );
+                        if ( $title || $text ) :
                         ?>
                         <div class="step-card mb-lg">
                             <div class="step-number mb-xs">0<?php echo $i; ?></div>
-                            <h3 class="mb-sm"><?php echo esc_html( $title ); ?></h3>
-                            <p><?php echo esc_html( $text ); ?></p>
+                            <?php if ($title) : ?><h3 class="mb-sm"><?php echo esc_html( $title ); ?></h3><?php endif; ?>
+                            <?php if ($text) : ?><p><?php echo esc_html( $text ); ?></p><?php endif; ?>
                         </div>
-                    <?php endfor; ?>
+                    <?php endif; endfor; ?>
                 </div>
             </div>
             <div class="image-side">
@@ -236,19 +238,20 @@ if ( $home_cases ) : ?>
         </div>
         <div class="grid-2">
             <?php for ($i = 1; $i <= 2; $i++) :
-                $name = get_theme_mod( "ea_tier_{$i}_name", "Tier $i Name" );
-                $price = get_theme_mod( "ea_tier_{$i}_price", "$5,000" );
-                $desc = get_theme_mod( "ea_tier_{$i}_desc", "Tier $i description." );
+                $name = get_theme_mod( "ea_tier_{$i}_name" );
+                $price = get_theme_mod( "ea_tier_{$i}_price" );
+                $desc = get_theme_mod( "ea_tier_{$i}_desc" );
+                if ( $name || $price ) :
                 ?>
                 <div class="card tier-card animate-in">
                     <div class="tier-header mb-md">
-                        <h3 class="mb-xxs"><?php echo esc_html( $name ); ?></h3>
-                        <div class="tier-price text-accent"><?php echo esc_html( $price ); ?><span class="price-suffix">/ engagement</span></div>
+                        <?php if ($name) : ?><h3 class="mb-xxs"><?php echo esc_html( $name ); ?></h3><?php endif; ?>
+                        <?php if ($price) : ?><div class="tier-price text-accent"><?php echo esc_html( $price ); ?><span class="price-suffix">/ engagement</span></div><?php endif; ?>
                     </div>
-                    <p class="mb-lg"><?php echo esc_html( $desc ); ?></p>
+                    <?php if ($desc) : ?><p class="mb-lg"><?php echo esc_html( $desc ); ?></p><?php endif; ?>
                     <a href="#cta" class="btn btn-small w-100">Inquire for Availability →</a>
                 </div>
-            <?php endfor; ?>
+            <?php endif; endfor; ?>
         </div>
     </div>
 </section>

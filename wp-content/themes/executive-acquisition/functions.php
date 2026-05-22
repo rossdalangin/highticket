@@ -148,14 +148,14 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_about_mission', array( 'default' => 'We engineer institutional trust for the world\'s most impactful leadership architects.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_mission', array( 'label' => __( 'Mission Statement', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
 
-    $wp_customize->add_setting( 'ea_about_p1_title', array( 'default' => 'Institutional Integrity', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_about_p1_title', array( 'default' => 'Boardroom-Level Discretion', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_p1_title', array( 'label' => __( 'Pillar 1 Title', 'executive-acquisition' ), 'section' => 'ea_about_section' ) );
-    $wp_customize->add_setting( 'ea_about_p1_desc', array( 'default' => 'Acquisition should mirror the discretion of the boardroom.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_about_p1_desc', array( 'default' => 'We do not chase attention; we engineer intent. Our methodology mirrors the discretion and authority of the boardroom.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_p1_desc', array( 'label' => __( 'Pillar 1 Desc', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
 
-    $wp_customize->add_setting( 'ea_about_p2_title', array( 'default' => 'Predictable Precision', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_about_p2_title', array( 'default' => 'Intent Mapping Precision', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_p2_title', array( 'label' => __( 'Pillar 2 Title', 'executive-acquisition' ), 'section' => 'ea_about_section' ) );
-    $wp_customize->add_setting( 'ea_about_p2_desc', array( 'default' => 'Identifying anonymous decision-makers through intent mapping.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_about_p2_desc', array( 'default' => 'Identifying anonymous decision-makers before they even issue an RFP, giving you the ultimate competitive advantage.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_p2_desc', array( 'label' => __( 'Pillar 2 Desc', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
 
     $wp_customize->add_setting( 'ea_about_exp_title', array( 'default' => 'The Track Record', 'transport' => 'postMessage' ) );
@@ -334,11 +334,26 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_agitation_subheadline', array( 'default' => "The hidden costs of the content hamster wheel.", 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_agitation_subheadline', array( 'label' => __( 'Section Subheadline', 'executive-acquisition' ), 'section' => 'ea_agitation_section', 'type' => 'textarea' ) );
 
+    $agitation_defaults = array(
+        1 => array(
+            'title' => 'The Content Hamster Wheel',
+            'text'  => 'Wasting executive hours on low-conversion LinkedIn posts that attract "vanity metrics" instead of institutional decision-makers.'
+        ),
+        2 => array(
+            'title' => 'Brand Reputation Erosion',
+            'text'  => 'Burning C-Suite bridges with low-quality automated outreach that signals desperation rather than institutional authority.'
+        ),
+        3 => array(
+            'title' => 'The Discovery Call Drain',
+            'text'  => 'Filling your calendar with unqualified leads who lack the budget or the institutional authority to trigger a $25k engagement.'
+        )
+    );
+
     for ($i = 1; $i <= 3; $i++) {
-        $wp_customize->add_setting( "ea_agitation_bullet_{$i}_title", array( 'default' => "Pain Point {$i}", 'transport' => 'postMessage' ) );
-        $wp_customize->add_control( "ea_agitation_bullet_{$i}_title", array( 'label' => __( "Bullet {$i} Title", 'executive-acquisition' ), 'section' => 'ea_agitation_section' ) );
-        $wp_customize->add_setting( "ea_agitation_bullet_{$i}_text", array( 'default' => "Description of pain point {$i}.", 'transport' => 'postMessage' ) );
-        $wp_customize->add_control( "ea_agitation_bullet_{$i}_text", array( 'label' => __( "Bullet {$i} Text", 'executive-acquisition' ), 'section' => 'ea_agitation_section', 'type' => 'textarea' ) );
+        $wp_customize->add_setting( "ea_agitation_bullet_{$i}_title", array( 'default' => $agitation_defaults[$i]['title'], 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_agitation_bullet_{$i}_title", array( 'label' => __( "Pain Point {$i} Title", 'executive-acquisition' ), 'section' => 'ea_agitation_section' ) );
+        $wp_customize->add_setting( "ea_agitation_bullet_{$i}_text", array( 'default' => $agitation_defaults[$i]['text'], 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_agitation_bullet_{$i}_text", array( 'label' => __( "Pain Point {$i} Description", 'executive-acquisition' ), 'section' => 'ea_agitation_section', 'type' => 'textarea' ) );
     }
 
 $wp_customize->add_setting( 'ea_agitation_pre_headline', array( 'default' => 'The Cost of Invisibility', 'transport' => 'postMessage' ) );
@@ -398,11 +413,26 @@ $wp_customize->add_control( 'ea_agitation_pre_headline', array( 'label' => __( '
     $wp_customize->add_setting( 'ea_mechanism_subheadline', array( 'default' => 'A predictable, intent-driven acquisition system.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_mechanism_subheadline', array( 'label' => __( 'Section Subheadline', 'executive-acquisition' ), 'section' => 'ea_mechanism_section', 'type' => 'textarea' ) );
 
+    $mechanism_defaults = array(
+        1 => array(
+            'title' => 'Intent Beacon Identification',
+            'text'  => 'We deploy proprietary tracking that identifies anonymous VP and C-Suite visitors before they ever fill out a form.'
+        ),
+        2 => array(
+            'title' => 'Institutional Trust Anchoring',
+            'text'  => 'Our Authority Bridge sequence builds instant boardroom-level trust, positioning you as the only logical solution.'
+        ),
+        3 => array(
+            'title' => 'Strategic Diagnostic Conversion',
+            'text'  => 'Move highly-qualified leads directly into a high-leverage diagnostic session to finalize $10k–$25k engagements.'
+        )
+    );
+
     for ($i = 1; $i <= 3; $i++) {
-        $wp_customize->add_setting( "ea_mechanism_step_{$i}_title", array( 'default' => "Step {$i} Title", 'transport' => 'postMessage' ) );
-        $wp_customize->add_control( "ea_mechanism_step_{$i}_title", array( 'label' => __( "Step {$i} Title", 'executive-acquisition' ), 'section' => 'ea_mechanism_section' ) );
-        $wp_customize->add_setting( "ea_mechanism_step_{$i}_text", array( 'default' => "Description for step {$i}.", 'transport' => 'postMessage' ) );
-        $wp_customize->add_control( "ea_mechanism_step_{$i}_text", array( 'label' => __( "Step {$i} Text", 'executive-acquisition' ), 'section' => 'ea_mechanism_section', 'type' => 'textarea' ) );
+        $wp_customize->add_setting( "ea_mechanism_step_{$i}_title", array( 'default' => $mechanism_defaults[$i]['title'], 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_mechanism_step_{$i}_title", array( 'label' => __( "Mechanism Step {$i} Title", 'executive-acquisition' ), 'section' => 'ea_mechanism_section' ) );
+        $wp_customize->add_setting( "ea_mechanism_step_{$i}_text", array( 'default' => $mechanism_defaults[$i]['text'], 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_mechanism_step_{$i}_text", array( 'label' => __( "Mechanism Step {$i} Description", 'executive-acquisition' ), 'section' => 'ea_mechanism_section', 'type' => 'textarea' ) );
     }
 
 $wp_customize->add_setting( 'ea_mechanism_pre_headline', array( 'default' => 'The Institutional Intent Engine™', 'transport' => 'postMessage' ) );
@@ -426,11 +456,30 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     $wp_customize->add_setting( 'ea_faq_subheadline', array( 'default' => 'Common questions regarding the acquisition engine.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_faq_subheadline', array( 'label' => __( 'FAQ Subheadline', 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
 
+    $faq_defaults = array(
+        1 => array(
+            'q' => 'How does the Intent Beacon identify anonymous visitors?',
+            'a' => 'We utilize B2B identity resolution technology that matches corporate IP addresses and browser fingerprints against institutional databases.'
+        ),
+        2 => array(
+            'q' => 'Does this system work for boutique coaching firms?',
+            'a' => 'Yes. It is specifically designed to level the playing field, allowing boutique firms to project the same institutional authority as global consultancies.'
+        ),
+        3 => array(
+            'q' => 'What is the typical timeframe for ROI?',
+            'a' => 'Most clients see their first identified "High-Intent" lead within 14 days of system deployment, with full funnel stabilization in 45 days.'
+        ),
+        4 => array(
+            'q' => 'Is this a specialized CRM or a lead gen service?',
+            'a' => 'It is a hybrid infrastructure—combining proprietary conversion psychology with automated identification tech that feeds into your existing CRM.'
+        )
+    );
+
     for ($i = 1; $i <= 4; $i++) {
-        $wp_customize->add_setting( "ea_faq_q_{$i}", array( 'default' => "Question {$i}?", 'transport' => 'postMessage' ) );
-        $wp_customize->add_control( "ea_faq_q_{$i}", array( 'label' => __( "Question {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section' ) );
-        $wp_customize->add_setting( "ea_faq_a_{$i}", array( 'default' => "Answer for question {$i}.", 'transport' => 'postMessage' ) );
-        $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "Answer {$i}", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
+        $wp_customize->add_setting( "ea_faq_q_{$i}", array( 'default' => $faq_defaults[$i]['q'], 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_faq_q_{$i}", array( 'label' => __( "FAQ {$i} Question", 'executive-acquisition' ), 'section' => 'ea_faq_section' ) );
+        $wp_customize->add_setting( "ea_faq_a_{$i}", array( 'default' => $faq_defaults[$i]['a'], 'transport' => 'postMessage' ) );
+        $wp_customize->add_control( "ea_faq_a_{$i}", array( 'label' => __( "FAQ {$i} Answer", 'executive-acquisition' ), 'section' => 'ea_faq_section', 'type' => 'textarea' ) );
     }
 
     // 13. Final CTA (Bottom of Page)

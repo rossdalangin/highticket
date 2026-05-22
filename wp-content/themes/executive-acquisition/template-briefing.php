@@ -7,9 +7,13 @@ get_header(); ?>
 <div class="briefing-page animate-in">
     <div class="container">
         <header class="briefing-header text-center mb-xl">
-            <span class="section-tag mb-xs"><?php echo esc_html( get_theme_mod('ea_briefing_tag', 'Executive Strategic Briefing') ); ?></span>
+            <?php if ($b_tag = get_theme_mod('ea_briefing_tag')) : ?>
+                <span class="section-tag mb-xs"><?php echo esc_html($b_tag); ?></span>
+            <?php endif; ?>
             <h1 class="mb-sm"><?php the_title(); ?></h1>
-            <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_briefing_subheadline', 'Reserved for C-Suite, VP-level leaders, and Scaling Founders.') ); ?></p>
+            <?php if ($b_sub = get_theme_mod('ea_briefing_subheadline')) : ?>
+                <p class="subheadline opacity-80"><?php echo esc_html($b_sub); ?></p>
+            <?php endif; ?>
         </header>
 
         <div class="briefing-grid post-layout-grid">
@@ -47,11 +51,15 @@ get_header(); ?>
             </div>
 
             <aside class="briefing-sidebar">
+                <?php if ( get_theme_mod('ea_briefing_booking_title') ) : ?>
                 <div id="delayed-cta" class="sidebar-booking-card card border-accent-top" style="display: none;">
-                    <h3 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_briefing_booking_title', 'Engineer Your Acquisition Pipeline') ); ?></h3>
-                    <p class="mb-md opacity-80 font-sm"><?php echo esc_html( get_theme_mod('ea_briefing_booking_text', 'Schedule your 1:1 Institutional Diagnostic to map your custom roadmap.') ); ?></p>
+                    <h3 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_briefing_booking_title') ); ?></h3>
+                    <?php if ($b_book = get_theme_mod('ea_briefing_booking_text')) : ?>
+                        <p class="mb-md opacity-80 font-sm"><?php echo esc_html($b_book); ?></p>
+                    <?php endif; ?>
                     <a href="<?php echo esc_url( get_theme_mod( 'ea_booking_url', '#' ) ); ?>" class="btn w-100 btn-small"><?php echo esc_html( get_theme_mod('ea_briefing_booking_btn', 'Schedule Diagnostic →') ); ?></a>
                 </div>
+                <?php endif; ?>
 
                 <div class="briefing-authority-box card mt-lg">
                     <h4 class="mb-sm">Strategic Lead</h4>
