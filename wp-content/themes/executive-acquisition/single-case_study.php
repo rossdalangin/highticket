@@ -49,7 +49,7 @@
                         ?>
                     </div>
                     <p class="author-bio-small">“The cost of inaction in the corporate segment is often invisible until it's too late. We engineer the visibility you need.”</p>
-                    <p class="mt-sm"><strong><?php echo esc_html(get_theme_mod('ea_founder_name')); ?></strong></p>
+                    <p class="mt-sm"><strong><?php echo esc_html(get_theme_mod('ea_founder_name', 'Executive Strategist')); ?></strong></p>
                 </div>
             </aside>
         </div>

@@ -4,10 +4,10 @@
 <section id="primary" class="hero animate-in">
     <div class="container hero-grid">
         <div class="hero-content">
-            <span class="pre-headline mb-xs"><?php echo esc_html( get_theme_mod( 'ea_hero_pre_headline' ) ); ?></span>
-            <h1 class="mb-sm"><?php echo wp_kses_post( get_theme_mod( 'ea_hero_headline' ) ); ?></h1>
-            <p class="mb-lg"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline' ) ); ?></p>
-            <a href="#cta" class="btn"><?php echo esc_html( get_theme_mod( 'ea_hero_cta_text' ) ); ?></a>
+            <span class="pre-headline mb-xs"><?php echo esc_html( get_theme_mod( 'ea_hero_pre_headline', 'Strictly for Executive Coaches targeting the C-Suite:' ) ); ?></span>
+            <h1 class="mb-sm"><?php echo wp_kses_post( get_theme_mod( 'ea_hero_headline', 'Book 3-5 High-Ticket Corporate Engagements Every Month Using an Institutional Intent Engine.' ) ); ?></h1>
+            <p class="mb-lg"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline', 'Identifies anonymous corporate decision-makers and builds instant institutional trust without the content hamster wheel.' ) ); ?></p>
+            <a href="#cta" class="btn"><?php echo esc_html( get_theme_mod( 'ea_hero_cta_text', 'Access the Private Executive Briefing →' ) ); ?></a>
             <p class="hero-micro-copy mt-sm">Takes 12 minutes. No 'salesy' fluff. Pure strategy.</p>
         </div>
         <div class="hero-video">
@@ -58,16 +58,16 @@
 </section>
 
 <!-- Section 2: Agitation (The Pain) -->
-<section class="agitation-section">
+<section class="agitation-section bg-light">
     <div class="container">
         <div class="section-title mb-xl">
-            <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title' ) ); ?></h2>
-            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline' ) ); ?></p>
+            <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title', "The 'High-Ticket' Paradox: Why Your Expertise Isn't Converting" ) ); ?></h2>
+            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline', "The hidden costs of the content hamster wheel." ) ); ?></p>
         </div>
         <div class="grid-3">
             <?php for ($i = 1; $i <= 3; $i++) :
-                $title = get_theme_mod( "ea_agitation_bullet_{$i}_title" );
-                $text = get_theme_mod( "ea_agitation_bullet_{$i}_text" );
+                $title = get_theme_mod( "ea_agitation_bullet_{$i}_title", "Pain Point $i" );
+                $text = get_theme_mod( "ea_agitation_bullet_{$i}_text", "Description of pain point $i." );
                 ?>
                 <div class="card agitation-card">
                     <h3 class="mb-xs"><?php echo esc_html( $title ); ?></h3>
@@ -82,11 +82,11 @@
 <?php
 $testimonials = get_posts( array('post_type' => 'testimonial', 'posts_per_page' => 3) );
 if ( $testimonials ) : ?>
-<section class="testimonials-cpt">
+<section class="testimonials-cpt bg-dark">
     <div class="container">
         <div class="section-title mb-xl">
-            <h2 class="text-white">Institutional Praise</h2>
-            <p class="text-white">What C-Suite leaders are saying about the Intent Method™.</p>
+            <h2>Institutional Praise</h2>
+            <p>What C-Suite leaders are saying about the Intent Method™.</p>
         </div>
         <div class="grid-3">
             <?php foreach ( $testimonials as $t ) : ?>
@@ -110,13 +110,13 @@ if ( $testimonials ) : ?>
 <section class="mechanism-section bg-white">
     <div class="container">
         <div class="section-title mb-xl">
-            <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title' ) ); ?></h2>
-            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline' ) ); ?></p>
+            <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title', 'The Institutional Intent Engine' ) ); ?></h2>
+            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline', 'A predictable, intent-driven acquisition system.' ) ); ?></p>
         </div>
         <div class="grid-3">
             <?php for ($i = 1; $i <= 3; $i++) :
-                $title = get_theme_mod( "ea_mechanism_step_{$i}_title" );
-                $text = get_theme_mod( "ea_mechanism_step_{$i}_text" );
+                $title = get_theme_mod( "ea_mechanism_step_{$i}_title", "Step $i Title" );
+                $text = get_theme_mod( "ea_mechanism_step_{$i}_text", "Description for step $i." );
                 ?>
                 <div class="step-card">
                     <div class="step-number mb-xs">0<?php echo $i; ?></div>
@@ -129,11 +129,11 @@ if ( $testimonials ) : ?>
 </section>
 
 <!-- FAQ Section (CPT Driven) -->
-<section class="faq">
+<section class="faq bg-light">
     <div class="container">
         <div class="section-title mb-xl">
-            <h2><?php echo esc_html( get_theme_mod( 'ea_faq_title' ) ); ?></h2>
-            <p><?php echo esc_html( get_theme_mod( 'ea_faq_subheadline' ) ); ?></p>
+            <h2><?php echo esc_html( get_theme_mod( 'ea_faq_title', 'Strategic Clarifications' ) ); ?></h2>
+            <p><?php echo esc_html( get_theme_mod( 'ea_faq_subheadline', 'Common questions regarding the acquisition engine.' ) ); ?></p>
         </div>
         <div class="faq-container">
             <?php
@@ -177,8 +177,8 @@ if ( $testimonials ) : ?>
 <!-- CTA / Form Section -->
 <section id="cta" class="final-cta">
     <div class="container narrow-container text-center">
-        <h2 class="text-white mb-sm"><?php echo esc_html( get_theme_mod( 'ea_cta_title' ) ); ?></h2>
-        <p class="text-white mb-xl opacity-90"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline' ) ); ?></p>
+        <h2 class="text-white mb-sm"><?php echo esc_html( get_theme_mod( 'ea_cta_title', 'Ready to exit the content hamster wheel?' ) ); ?></h2>
+        <p class="text-white mb-xl opacity-90"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline', 'Book your strategic diagnostic session today.' ) ); ?></p>
 
         <!-- Form Placeholder -->
         <div class="cta-form-container card">

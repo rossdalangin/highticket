@@ -5,11 +5,11 @@
 get_header(); ?>
 
 <div class="case-study-template animate-in">
-    <header class="case-study-hero bg-dark">
-        <div class="container narrow-container text-center">
-            <span class="section-tag text-accent">ROI & Result Case Study</span>
-            <h1 class="text-white mb-md"><?php the_title(); ?></h1>
-            <div class="case-study-meta text-white opacity-60 font-sm">
+    <header class="case-study-hero">
+        <div class="container narrow-container">
+            <span class="section-tag">ROI & Result Case Study</span>
+            <h1 class="mb-md"><?php the_title(); ?></h1>
+            <div class="case-study-meta font-sm">
                 Published with Permission | Institutional Confidentiality Maintained
             </div>
         </div>

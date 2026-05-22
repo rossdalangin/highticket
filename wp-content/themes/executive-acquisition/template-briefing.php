@@ -62,8 +62,8 @@ get_header(); ?>
                             if ($f_img) echo '<img src="'.esc_url($f_img).'" class="avatar-img">';
                             ?>
                         </div>
-                        <p class="author-name mb-xs"><strong><?php echo esc_html(get_theme_mod('ea_founder_name')); ?></strong></p>
-                        <p class="author-bio-small font-sm"><?php echo esc_html(get_theme_mod('ea_founder_bio')); ?></p>
+                        <p class="author-name mb-xs"><strong><?php echo esc_html(get_theme_mod('ea_founder_name', 'Executive Strategist')); ?></strong></p>
+                        <p class="author-bio-small font-sm"><?php echo esc_html(get_theme_mod('ea_founder_bio', 'Specializing in leadership architecture for $5M+ organizations. Bridging the gap between vision and institutional scale.')); ?></p>
                     </div>
                 </div>
             </aside>

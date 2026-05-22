@@ -9,7 +9,7 @@ get_header(); ?>
         <div class="container narrow-container text-center">
             <span class="section-tag mb-xs">Institutional Inquiry</span>
             <h1 class="mb-sm">Initiate a Strategic Diagnostic.</h1>
-            <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_contact_inquiry_text') ); ?></p>
+            <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_contact_inquiry_text', 'Initiate a strategic diagnostic session through our secure inquiry channel. All submissions are handled with absolute discretion.') ); ?></p>
         </div>
     </section>
 
@@ -46,7 +46,7 @@ get_header(); ?>
                 <aside class="contact-sidebar">
                     <div class="sidebar-box">
                         <h4 class="widget-title">Office Location</h4>
-                        <p class="opacity-80"><?php echo esc_html(get_theme_mod('ea_contact_office')); ?></p>
+                        <p class="opacity-80"><?php echo esc_html(get_theme_mod('ea_contact_office', 'Executive Suite, Financial District')); ?></p>
                     </div>
 
                     <div class="sidebar-box">
