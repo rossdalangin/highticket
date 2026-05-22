@@ -103,8 +103,6 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_lead_magnet_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_lead_magnet_url', array( 'label' => __( 'Asset Download URL', 'executive-acquisition' ), 'section' => 'ea_assets_section', 'type' => 'url' ) );
-
-    $wp_customize->add_setting( 'ea_form_action_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_form_action_url', array(
         'label' => __( 'ESP Form Action URL (e.g. Mailchimp/Klaviyo)', 'executive-acquisition' ),
         'section' => 'ea_assets_section',
@@ -116,6 +114,12 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'title'    => __( 'About Page Strategy', 'executive-acquisition' ),
         'priority' => 27,
     ) );
+
+    $wp_customize->add_setting( 'ea_about_tag', array( 'default' => 'The Architecture of Authority', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_tag', array( 'label' => __( 'About Page Tag', 'executive-acquisition' ), 'section' => 'ea_about_section' ) );
+
+    $wp_customize->add_setting( 'ea_about_headline', array( 'default' => 'We Engineer Institutional Trust for Elite Coaches.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_headline', array( 'label' => __( 'About Page Headline', 'executive-acquisition' ), 'section' => 'ea_about_section' ) );
 
     $wp_customize->add_setting( 'ea_about_mission', array( 'default' => 'We engineer institutional trust for the world\'s most impactful leadership architects.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_mission', array( 'label' => __( 'Mission Statement', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
@@ -130,6 +134,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_about_p2_desc', array( 'default' => 'Identifying anonymous decision-makers through intent mapping.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_p2_desc', array( 'label' => __( 'Pillar 2 Desc', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
 
+    $wp_customize->add_setting( 'ea_about_exp_title', array( 'default' => 'The Track Record', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_about_exp_title', array( 'label' => __( 'Experience Box Title', 'executive-acquisition' ), 'section' => 'ea_about_section' ) );
+
     $wp_customize->add_setting( 'ea_about_experience', array( 'default' => 'Since 2012, we have been the silent architects behind the leadership transitions of over 150 mid-market organizations.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_about_experience', array( 'label' => __( 'Experience / Track Record', 'executive-acquisition' ), 'section' => 'ea_about_section', 'type' => 'textarea' ) );
 
@@ -142,8 +149,17 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_contact_inquiry_text', array( 'default' => 'Initiate a strategic diagnostic session through our secure inquiry channel. All submissions are handled with absolute discretion.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_contact_inquiry_text', array( 'label' => __( 'Inquiry Instructions', 'executive-acquisition' ), 'section' => 'ea_contact_section', 'type' => 'textarea' ) );
 
+    $wp_customize->add_setting( 'ea_contact_tag', array( 'default' => 'Institutional Inquiry', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_contact_tag', array( 'label' => __( 'Contact Page Tag', 'executive-acquisition' ), 'section' => 'ea_contact_section' ) );
+
+    $wp_customize->add_setting( 'ea_contact_headline', array( 'default' => 'Initiate a Strategic Diagnostic.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_contact_headline', array( 'label' => __( 'Contact Page Headline', 'executive-acquisition' ), 'section' => 'ea_contact_section' ) );
+
     $wp_customize->add_setting( 'ea_contact_office', array( 'default' => 'Executive Suite, Financial District', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_contact_office', array( 'label' => __( 'Primary Office', 'executive-acquisition' ), 'section' => 'ea_contact_section', 'type' => 'text' ) );
+
+    $wp_customize->add_setting( 'ea_contact_form_title', array( 'default' => 'Secure Inquiry Channel', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_contact_form_title', array( 'label' => __( 'Form Title', 'executive-acquisition' ), 'section' => 'ea_contact_section' ) );
 
     // 5. Founder Profile
     $wp_customize->add_section( 'ea_profile_section', array(
@@ -178,6 +194,12 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 30,
     ) );
 
+    $wp_customize->add_setting( 'ea_briefing_tag', array( 'default' => 'Executive Strategic Briefing', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_briefing_tag', array( 'label' => __( 'Briefing Page Tag', 'executive-acquisition' ), 'section' => 'ea_funnel_flow' ) );
+
+    $wp_customize->add_setting( 'ea_briefing_subheadline', array( 'default' => 'Reserved for C-Suite, VP-level leaders, and Scaling Founders.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_briefing_subheadline', array( 'label' => __( 'Briefing Page Subheadline', 'executive-acquisition' ), 'section' => 'ea_funnel_flow', 'type' => 'textarea' ) );
+
     $wp_customize->add_setting( 'ea_briefing_video_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_briefing_video_url', array( 'label' => __( 'Main Briefing Video URL', 'executive-acquisition' ), 'section' => 'ea_funnel_flow', 'type' => 'url' ) );
 
@@ -192,6 +214,15 @@ function executive_acquisition_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'ea_briefing_page_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_briefing_page_url', array( 'label' => __( 'Briefing Page Override URL', 'executive-acquisition' ), 'section' => 'ea_funnel_flow', 'type' => 'url' ) );
+
+    $wp_customize->add_setting( 'ea_briefing_booking_title', array( 'default' => 'Engineer Your Acquisition Pipeline', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_briefing_booking_title', array( 'label' => __( 'Booking Box Title', 'executive-acquisition' ), 'section' => 'ea_funnel_flow' ) );
+
+    $wp_customize->add_setting( 'ea_briefing_booking_text', array( 'default' => 'Schedule your 1:1 Institutional Diagnostic to map your custom roadmap.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_briefing_booking_text', array( 'label' => __( 'Booking Box Text', 'executive-acquisition' ), 'section' => 'ea_funnel_flow', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'ea_briefing_booking_btn', array( 'default' => 'Schedule Diagnostic →', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_briefing_booking_btn', array( 'label' => __( 'Booking Box Button', 'executive-acquisition' ), 'section' => 'ea_funnel_flow' ) );
 
     // 7. Hero & Direct Response
     $wp_customize->add_section( 'ea_hero_section', array(
@@ -225,6 +256,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_hero_cta_text', array( 'default' => 'Access the Private Executive Briefing →', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_hero_cta_text', array( 'label' => __( 'CTA Button Text', 'executive-acquisition' ), 'section' => 'ea_hero_section' ) );
 
+    $wp_customize->add_setting( 'ea_hero_micro_copy', array( 'default' => 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_hero_micro_copy', array( 'label' => __( 'Hero Micro-copy', 'executive-acquisition' ), 'section' => 'ea_hero_section' ) );
+
     $wp_customize->add_setting( 'ea_hero_video_url', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_hero_video_url', array( 'label' => __( 'Hero Video URL (YouTube/Vimeo)', 'executive-acquisition' ), 'section' => 'ea_hero_section', 'type' => 'url' ) );
 
@@ -233,6 +267,12 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'title'    => __( 'Social Proof & Authority', 'executive-acquisition' ),
         'priority' => 32,
     ) );
+
+    $wp_customize->add_setting( 'ea_testimonials_title', array( 'default' => 'Institutional Praise', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_testimonials_title', array( 'label' => __( 'Testimonials Title', 'executive-acquisition' ), 'section' => 'ea_social_proof' ) );
+
+    $wp_customize->add_setting( 'ea_testimonials_subheadline', array( 'default' => 'What C-Suite leaders are saying about the Intent Method™.', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_testimonials_subheadline', array( 'label' => __( 'Testimonials Subheadline', 'executive-acquisition' ), 'section' => 'ea_social_proof', 'type' => 'textarea' ) );
 
     $wp_customize->add_setting( 'ea_logo_bar_text', array( 'default' => 'TRUSTED BY LEADERS AT:', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_logo_bar_text', array( 'label' => __( 'Logo Bar Label', 'executive-acquisition' ), 'section' => 'ea_social_proof' ) );
@@ -329,6 +369,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_cta_subheadline', array( 'default' => 'Book your strategic diagnostic session today.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_cta_subheadline', array( 'label' => __( 'CTA Subheadline', 'executive-acquisition' ), 'section' => 'ea_final_cta_section', 'type' => 'textarea' ) );
 
+    $wp_customize->add_setting( 'ea_cta_compliance', array( 'default' => '✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_cta_compliance', array( 'label' => __( 'CTA Compliance Text', 'executive-acquisition' ), 'section' => 'ea_final_cta_section' ) );
+
     // 14. Newsletter Section
     $wp_customize->add_section( 'ea_newsletter_section', array(
         'title'    => __( 'Newsletter Section', 'executive-acquisition' ),
@@ -341,7 +384,75 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_newsletter_desc', array( 'default' => 'Get bi-weekly leadership architecture and acquisition strategies delivered directly to your inbox.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_newsletter_desc', array( 'label' => __( 'Newsletter Description', 'executive-acquisition' ), 'section' => 'ea_newsletter_section', 'type' => 'textarea' ) );
 
-    // 15. Tracking & Scripts
+    $wp_customize->add_setting( 'ea_newsletter_tag', array( 'default' => 'The Institutional Brief', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_newsletter_tag', array( 'label' => __( 'Newsletter Tag', 'executive-acquisition' ), 'section' => 'ea_newsletter_section' ) );
+
+    $wp_customize->add_setting( 'ea_newsletter_btn', array( 'default' => 'Join Briefing →', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_newsletter_btn', array( 'label' => __( 'Newsletter Button', 'executive-acquisition' ), 'section' => 'ea_newsletter_section' ) );
+
+    // 15. Infrastructure Blueprint (Generator Defaults)
+    $wp_customize->add_section( 'ea_blueprint_section', array(
+        'title'    => __( 'Infrastructure Blueprint (Generator)', 'executive-acquisition' ),
+        'priority' => 10,
+    ) );
+
+    $blueprint_pages = array(
+        'home' => 'Home',
+        'about' => 'The Architecture of Authority',
+        'contact' => 'Initiate Diagnostic',
+        'briefing' => 'Institutional Briefing',
+        'case_study' => 'ROI & Impact Proof'
+    );
+
+    foreach ($blueprint_pages as $slug => $label) {
+        $wp_customize->add_setting( "ea_gen_title_{$slug}", array( 'default' => $label, 'transport' => 'refresh' ) );
+        $wp_customize->add_control( "ea_gen_title_{$slug}", array( 'label' => __( "{$label} Page Title", 'executive-acquisition' ), 'section' => 'ea_blueprint_section' ) );
+
+        $wp_customize->add_setting( "ea_gen_content_{$slug}", array( 'default' => '', 'transport' => 'refresh' ) );
+        $wp_customize->add_control( "ea_gen_content_{$slug}", array( 'label' => __( "{$label} Initial Content", 'executive-acquisition' ), 'section' => 'ea_blueprint_section', 'type' => 'textarea' ) );
+    }
+
+    // 16. Form Architecture
+    $wp_customize->add_section( 'ea_forms_section', array(
+        'title'    => __( 'Form Architecture & UX', 'executive-acquisition' ),
+        'priority' => 70,
+    ) );
+
+    // Newsletter Form
+    $wp_customize->add_setting( 'ea_form_placeholder_newsletter', array( 'default' => 'Work Email Address', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_placeholder_newsletter', array( 'label' => __( 'Newsletter Email Placeholder', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+
+    // Contact Page Form
+    $wp_customize->add_setting( 'ea_form_label_name', array( 'default' => 'Full Name', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_label_name', array( 'label' => __( 'Name Field Label', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+    $wp_customize->add_setting( 'ea_form_placeholder_name', array( 'default' => 'Executive Name', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_placeholder_name', array( 'label' => __( 'Name Field Placeholder', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+
+    $wp_customize->add_setting( 'ea_form_label_email', array( 'default' => 'Work Email', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_label_email', array( 'label' => __( 'Email Field Label', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+    $wp_customize->add_setting( 'ea_form_placeholder_email', array( 'default' => 'corporate@email.com', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_placeholder_email', array( 'label' => __( 'Email Field Placeholder', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+
+    $wp_customize->add_setting( 'ea_form_label_org', array( 'default' => 'Organization / Focus Area', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_label_org', array( 'label' => __( 'Org Field Label', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+    $wp_customize->add_setting( 'ea_form_placeholder_org', array( 'default' => 'Company Name or Niche', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_placeholder_org', array( 'label' => __( 'Org Field Placeholder', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+
+    $wp_customize->add_setting( 'ea_form_label_message', array( 'default' => 'Briefly describe your institutional challenge', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_label_message', array( 'label' => __( 'Message Field Label', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+    $wp_customize->add_setting( 'ea_form_placeholder_message', array( 'default' => 'Your inquiry...', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_placeholder_message', array( 'label' => __( 'Message Field Placeholder', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+
+    $wp_customize->add_setting( 'ea_form_btn_contact', array( 'default' => 'Send Inquiry →', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_btn_contact', array( 'label' => __( 'Contact Form Button Text', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+
+    // Landing Page Form (Bottom of page)
+    $wp_customize->add_setting( 'ea_form_title_cta', array( 'default' => '[Lead Qualification Form Placeholder]', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_title_cta', array( 'label' => __( 'LP Form Placeholder Title', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+    $wp_customize->add_setting( 'ea_form_desc_cta', array( 'default' => '(Use Step 1: Work Email -> Step 2: Executive Qualifier)', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_form_desc_cta', array( 'label' => __( 'LP Form Placeholder Desc', 'executive-acquisition' ), 'section' => 'ea_forms_section' ) );
+
+    // 17. Tracking & Scripts
     $wp_customize->add_section( 'ea_tracking_section', array(
         'title'    => __( 'Tracking & Analytics', 'executive-acquisition' ),
         'priority' => 80,

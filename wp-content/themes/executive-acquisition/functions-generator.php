@@ -46,16 +46,25 @@ function ea_ajax_generate_pages() {
     foreach ( $old as $p ) wp_delete_post( $p->ID, true );
 
     $pages = array(
-        'Home' => array('template' => 'front-page.php', 'content' => ''),
-        'The Architecture of Authority' => array(
-            'template' => 'template-about.php',
-            'content' => '<h3>Boardroom-Level Discretion</h3><p>We do not chase attention; we engineer intent. Our methodology mirrors the discretion and authority of the boardroom, identifying anonymous corporate decision-makers before they issue an RFP.</p>'
+        get_theme_mod('ea_gen_title_home', 'Home') => array(
+            'template' => 'front-page.php',
+            'content' => get_theme_mod('ea_gen_content_home', '')
         ),
-        'Initiate Diagnostic' => array('template' => 'template-contact.php', 'content' => ''),
-        'Institutional Briefing' => array('template' => 'template-briefing.php', 'content' => ''),
-        'ROI & Impact Proof' => array(
+        get_theme_mod('ea_gen_title_about', 'The Architecture of Authority') => array(
+            'template' => 'template-about.php',
+            'content' => get_theme_mod('ea_gen_content_about', '<h3>Boardroom-Level Discretion</h3><p>We do not chase attention; we engineer intent. Our methodology mirrors the discretion and authority of the boardroom, identifying anonymous corporate decision-makers before they issue an RFP.</p>')
+        ),
+        get_theme_mod('ea_gen_title_contact', 'Initiate Diagnostic') => array(
+            'template' => 'template-contact.php',
+            'content' => get_theme_mod('ea_gen_content_contact', '')
+        ),
+        get_theme_mod('ea_gen_title_briefing', 'Institutional Briefing') => array(
+            'template' => 'template-briefing.php',
+            'content' => get_theme_mod('ea_gen_content_briefing', '')
+        ),
+        get_theme_mod('ea_gen_title_case_study', 'ROI & Impact Proof') => array(
             'template' => 'template-case-study.php',
-            'content' => '[roi_callout value="+140%" label="Leadership Efficiency"]<h3>The Challenge of Scale</h3><p>Before implementing the Intent Method, the leadership team was trapped on the content hamster wheel, resulting in unqualified leads and wasted executive hours.</p>'
+            'content' => get_theme_mod('ea_gen_content_case_study', '[roi_callout value="+140%" label="Leadership Efficiency"]<h3>The Challenge of Scale</h3><p>Before implementing the Intent Method, the leadership team was trapped on the content hamster wheel, resulting in unqualified leads and wasted executive hours.</p>')
         ),
     );
 

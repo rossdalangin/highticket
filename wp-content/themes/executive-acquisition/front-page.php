@@ -8,7 +8,7 @@
             <h1 class="mb-sm"><?php echo wp_kses_post( get_theme_mod( 'ea_hero_headline', 'Book 3-5 High-Ticket Corporate Engagements Every Month Using an Institutional Intent Engine.' ) ); ?></h1>
             <p class="mb-lg"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline', 'Identifies anonymous corporate decision-makers and builds instant institutional trust without the content hamster wheel.' ) ); ?></p>
             <a href="#cta" class="btn"><?php echo esc_html( get_theme_mod( 'ea_hero_cta_text', 'Access the Private Executive Briefing →' ) ); ?></a>
-            <p class="hero-micro-copy mt-sm">Takes 12 minutes. No 'salesy' fluff. Pure strategy.</p>
+            <p class="hero-micro-copy mt-sm"><?php echo esc_html( get_theme_mod( 'ea_hero_micro_copy', 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.' ) ); ?></p>
         </div>
         <div class="hero-video">
             <?php
@@ -85,8 +85,8 @@ if ( $testimonials ) : ?>
 <section class="testimonials-cpt bg-dark">
     <div class="container">
         <div class="section-title mb-xl">
-            <h2>Institutional Praise</h2>
-            <p>What C-Suite leaders are saying about the Intent Method™.</p>
+            <h2><?php echo esc_html( get_theme_mod( 'ea_testimonials_title', 'Institutional Praise' ) ); ?></h2>
+            <p><?php echo esc_html( get_theme_mod( 'ea_testimonials_subheadline', 'What C-Suite leaders are saying about the Intent Method™.' ) ); ?></p>
         </div>
         <div class="grid-3">
             <?php foreach ( $testimonials as $t ) : ?>
@@ -163,13 +163,13 @@ if ( $testimonials ) : ?>
 <!-- Newsletter Section -->
 <section class="newsletter-front">
     <div class="container narrow-container text-center">
-        <span class="section-tag mb-xs">The Institutional Brief</span>
+        <span class="section-tag mb-xs"><?php echo esc_html( get_theme_mod('ea_newsletter_tag', 'The Institutional Brief') ); ?></span>
         <h2 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_newsletter_title', 'Join 2,400+ C-Suite Leaders') ); ?></h2>
         <p class="mb-lg"><?php echo esc_html( get_theme_mod('ea_newsletter_desc', 'Get bi-weekly leadership architecture and acquisition strategies delivered directly to your inbox.') ); ?></p>
 
         <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" class="newsletter-inline-form">
-            <input type="email" name="EMAIL" placeholder="Work Email Address" required>
-            <button type="submit" class="btn">Join Briefing →</button>
+            <input type="email" name="EMAIL" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_newsletter', 'Work Email Address') ); ?>" required>
+            <button type="submit" class="btn"><?php echo esc_html( get_theme_mod('ea_newsletter_btn', 'Join Briefing →') ); ?></button>
         </form>
     </div>
 </section>
@@ -182,12 +182,12 @@ if ( $testimonials ) : ?>
 
         <!-- Form Placeholder -->
         <div class="cta-form-container card">
-            <p class="form-placeholder-title mb-xxs">[Lead Qualification Form Placeholder]</p>
-            <p class="form-placeholder-desc">(Use Step 1: Work Email -> Step 2: Executive Qualifier)</p>
+            <p class="form-placeholder-title mb-xxs"><?php echo esc_html( get_theme_mod('ea_form_title_cta', '[Lead Qualification Form Placeholder]') ); ?></p>
+            <p class="form-placeholder-desc"><?php echo esc_html( get_theme_mod('ea_form_desc_cta', '(Use Step 1: Work Email -> Step 2: Executive Qualifier)') ); ?></p>
         </div>
 
         <div class="compliance-row mt-lg">
-            <p>✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED</p>
+            <p><?php echo esc_html( get_theme_mod( 'ea_cta_compliance', '✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED' ) ); ?></p>
         </div>
     </div>
 </section>

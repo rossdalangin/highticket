@@ -7,8 +7,8 @@ get_header(); ?>
 <div class="about-page animate-in">
     <section class="about-hero bg-light">
         <div class="container narrow-container text-center">
-            <span class="section-tag mb-xs">The Architecture of Authority</span>
-            <h1 class="mb-sm">We Engineer Institutional Trust for Elite Coaches.</h1>
+            <span class="section-tag mb-xs"><?php echo esc_html( get_theme_mod('ea_about_tag', 'The Architecture of Authority') ); ?></span>
+            <h1 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_about_headline', 'We Engineer Institutional Trust for Elite Coaches.') ); ?></h1>
             <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_about_mission', "We engineer institutional trust for the world's most impactful leadership architects.") ); ?></p>
         </div>
     </section>
@@ -31,7 +31,7 @@ get_header(); ?>
                     </div>
 
                     <div class="experience-box mt-xl card">
-                        <h3 class="mb-md">The Track Record</h3>
+                        <h3 class="mb-md"><?php echo esc_html( get_theme_mod('ea_about_exp_title', 'The Track Record') ); ?></h3>
                         <p><?php echo esc_html( get_theme_mod('ea_about_experience', 'Since 2012, we have been the silent architects behind the leadership transitions of over 150 mid-market organizations.') ); ?></p>
                     </div>
                 </div>

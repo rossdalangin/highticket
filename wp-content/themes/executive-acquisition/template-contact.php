@@ -7,8 +7,8 @@ get_header(); ?>
 <div class="contact-page animate-in">
     <section class="contact-hero bg-light">
         <div class="container narrow-container text-center">
-            <span class="section-tag mb-xs">Institutional Inquiry</span>
-            <h1 class="mb-sm">Initiate a Strategic Diagnostic.</h1>
+            <span class="section-tag mb-xs"><?php echo esc_html( get_theme_mod('ea_contact_tag', 'Institutional Inquiry') ); ?></span>
+            <h1 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_contact_headline', 'Initiate a Strategic Diagnostic.') ); ?></h1>
             <p class="subheadline opacity-80"><?php echo esc_html( get_theme_mod('ea_contact_inquiry_text', 'Initiate a strategic diagnostic session through our secure inquiry channel. All submissions are handled with absolute discretion.') ); ?></p>
         </div>
     </section>
@@ -17,29 +17,29 @@ get_header(); ?>
         <div class="container">
             <div class="post-layout-grid">
                 <div class="contact-form-main card">
-                    <h3 class="mb-lg">Secure Inquiry Channel</h3>
+                    <h3 class="mb-lg"><?php echo esc_html( get_theme_mod('ea_contact_form_title', 'Secure Inquiry Channel') ); ?></h3>
 
                     <!-- Integrated Premium Form Style -->
                     <form action="#" method="POST" class="executive-inquiry-form">
                         <div class="grid-2 mb-md">
                             <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" name="name" placeholder="Executive Name" required>
+                                <label><?php echo esc_html( get_theme_mod('ea_form_label_name', 'Full Name') ); ?></label>
+                                <input type="text" name="name" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_name', 'Executive Name') ); ?>" required>
                             </div>
                             <div class="form-group">
-                                <label>Work Email</label>
-                                <input type="email" name="email" placeholder="corporate@email.com" required>
+                                <label><?php echo esc_html( get_theme_mod('ea_form_label_email', 'Work Email') ); ?></label>
+                                <input type="email" name="email" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_email', 'corporate@email.com') ); ?>" required>
                             </div>
                         </div>
                         <div class="form-group mb-md">
-                            <label>Organization / Focus Area</label>
-                            <input type="text" name="org" placeholder="Company Name or Niche">
+                            <label><?php echo esc_html( get_theme_mod('ea_form_label_org', 'Organization / Focus Area') ); ?></label>
+                            <input type="text" name="org" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_org', 'Company Name or Niche') ); ?>">
                         </div>
                         <div class="form-group mb-lg">
-                            <label>Briefly describe your institutional challenge</label>
-                            <textarea name="message" rows="5" placeholder="Your inquiry..."></textarea>
+                            <label><?php echo esc_html( get_theme_mod('ea_form_label_message', 'Briefly describe your institutional challenge') ); ?></label>
+                            <textarea name="message" rows="5" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_message', 'Your inquiry...') ); ?>"></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Inquiry →</button>
+                        <button type="submit" class="btn"><?php echo esc_html( get_theme_mod('ea_form_btn_contact', 'Send Inquiry →') ); ?></button>
                     </form>
                 </div>
 
