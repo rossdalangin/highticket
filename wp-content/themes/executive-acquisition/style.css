@@ -49,13 +49,63 @@ Text Domain: executive-acquisition
 }
 
 body.executive-night-mode {
-    --primary-color: #F8FAFC;
-    --text-main: #E2E8F0;
+    --primary-color: #FFFFFF;
+    --text-main: #F8FAFC;
     --text-light: #A0AEC0;
-    --bg-light: #0B1D33;
-    --white: #06101c;
+    --bg-light: #0d1a2d;
+    --white: #050c17;
     --border-soft: rgba(255, 255, 255, 0.1);
     background-color: var(--white);
+}
+
+/* Night Mode Contrast Fixes */
+body.executive-night-mode .bg-dark,
+body.executive-night-mode .final-cta,
+body.executive-night-mode .testimonials-cpt {
+    background-color: #02060c !important;
+}
+
+body.executive-night-mode .bg-dark h1,
+body.executive-night-mode .bg-dark h2,
+body.executive-night-mode .bg-dark h3,
+body.executive-night-mode .bg-dark h4,
+body.executive-night-mode .bg-dark p,
+body.executive-night-mode .bg-dark .testimonial-content,
+body.executive-night-mode .bg-dark .author-meta,
+body.executive-night-mode .bg-dark .testimonial-author {
+    color: #FFFFFF !important;
+}
+
+body.executive-night-mode .testimonial-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px);
+}
+
+/* Ensure regular cards in night mode are also dark but distinct */
+body.executive-night-mode .card {
+    background-color: #0d1a2d !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.executive-night-mode .card h1,
+body.executive-night-mode .card h2,
+body.executive-night-mode .card h3,
+body.executive-night-mode .card h4,
+body.executive-night-mode .card p {
+    color: #F8FAFC !important;
+}
+
+body.executive-night-mode .logo-item {
+    filter: grayscale(1) invert(1);
+    opacity: 0.6;
+}
+
+body.executive-night-mode .logo-bar::before { background: linear-gradient(to right, var(--white), transparent); }
+body.executive-night-mode .logo-bar::after { background: linear-gradient(to left, var(--white), transparent); }
+
+body.executive-night-mode .btn:hover {
+    background-color: var(--accent-dark);
 }
 
 html, body {
@@ -383,6 +433,7 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
 .logo-item:hover { opacity: 0.8; filter: grayscale(0); }
 
 .fallback-logo { font-weight: 900; font-size: 1.2rem; opacity: 0.2; letter-spacing: 2px; }
+.bg-white { background-color: var(--white); color: var(--text-main); }
 .bg-light { background-color: var(--bg-light); color: var(--text-main); }
 .bg-dark { background-color: var(--primary-color); color: var(--white); }
 
@@ -507,7 +558,7 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
     height: 100%;
 }
 
-.testimonial-content { font-style: italic; font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.8); }
+.testimonial-content { font-style: italic; font-size: 1.05rem; line-height: 1.8; color: var(--white); opacity: 0.8; }
 .testimonial-author { display: flex; align-items: center; gap: 15px; margin-top: 30px; }
 .author-meta { font-weight: 800; font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase; }
 .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
