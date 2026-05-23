@@ -48,7 +48,6 @@ Text Domain: executive-acquisition
     --border-accent-glow: 0 0 15px rgba(197, 160, 89, 0.15);
 }
 
-body.executive-night-mode { background-color: #050c17; }
 
 
 html, body {
@@ -375,7 +374,16 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
 
 .fallback-logo { font-weight: 900; font-size: 1.2rem; opacity: 0.2; letter-spacing: 2px; }
 .bg-white { background-color: var(--white); color: var(--text-main); }
+
+.bg-white { background-color: var(--white); color: var(--text-main); }
 .bg-light { background-color: var(--bg-light); color: var(--text-main); }
+.bg-dark { background-color: var(--primary-color); color: var(--white); }
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4 { color: var(--white); }
+.bg-dark p { opacity: 0.9; color: var(--white); }
+
+.final-cta { background-color: var(--primary-color); color: var(--white); }
+.final-cta h2, .final-cta p { color: var(--white); }
+
 .section-tag {
     display: inline-block;
     color: var(--accent-color);
@@ -480,9 +488,9 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
 }
 
 .testimonial-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px);
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -490,7 +498,7 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
     height: 100%;
 }
 
-.testimonial-content { font-style: italic; font-size: 1.05rem; line-height: 1.8; color: var(--white); opacity: 0.8; }
+.testimonial-content { font-style: italic; font-size: 1.05rem; line-height: 1.8; color: #0B1D33; }
 .testimonial-author { display: flex; align-items: center; gap: 15px; margin-top: 30px; }
 .author-meta { font-weight: 800; font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase; }
 .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
