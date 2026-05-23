@@ -5,7 +5,9 @@
 get_header(); ?>
 
 <div class="lead-magnet-page animate-in">
-    <?php if ( get_theme_mod('ea_lm_headline') || get_theme_mod('ea_lm_benefit_1') ) : ?>
+    <?php
+    $lm_h_def = 'Download the Executive Framework';
+    if ( get_theme_mod('ea_lm_headline', $lm_h_def) || get_theme_mod('ea_lm_benefit_1', 'The exact 5-step sequence for identified intent visitors.') ) : ?>
     <div class="container narrow-grid-layout">
         <div class="asset-preview">
             <div class="asset-visual card mb-lg">
@@ -15,8 +17,14 @@ get_header(); ?>
             <div class="asset-details">
                 <h3 class="mb-md"><?php esc_html_e("What's Inside:", 'executive-acquisition'); ?></h3>
                 <ul class="check-list">
-                    <?php for ($i = 1; $i <= 3; $i++) :
-                        $benefit = get_theme_mod("ea_lm_benefit_{$i}");
+                    <?php
+                    $lm_benefit_defs = array(
+                        1 => 'The exact 5-step sequence for identified intent visitors.',
+                        2 => 'Board-ready templates for internal stakeholder buy-in.',
+                        3 => 'ROI-mapping frameworks for high-ticket coaching engagements.'
+                    );
+                    for ($i = 1; $i <= 3; $i++) :
+                        $benefit = get_theme_mod("ea_lm_benefit_{$i}", $lm_benefit_defs[$i]);
                         if ($benefit) : ?>
                             <li><span>✓</span> <span><?php echo esc_html($benefit); ?></span></li>
                         <?php endif;

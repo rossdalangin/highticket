@@ -48,27 +48,27 @@ function ea_ajax_generate_pages() {
     $pages = array(
         get_theme_mod('ea_gen_title_home', 'Home') => array(
             'template' => 'front-page.php',
-            'content' => get_theme_mod('ea_gen_content_home', '')
+            'content' => get_theme_mod('ea_gen_content_home', '<!-- Home content handled by Customizer -->')
         ),
         get_theme_mod('ea_gen_title_about', 'The Architecture of Authority') => array(
             'template' => 'template-about.php',
-            'content' => get_theme_mod('ea_gen_content_about', '<h3>Boardroom-Level Discretion</h3><p>We do not chase attention; we engineer intent. Our methodology mirrors the discretion and authority of the boardroom, identifying anonymous corporate decision-makers before they issue an RFP.</p>')
+            'content' => get_theme_mod('ea_gen_content_about', '<h3>Elite Acquisition Architecture</h3><p>We believe that high-ticket engagements are won through authority, not volume. Our system is designed for the 1% of coaches who require a client acquisition engine that matches the sophistication of their delivery.</p><h3>The Institutional Standard</h3><p>While the rest of the market chases "reach," we focus on "relevance." By identifying intent at the organizational level, we position you as a strategic partner before the first conversation even occurs.</p>')
         ),
         get_theme_mod('ea_gen_title_contact', 'Initiate Diagnostic') => array(
             'template' => 'template-contact.php',
-            'content' => get_theme_mod('ea_gen_content_contact', '')
+            'content' => get_theme_mod('ea_gen_content_contact', '<!-- Contact content handled by Customizer -->')
         ),
         get_theme_mod('ea_gen_title_briefing', 'Institutional Briefing') => array(
             'template' => 'template-briefing.php',
-            'content' => get_theme_mod('ea_gen_content_briefing', '')
+            'content' => get_theme_mod('ea_gen_content_briefing', '<h3>The Strategic Shift</h3><p>In this private briefing, we break down the exact mechanism used to secure $25,000+ corporate engagements without traditional outbound friction. You will learn the 3-step Intent Mapping sequence used by elite boutique firms to bypass gatekeepers and move directly to stakeholder alignment.</p>')
         ),
         get_theme_mod('ea_gen_title_case_study', 'ROI & Impact Proof') => array(
             'template' => 'template-case-study.php',
-            'content' => get_theme_mod('ea_gen_content_case_study', '[roi_callout value="+140%" label="Leadership Efficiency"]<h3>The Challenge of Scale</h3><p>Before implementing the Intent Method, the leadership team was trapped on the content hamster wheel, resulting in unqualified leads and wasted executive hours.</p>')
+            'content' => get_theme_mod('ea_gen_content_case_study', '<h3>The Core Challenge</h3><p>The client—a boutique leadership consultancy—was struggling to break the $5k per month engagement ceiling despite world-class results. Their acquisition was manual, inconsistent, and lacked the "Institutional Gravity" required for VP-level buy-in.</p><h3>The Intervention</h3><p>We deployed the Intent Mapping engine to identify mid-market organizations actively searching for leadership transition frameworks. Within 45 days, the system generated 3 high-intent inquiries from qualified C-Suite decision-makers.</p>')
         ),
         get_theme_mod('ea_gen_title_strategy', 'Private Strategy Session') => array(
             'template' => 'template-contact.php',
-            'content' => get_theme_mod('ea_gen_content_strategy', '')
+            'content' => get_theme_mod('ea_gen_content_strategy', '<!-- Strategy session handled by Customizer form -->')
         ),
         get_theme_mod('ea_gen_title_privacy', 'Privacy Policy') => array(
             'template' => 'page.php',
@@ -126,7 +126,7 @@ function ea_ajax_generate_pages() {
 
             // Strategic Menu Logic: Only high-leverage pages in Header
             $header_pages = array(
-                'Home',
+                get_theme_mod('ea_gen_title_home', 'Home'),
                 get_theme_mod('ea_gen_title_about', 'The Architecture of Authority'),
                 'Strategic Assets',
                 get_theme_mod('ea_gen_title_strategy', 'Private Strategy Session')

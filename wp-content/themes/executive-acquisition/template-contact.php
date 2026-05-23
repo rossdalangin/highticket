@@ -5,14 +5,16 @@
 get_header(); ?>
 
 <div class="contact-page animate-in">
-    <?php if ( get_theme_mod('ea_contact_headline') ) : ?>
+    <?php
+    $c_h1_def = 'Initiate a Strategic Diagnostic.';
+    if ( $c_h1 = get_theme_mod('ea_contact_headline', $c_h1_def) ) : ?>
     <section class="contact-hero bg-light">
         <div class="container narrow-container text-center">
-            <?php if ($c_tag = get_theme_mod('ea_contact_tag')) : ?>
+            <?php if ($c_tag = get_theme_mod('ea_contact_tag', 'Institutional Inquiry')) : ?>
                 <span class="section-tag mb-xs"><?php echo esc_html($c_tag); ?></span>
             <?php endif; ?>
-            <h1 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_contact_headline') ); ?></h1>
-            <?php if ($c_inq = get_theme_mod('ea_contact_inquiry_text')) : ?>
+            <h1 class="mb-sm"><?php echo esc_html( $c_h1 ); ?></h1>
+            <?php if ($c_inq = get_theme_mod('ea_contact_inquiry_text', 'Initiate a strategic diagnostic session through our secure inquiry channel. All submissions are handled with absolute discretion.')) : ?>
                 <p class="subheadline opacity-80"><?php echo esc_html($c_inq); ?></p>
             <?php endif; ?>
         </div>

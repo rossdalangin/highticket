@@ -18,9 +18,9 @@ endif;
 add_action( 'after_setup_theme', 'executive_acquisition_setup' );
 
 function executive_acquisition_scripts() {
-    wp_enqueue_style( 'executive-acquisition-style', get_stylesheet_uri(), array(), '1.1.7' );
+    wp_enqueue_style( 'executive-acquisition-style', get_stylesheet_uri(), array(), '1.1.9' );
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@700;900&display=swap', array(), null );
-    wp_enqueue_script( 'ea-dtr', get_template_directory_uri() . '/assets/js/dtr-personalization.js', array('jquery'), '1.1.7', true );
+    wp_enqueue_script( 'ea-theme-core', get_template_directory_uri() . '/assets/js/theme-core.js', array('jquery'), '1.1.9', true );
 }
 add_action( 'wp_enqueue_scripts', 'executive_acquisition_scripts' );
 

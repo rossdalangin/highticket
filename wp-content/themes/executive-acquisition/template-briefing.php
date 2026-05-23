@@ -7,11 +7,11 @@ get_header(); ?>
 <div class="briefing-page animate-in">
     <div class="container">
         <header class="briefing-header text-center mb-xl">
-            <?php if ($b_tag = get_theme_mod('ea_briefing_tag')) : ?>
+            <?php if ($b_tag = get_theme_mod('ea_briefing_tag', 'Executive Strategic Briefing')) : ?>
                 <span class="section-tag mb-xs"><?php echo esc_html($b_tag); ?></span>
             <?php endif; ?>
             <h1 class="mb-sm"><?php the_title(); ?></h1>
-            <?php if ($b_sub = get_theme_mod('ea_briefing_subheadline')) : ?>
+            <?php if ($b_sub = get_theme_mod('ea_briefing_subheadline', 'Reserved for C-Suite, VP-level leaders, and Scaling Founders.')) : ?>
                 <p class="subheadline opacity-80"><?php echo esc_html($b_sub); ?></p>
             <?php endif; ?>
         </header>
@@ -51,10 +51,12 @@ get_header(); ?>
             </div>
 
             <aside class="briefing-sidebar">
-                <?php if ( get_theme_mod('ea_briefing_booking_title') ) : ?>
+                <?php
+                $bt_def = 'Engineer Your Acquisition Pipeline';
+                if ( $bt = get_theme_mod('ea_briefing_booking_title', $bt_def) ) : ?>
                 <div id="delayed-cta" class="sidebar-booking-card card border-accent-top" style="display: none;">
-                    <h3 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_briefing_booking_title') ); ?></h3>
-                    <?php if ($b_book = get_theme_mod('ea_briefing_booking_text')) : ?>
+                    <h3 class="mb-sm"><?php echo esc_html( $bt ); ?></h3>
+                    <?php if ($b_book = get_theme_mod('ea_briefing_booking_text', 'Schedule your 1:1 Institutional Diagnostic to map your custom roadmap.')) : ?>
                         <p class="mb-md opacity-80 font-sm"><?php echo esc_html($b_book); ?></p>
                     <?php endif; ?>
                     <a href="<?php echo esc_url( get_theme_mod( 'ea_booking_url', '#' ) ); ?>" class="btn w-100 btn-small"><?php echo esc_html( get_theme_mod('ea_briefing_booking_btn', 'Schedule Diagnostic →') ); ?></a>
@@ -70,7 +72,7 @@ get_header(); ?>
                             if ($f_img) echo '<img src="'.esc_url($f_img).'" class="avatar-img">';
                             ?>
                         </div>
-                        <p class="author-name mb-xs"><strong><?php echo esc_html(get_theme_mod('ea_founder_name', 'Executive Strategist')); ?></strong></p>
+                        <p class="author-name mb-xs"><strong><?php echo esc_html(get_theme_mod('ea_founder_name', 'Alexander Sterling')); ?></strong></p>
                         <p class="author-bio-small font-sm"><?php echo esc_html(get_theme_mod('ea_founder_bio', 'Specializing in leadership architecture for $5M+ organizations. Bridging the gap between vision and institutional scale.')); ?></p>
                     </div>
                 </div>

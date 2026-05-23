@@ -1,14 +1,30 @@
 <?php get_header(); ?>
 
 <!-- Section 1: Above-the-Fold (The Hook) -->
+<?php
+$hero_h1_def = 'Book $25k+ Corporate Engagements Every Month Using Institutional Intent Mapping.';
+$hero_sub_def = 'Engineer predictable inbound acquisition that identifies anonymous C-Suite decision-makers and builds institutional trust entirely on autopilot.';
+if ( $hero_h1 = get_theme_mod('ea_hero_headline', $hero_h1_def) ) : ?>
 <section id="primary" class="hero animate-in">
     <div class="container hero-grid">
         <div class="hero-content">
-            <span class="pre-headline mb-xs"><?php echo esc_html( get_theme_mod( 'ea_hero_pre_headline', 'Strictly for Executive Coaches targeting the C-Suite:' ) ); ?></span>
-            <h1 class="mb-sm"><?php echo wp_kses_post( get_theme_mod( 'ea_hero_headline', 'Book 3-5 High-Ticket Corporate Engagements Every Month Using an Institutional Intent Engine.' ) ); ?></h1>
-            <p class="mb-lg"><?php echo esc_html( get_theme_mod( 'ea_hero_subheadline', 'Identifies anonymous corporate decision-makers and builds instant institutional trust without the content hamster wheel.' ) ); ?></p>
-            <a href="#cta" class="btn"><?php echo esc_html( get_theme_mod( 'ea_hero_cta_text', 'Access the Private Executive Briefing →' ) ); ?></a>
-            <p class="hero-micro-copy mt-sm"><?php echo esc_html( get_theme_mod( 'ea_hero_micro_copy', 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.' ) ); ?></p>
+            <?php if ( $pre = get_theme_mod('ea_hero_pre_headline', 'Strictly for Executive Coaches targeting the C-Suite:') ) : ?>
+                <span class="pre-headline mb-xs"><?php echo esc_html($pre); ?></span>
+            <?php endif; ?>
+
+            <h1 class="mb-sm"><?php echo wp_kses_post($hero_h1); ?></h1>
+
+            <?php if ( $sub = get_theme_mod('ea_hero_subheadline', $hero_sub_def) ) : ?>
+                <p class="mb-lg"><?php echo esc_html($sub); ?></p>
+            <?php endif; ?>
+
+            <?php if ( $cta = get_theme_mod('ea_hero_cta_text', 'Access the Private Executive Briefing →') ) : ?>
+                <a href="#cta" class="btn"><?php echo esc_html($cta); ?></a>
+            <?php endif; ?>
+
+            <?php if ( $micro = get_theme_mod('ea_hero_micro_copy', 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.') ) : ?>
+                <p class="hero-micro-copy mt-sm"><?php echo esc_html($micro); ?></p>
+            <?php endif; ?>
         </div>
         <div class="hero-media">
             <?php
@@ -34,6 +50,7 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Logo Bar Section -->
 <?php $is_marquee = get_theme_mod( 'ea_enable_marquee', false ); ?>
@@ -69,20 +86,33 @@
 </section>
 
 <!-- Section 2: Agitation (The Pain) -->
+<?php
+$ag_title_def = "The 'High-Ticket' Paradox: Why Your Expertise Isn't Converting";
+if ( $ag_title = get_theme_mod('ea_agitation_title', $ag_title_def) ) : ?>
 <section class="agitation-section bg-light">
     <div class="container">
         <div class="section-title mb-xl text-center">
-            <span class="section-tag"><?php echo esc_html( get_theme_mod('ea_agitation_pre_headline', 'The Cost of Invisibility') ); ?></span>
-            <h2><?php echo esc_html( get_theme_mod( 'ea_agitation_title', "The 'High-Ticket' Paradox: Why Your Expertise Isn't Converting" ) ); ?></h2>
-            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_agitation_subheadline', "The hidden costs of the content hamster wheel." ) ); ?></p>
+            <?php if ($ag_tag = get_theme_mod('ea_agitation_pre_headline', 'The Cost of Invisibility')) : ?>
+                <span class="section-tag"><?php echo esc_html($ag_tag); ?></span>
+            <?php endif; ?>
+            <h2><?php echo esc_html( $ag_title ); ?></h2>
+            <?php if ($ag_sub = get_theme_mod('ea_agitation_subheadline', 'The hidden costs of the content hamster wheel.')) : ?>
+                <p class="subheadline"><?php echo esc_html($ag_sub); ?></p>
+            <?php endif; ?>
         </div>
 
         <div class="side-image-layout reverse">
             <div class="content-side">
                 <div class="agitation-bullets">
-                    <?php for ($i = 1; $i <= 3; $i++) :
-                        $title = get_theme_mod( "ea_agitation_bullet_{$i}_title" );
-                        $text = get_theme_mod( "ea_agitation_bullet_{$i}_text" );
+                    <?php
+                    $ag_defaults = array(
+                        1 => array('title' => 'The Content Hamster Wheel', 'text'  => 'Wasting executive hours on low-conversion LinkedIn posts that attract "vanity metrics" instead of institutional decision-makers.'),
+                        2 => array('title' => 'Brand Reputation Erosion', 'text'  => 'Burning C-Suite bridges with low-quality automated outreach that signals desperation rather than institutional authority.'),
+                        3 => array('title' => 'The Discovery Call Drain', 'text'  => 'Filling your calendar with unqualified leads who lack the budget or the institutional authority to trigger a $25k engagement.')
+                    );
+                    for ($i = 1; $i <= 3; $i++) :
+                        $title = get_theme_mod( "ea_agitation_bullet_{$i}_title", $ag_defaults[$i]['title'] );
+                        $text = get_theme_mod( "ea_agitation_bullet_{$i}_text", $ag_defaults[$i]['text'] );
                         if ( $title || $text ) :
                         ?>
                         <div class="card agitation-card mb-md">
@@ -105,6 +135,7 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Testimonials (CPT Driven) -->
 <?php
@@ -135,20 +166,33 @@ if ( $testimonials ) : ?>
 <?php endif; ?>
 
 <!-- Section 3: The Mechanism -->
+<?php
+$m_title_def = 'The Institutional Intent Engine';
+if ( $m_title = get_theme_mod('ea_mechanism_title', $m_title_def) ) : ?>
 <section class="mechanism-section bg-white">
     <div class="container">
         <div class="section-title mb-xl text-center">
-            <span class="section-tag"><?php echo esc_html( get_theme_mod('ea_mechanism_pre_headline', 'The Institutional Intent Engine™') ); ?></span>
-            <h2><?php echo esc_html( get_theme_mod( 'ea_mechanism_title', 'The Institutional Intent Engine' ) ); ?></h2>
-            <p class="subheadline"><?php echo esc_html( get_theme_mod( 'ea_mechanism_subheadline', 'A predictable, intent-driven acquisition system.' ) ); ?></p>
+            <?php if ($m_tag = get_theme_mod('ea_mechanism_pre_headline', 'The Institutional Intent Engine™')) : ?>
+                <span class="section-tag"><?php echo esc_html($m_tag); ?></span>
+            <?php endif; ?>
+            <h2><?php echo esc_html( $m_title ); ?></h2>
+            <?php if ($m_sub = get_theme_mod('ea_mechanism_subheadline', 'A predictable, intent-driven acquisition system.')) : ?>
+                <p class="subheadline"><?php echo esc_html($m_sub); ?></p>
+            <?php endif; ?>
         </div>
 
         <div class="side-image-layout">
             <div class="content-side">
                 <div class="steps-list">
-                    <?php for ($i = 1; $i <= 3; $i++) :
-                        $title = get_theme_mod( "ea_mechanism_step_{$i}_title" );
-                        $text = get_theme_mod( "ea_mechanism_step_{$i}_text" );
+                    <?php
+                    $m_defaults = array(
+                        1 => array('title' => 'Intent Beacon Identification', 'text'  => 'We deploy proprietary tracking that identifies anonymous VP and C-Suite visitors before they ever fill out a form.'),
+                        2 => array('title' => 'Institutional Trust Anchoring', 'text'  => 'Our Authority Bridge sequence builds instant boardroom-level trust, positioning you as the only logical solution.'),
+                        3 => array('title' => 'Strategic Diagnostic Conversion', 'text'  => 'Move highly-qualified leads directly into a high-leverage diagnostic session to finalize $10k–$25k engagements.')
+                    );
+                    for ($i = 1; $i <= 3; $i++) :
+                        $title = get_theme_mod( "ea_mechanism_step_{$i}_title", $m_defaults[$i]['title'] );
+                        $text = get_theme_mod( "ea_mechanism_step_{$i}_text", $m_defaults[$i]['text'] );
                         if ( $title || $text ) :
                         ?>
                         <div class="step-card mb-lg">
@@ -172,13 +216,19 @@ if ( $testimonials ) : ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- FAQ Section (CPT Driven) -->
+<?php
+$f_title_def = 'Strategic Clarifications';
+if ( $f_title = get_theme_mod('ea_faq_title', $f_title_def) ) : ?>
 <section class="faq bg-light">
     <div class="container">
-        <div class="section-title mb-xl">
-            <h2><?php echo esc_html( get_theme_mod( 'ea_faq_title', 'Strategic Clarifications' ) ); ?></h2>
-            <p><?php echo esc_html( get_theme_mod( 'ea_faq_subheadline', 'Common questions regarding the acquisition engine.' ) ); ?></p>
+        <div class="section-title mb-xl text-center">
+            <h2><?php echo esc_html( $f_title ); ?></h2>
+            <?php if ($f_sub = get_theme_mod('ea_faq_subheadline', 'Common questions regarding the acquisition engine.')) : ?>
+                <p><?php echo esc_html($f_sub); ?></p>
+            <?php endif; ?>
         </div>
         <div class="faq-container">
             <?php
@@ -191,9 +241,16 @@ if ( $testimonials ) : ?>
                 </div>
             <?php endforeach; else: ?>
                 <!-- Fallback to Customizer FAQ if no CPTs exist yet -->
-                <?php for ($i = 1; $i <= 4; $i++) :
-                    $q = get_theme_mod( "ea_faq_q_{$i}" );
-                    $a = get_theme_mod( "ea_faq_a_{$i}" );
+                <?php
+                $faq_defs = array(
+                    1 => array('q' => 'How does the Intent Beacon identify anonymous visitors?', 'a' => 'We utilize B2B identity resolution technology that matches corporate IP addresses and browser fingerprints against institutional databases.'),
+                    2 => array('q' => 'Does this system work for boutique coaching firms?', 'a' => 'Yes. It is specifically designed to level the playing field, allowing boutique firms to project the same institutional authority as global consultancies.'),
+                    3 => array('q' => 'What is the typical timeframe for ROI?', 'a' => 'Most clients see their first identified "High-Intent" lead within 14 days of system deployment, with full funnel stabilization in 45 days.'),
+                    4 => array('q' => 'Is this a specialized CRM or a lead gen service?', 'a' => 'It is a hybrid infrastructure—combining proprietary conversion psychology with automated identification tech that feeds into your existing CRM.')
+                );
+                for ($i = 1; $i <= 4; $i++) :
+                    $q = get_theme_mod( "ea_faq_q_{$i}", $faq_defs[$i]['q'] );
+                    $a = get_theme_mod( "ea_faq_a_{$i}", $faq_defs[$i]['a'] );
                     if ($q) : ?>
                     <div class="faq-item animate-in">
                         <span class="faq-question"><?php echo esc_html($q); ?></span>
@@ -204,6 +261,7 @@ if ( $testimonials ) : ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Case Studies Preview -->
 <?php
@@ -229,18 +287,30 @@ if ( $home_cases ) : ?>
 <?php endif; ?>
 
 <!-- Authority Tiers / Engagement Logic -->
+<?php
+$t_title_def = 'Institutional Engagement Tiers';
+if ( $t_title = get_theme_mod('ea_tiers_title', $t_title_def) ) : ?>
 <section class="engagement-tiers bg-white">
     <div class="container">
         <div class="section-title mb-xl text-center">
-            <span class="section-tag"><?php echo esc_html( get_theme_mod('ea_tiers_tag', 'Strategic Engagement') ); ?></span>
-            <h2><?php echo esc_html( get_theme_mod('ea_tiers_title', 'Institutional Engagement Tiers') ); ?></h2>
-            <p class="subheadline"><?php echo esc_html( get_theme_mod('ea_tiers_subheadline', 'Quantifiable ROI for Every Stage of Organizational Growth.') ); ?></p>
+            <?php if ($t_tag = get_theme_mod('ea_tiers_tag', 'Strategic Engagement')) : ?>
+                <span class="section-tag"><?php echo esc_html($t_tag); ?></span>
+            <?php endif; ?>
+            <h2><?php echo esc_html( $t_title ); ?></h2>
+            <?php if ($t_sub = get_theme_mod('ea_tiers_subheadline', 'Quantifiable ROI for Every Stage of Organizational Growth.')) : ?>
+                <p class="subheadline"><?php echo esc_html($t_sub); ?></p>
+            <?php endif; ?>
         </div>
         <div class="grid-2">
-            <?php for ($i = 1; $i <= 2; $i++) :
-                $name = get_theme_mod( "ea_tier_{$i}_name" );
-                $price = get_theme_mod( "ea_tier_{$i}_price" );
-                $desc = get_theme_mod( "ea_tier_{$i}_desc" );
+            <?php
+            $tier_defs = array(
+                1 => array('name'  => 'Strategic Advisory', 'price' => '$10,000', 'desc'  => 'Intensive 90-day engagement focused on leadership architecture and authority infrastructure deployment.'),
+                2 => array('name'  => 'Institutional Retainer', 'price' => '$25,000', 'desc'  => 'Full-scale acquisition engine management, intent mapping, and executive stakeholder alignment for mid-market orgs.')
+            );
+            for ($i = 1; $i <= 2; $i++) :
+                $name = get_theme_mod( "ea_tier_{$i}_name", $tier_defs[$i]['name'] );
+                $price = get_theme_mod( "ea_tier_{$i}_price", $tier_defs[$i]['price'] );
+                $desc = get_theme_mod( "ea_tier_{$i}_desc", $tier_defs[$i]['desc'] );
                 if ( $name || $price ) :
                 ?>
                 <div class="card tier-card animate-in">
@@ -255,13 +325,21 @@ if ( $home_cases ) : ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- Newsletter Section -->
+<?php
+$n_title_def = 'Join 2,400+ C-Suite Leaders';
+if ( $n_title = get_theme_mod('ea_newsletter_title', $n_title_def) ) : ?>
 <section class="newsletter-front bg-light">
     <div class="container narrow-container text-center">
-        <span class="section-tag mb-xs"><?php echo esc_html( get_theme_mod('ea_newsletter_tag', 'The Institutional Brief') ); ?></span>
-        <h2 class="mb-sm"><?php echo esc_html( get_theme_mod('ea_newsletter_title', 'Join 2,400+ C-Suite Leaders') ); ?></h2>
-        <p class="mb-lg"><?php echo esc_html( get_theme_mod('ea_newsletter_desc', 'Get bi-weekly leadership architecture and acquisition strategies delivered directly to your inbox.') ); ?></p>
+        <?php if ($n_tag = get_theme_mod('ea_newsletter_tag', 'The Institutional Brief')) : ?>
+            <span class="section-tag mb-xs"><?php echo esc_html($n_tag); ?></span>
+        <?php endif; ?>
+        <h2 class="mb-sm"><?php echo esc_html( $n_title ); ?></h2>
+        <?php if ($n_desc = get_theme_mod('ea_newsletter_desc', 'Get bi-weekly leadership architecture and acquisition strategies delivered directly to your inbox.')) : ?>
+            <p class="mb-lg"><?php echo esc_html($n_desc); ?></p>
+        <?php endif; ?>
 
         <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" class="newsletter-inline-form">
             <input type="email" name="EMAIL" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_newsletter', 'Work Email Address') ); ?>" required>
@@ -269,12 +347,18 @@ if ( $home_cases ) : ?>
         </form>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- CTA / Form Section -->
+<?php
+$c_title_def = 'Ready to exit the content hamster wheel?';
+if ( $c_title = get_theme_mod('ea_cta_title', $c_title_def) ) : ?>
 <section id="cta" class="final-cta">
     <div class="container narrow-container text-center">
-        <h2 class="text-white mb-sm"><?php echo esc_html( get_theme_mod( 'ea_cta_title', 'Ready to exit the content hamster wheel?' ) ); ?></h2>
-        <p class="text-white mb-xl opacity-90"><?php echo esc_html( get_theme_mod( 'ea_cta_subheadline', 'Book your strategic diagnostic session today.' ) ); ?></p>
+        <h2 class="text-white mb-sm"><?php echo esc_html( $c_title ); ?></h2>
+        <?php if ($c_sub = get_theme_mod('ea_cta_subheadline', 'Book your strategic diagnostic session today.')) : ?>
+            <p class="text-white mb-xl opacity-90"><?php echo esc_html($c_sub); ?></p>
+        <?php endif; ?>
 
         <?php
         $cta_form = get_theme_mod('ea_cta_form_code');
@@ -293,5 +377,6 @@ if ( $home_cases ) : ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <?php get_footer(); ?>
