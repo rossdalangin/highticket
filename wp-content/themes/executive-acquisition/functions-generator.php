@@ -166,25 +166,36 @@ function ea_ajax_generate_pages() {
 
     // Create Sample Strategic Resources
     $resource_samples = array(
-        'The 2024 Leadership Retention Audit' => 'A technical breakdown of the 4 primary revenue leaks in mid-market leadership teams.',
-        'The Institutional Intent Roadmap' => 'Map your acquisition sequence from anonymous visitor to $25k engagement.',
-        'C-Suite Communication Protocol' => 'Strategic scripts for internal stakeholder buy-in during high-ticket leadership pivots.'
+        'The 2024 Leadership Retention Audit' => array(
+            'excerpt' => 'A technical breakdown of the 4 primary revenue leaks in mid-market leadership teams.',
+            'icon'    => '.PDF'
+        ),
+        'The Institutional Intent Roadmap' => array(
+            'excerpt' => 'Map your acquisition sequence from anonymous visitor to $25k engagement.',
+            'icon'    => '.MAP'
+        ),
+        'C-Suite Communication Protocol' => array(
+            'excerpt' => 'Strategic scripts for internal stakeholder buy-in during high-ticket leadership pivots.',
+            'icon'    => '.DOC'
+        )
     );
 
-    foreach ( $resource_samples as $title => $excerpt ) {
-        wp_insert_post( array(
+    foreach ( $resource_samples as $title => $data ) {
+        $rid = wp_insert_post( array(
             'post_title'   => $title,
-            'post_excerpt' => $excerpt,
-            'post_content' => 'Full strategy details would be placed here by the coach.',
+            'post_excerpt' => $data['excerpt'],
+            'post_content' => 'This framework represents the distillation of over 500 hours of executive consulting. It is designed to be shared directly with board-level stakeholders to facilitate high-velocity decision making.',
             'post_status'  => 'publish',
             'post_type'    => 'resource'
         ) );
+        if ($rid) update_post_meta($rid, '_ea_res_icon', $data['icon']);
     }
 
     // Create Sample Testimonials
     $testimonial_samples = array(
-        'VP of Strategy, Global Tech' => 'The Intent Engine identified our needs before we even launched the hiring search.',
-        'Founder, ScaleUp Ventures' => 'Finally, a system that understands the discretion required at our level.'
+        'Marcus Thorne, VP of Strategy' => 'The Intent Engine identified our specific leadership gaps before we even authorized the search. The precision is unmatched in the coaching industry.',
+        'Sarah Jenkins, Scaling Founder' => 'Finally, a client acquisition system that understands the discretion and institutional authority required at the $5M+ level. Our ROI was established in month one.',
+        'Director of Ops, Fortune 500' => 'This methodology has transformed how we view executive development. It is no longer a cost center, but a predictable growth lever.'
     );
 
     foreach ( $testimonial_samples as $name => $content ) {
@@ -194,6 +205,32 @@ function ea_ajax_generate_pages() {
             'post_status'  => 'publish',
             'post_type'    => 'testimonial'
         ) );
+    }
+
+    // Create Sample Case Studies
+    $case_samples = array(
+        'Mid-Market Leadership Pivot' => array(
+            'impact' => '140% Efficiency Increase',
+            'rev'    => '$1.2M Recovered'
+        ),
+        'Global Tech C-Suite Alignment' => array(
+            'impact' => 'Full Executive Buy-in',
+            'rev'    => '3.4x ROI'
+        )
+    );
+
+    foreach ( $case_samples as $title => $meta ) {
+        $cid = wp_insert_post( array(
+            'post_title'   => $title,
+            'post_excerpt' => 'How we utilized the Intent Method to realign a fractured C-Suite and recover hundreds of wasted executive hours.',
+            'post_content' => 'The primary challenge was a misalignment between the Board of Directors and the operating leadership team. By deploying the Institutional Intent framework, we identified the specific friction points...',
+            'post_status'  => 'publish',
+            'post_type'    => 'case_study'
+        ) );
+        if ($cid) {
+            update_post_meta($cid, '_ea_case_impact', $meta['impact']);
+            update_post_meta($cid, '_ea_case_revenue', $meta['rev']);
+        }
     }
 
     wp_send_json_success( array( 'message' => 'Elite Infrastructure & Sample Content Deployed.' ) );

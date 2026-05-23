@@ -442,9 +442,77 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
 }
 
 .testimonial-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.testimonial-content { font-style: italic; font-size: 1.1rem; line-height: 1.7; color: rgba(255,255,255,0.9); }
+.author-meta { font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; color: var(--accent-color); text-transform: uppercase; }
+
+/* Logo Bar Refinement */
+.logo-bar {
+    background: var(--white);
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border-soft);
+    position: relative;
+}
+
+.logo-bar::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--white) 0%, rgba(255,255,255,0) 15%, rgba(255,255,255,0) 85%, var(--white) 100%);
+    z-index: 2; pointer-events: none;
+}
+
+.logo-bar-label { font-size: 0.7rem; font-weight: 900; letter-spacing: 3px; color: var(--primary-color); opacity: 0.4; margin-bottom: 40px; }
+
+/* Resource Card Refinement */
+.asset-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-top: 4px solid var(--accent-color);
+    padding: 50px 40px;
+}
+
+.asset-icon {
+    display: inline-block;
+    padding: 8px 15px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-soft);
+    font-weight: 900;
+    color: var(--primary-color);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* Lead Magnet Layout Refinement */
+.lead-magnet-page { background: var(--bg-light); min-height: 90vh; }
+.narrow-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 100px;
+    align-items: center;
+    padding: 120px 0;
+}
+
+.asset-visual {
+    background: var(--primary-color);
+    padding: 80px 40px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+.asset-format { color: var(--accent-color); font-weight: 900; letter-spacing: 4px; font-size: 0.8rem; display: block; margin-bottom: 20px; }
+
+.check-list { list-style: none; padding: 0; }
+.check-list li { display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start; }
+.check-list li span:first-child { color: var(--accent-color); font-weight: 900; }
 
 .quote-mark {
     font-family: var(--font-heading);

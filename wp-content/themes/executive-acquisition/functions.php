@@ -107,8 +107,14 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_lm_headline', array( 'default' => 'Download the Executive Framework', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_lm_headline', array( 'label' => __( 'Lead Magnet Headline', 'executive-acquisition' ), 'section' => 'ea_assets_section' ) );
 
+    $lm_benefit_defaults = array(
+        1 => 'The exact 5-step sequence for identified intent visitors.',
+        2 => 'Board-ready templates for internal stakeholder buy-in.',
+        3 => 'ROI-mapping frameworks for high-ticket coaching engagements.'
+    );
+
     for ($i = 1; $i <= 3; $i++) {
-        $wp_customize->add_setting( "ea_lm_benefit_{$i}", array( 'default' => "Executive benefit {$i}.", 'transport' => 'postMessage' ) );
+        $wp_customize->add_setting( "ea_lm_benefit_{$i}", array( 'default' => $lm_benefit_defaults[$i], 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_lm_benefit_{$i}", array( 'label' => __( "Benefit {$i}", 'executive-acquisition' ), 'section' => 'ea_assets_section' ) );
     }
 
@@ -191,7 +197,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'priority' => 29,
     ) );
 
-    $wp_customize->add_setting( 'ea_founder_name', array( 'default' => 'Executive Strategist', 'transport' => 'postMessage' ) );
+    $wp_customize->add_setting( 'ea_founder_name', array( 'default' => 'Alexander Sterling', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_founder_name', array( 'label' => __( 'Full Name', 'executive-acquisition' ), 'section' => 'ea_profile_section' ) );
 
     $wp_customize->add_setting( 'ea_founder_bio', array(
