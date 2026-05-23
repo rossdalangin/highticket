@@ -48,65 +48,8 @@ Text Domain: executive-acquisition
     --border-accent-glow: 0 0 15px rgba(197, 160, 89, 0.15);
 }
 
-body.executive-night-mode {
-    --primary-color: #FFFFFF;
-    --text-main: #F8FAFC;
-    --text-light: #A0AEC0;
-    --bg-light: #0d1a2d;
-    --white: #050c17;
-    --border-soft: rgba(255, 255, 255, 0.1);
-    background-color: var(--white);
-}
+body.executive-night-mode { background-color: #050c17; }
 
-/* Night Mode Contrast Fixes */
-body.executive-night-mode .bg-dark,
-body.executive-night-mode .final-cta,
-body.executive-night-mode .testimonials-cpt {
-    background-color: #02060c !important;
-}
-
-body.executive-night-mode .bg-dark h1,
-body.executive-night-mode .bg-dark h2,
-body.executive-night-mode .bg-dark h3,
-body.executive-night-mode .bg-dark h4,
-body.executive-night-mode .bg-dark p,
-body.executive-night-mode .bg-dark .testimonial-content,
-body.executive-night-mode .bg-dark .author-meta,
-body.executive-night-mode .bg-dark .testimonial-author {
-    color: #FFFFFF !important;
-}
-
-body.executive-night-mode .testimonial-card {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(15px);
-}
-
-/* Ensure regular cards in night mode are also dark but distinct */
-body.executive-night-mode .card {
-    background-color: #0d1a2d !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-body.executive-night-mode .card h1,
-body.executive-night-mode .card h2,
-body.executive-night-mode .card h3,
-body.executive-night-mode .card h4,
-body.executive-night-mode .card p {
-    color: #F8FAFC !important;
-}
-
-body.executive-night-mode .logo-item {
-    filter: grayscale(1) invert(1);
-    opacity: 0.6;
-}
-
-body.executive-night-mode .logo-bar::before { background: linear-gradient(to right, var(--white), transparent); }
-body.executive-night-mode .logo-bar::after { background: linear-gradient(to left, var(--white), transparent); }
-
-body.executive-night-mode .btn:hover {
-    background-color: var(--accent-dark);
-}
 
 html, body {
     overflow-x: hidden;
@@ -148,15 +91,13 @@ p {
     opacity: 0.9;
 }
 
-.container {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 30px;
-}
+
 
 .narrow-container {
     max-width: 840px;
 }
+
+.container { max-width: 1240px; margin: 0 auto; padding: 0 30px; }
 
 /* Layout Grids */
 .post-layout-grid {
@@ -435,15 +376,6 @@ section { padding: var(--section-padding) 0; overflow: hidden; }
 .fallback-logo { font-weight: 900; font-size: 1.2rem; opacity: 0.2; letter-spacing: 2px; }
 .bg-white { background-color: var(--white); color: var(--text-main); }
 .bg-light { background-color: var(--bg-light); color: var(--text-main); }
-.bg-dark { background-color: var(--primary-color); color: var(--white); }
-
-.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4 { color: var(--white); }
-.bg-dark p { opacity: 0.9; color: var(--white); }
-
-/* Section Specific Readability */
-.final-cta { background-color: var(--primary-color); color: var(--white); }
-.final-cta h2, .final-cta p { color: var(--white); }
-
 .section-tag {
     display: inline-block;
     color: var(--accent-color);
@@ -880,3 +812,98 @@ body.no-scroll { overflow: hidden; }
 
 /* Subheadline Utility */
 .subheadline { font-size: 1.25rem; opacity: 0.7; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+/* ==========================================================================
+   Executive Night Mode - High-Authority Dark Theme
+   ========================================================================== */
+body.executive-night-mode {
+    --primary-color: #F8FAFC; /* Headings become light */
+    --text-main: #E2E8F0;     /* Body text becomes light */
+    --text-light: #A0AEC0;
+    --bg-light: #0d1a2d;      /* Light backgrounds become dark navy */
+    --white: #050c17;         /* White backgrounds become deep black/navy */
+    --border-soft: rgba(255, 255, 255, 0.1);
+    background-color: #050c17;
+    color: #E2E8F0;
+}
+
+/* Fix for .bg-dark which was becoming white due to --primary-color swap */
+body.executive-night-mode .bg-dark,
+body.executive-night-mode .testimonials-cpt,
+body.executive-night-mode .final-cta {
+    background-color: #02060c !important;
+    color: #FFFFFF !important;
+}
+
+body.executive-night-mode .bg-dark h1,
+body.executive-night-mode .bg-dark h2,
+body.executive-night-mode .bg-dark h3,
+body.executive-night-mode .bg-dark h4 {
+    color: #FFFFFF !important;
+}
+
+/* User Specific Request: Testimonial Cards stay White with Dark Text */
+body.executive-night-mode .testimonial-card {
+    background: #FFFFFF !important;
+    border: 1px solid #FFFFFF !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
+}
+
+body.executive-night-mode .testimonial-card .testimonial-content {
+    color: #0B1D33 !important; /* Executive Navy text */
+    opacity: 1 !important;
+    font-style: italic;
+}
+
+body.executive-night-mode .testimonial-card .author-meta {
+    color: #C5A059 !important; /* Keep Gold accent */
+}
+
+body.executive-night-mode .testimonial-card .quote-mark {
+    color: rgba(197, 160, 89, 0.2) !important;
+}
+
+/* Standard Cards in Night Mode (Non-Testimonial) */
+body.executive-night-mode .card:not(.testimonial-card) {
+    background-color: #0d1a2d !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #F8FAFC !important;
+}
+
+body.executive-night-mode .card:not(.testimonial-card) h1,
+body.executive-night-mode .card:not(.testimonial-card) h2,
+body.executive-night-mode .card:not(.testimonial-card) h3,
+body.executive-night-mode .card:not(.testimonial-card) h4 {
+    color: #FFFFFF !important;
+}
+
+/* UI Elements */
+body.executive-night-mode .logo-item {
+    filter: grayscale(1) invert(1) brightness(1.2);
+    opacity: 0.8;
+}
+
+body.executive-night-mode .logo-bar::before { background: linear-gradient(to right, #050c17, transparent) !important; }
+body.executive-night-mode .logo-bar::after { background: linear-gradient(to left, #050c17, transparent) !important; }
+
+body.executive-night-mode .faq-item {
+    background-color: #0d1a2d !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.executive-night-mode .faq-question {
+    color: #FFFFFF !important;
+}
+
+body.executive-night-mode .site-header {
+    background-color: #050c17 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.executive-night-mode .nav-menu a {
+    color: #FFFFFF !important;
+}
+
+body.executive-night-mode .btn:hover {
+    background-color: #A68444 !important;
+}
