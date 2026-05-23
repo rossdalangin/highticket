@@ -286,6 +286,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_hero_cta_text', array( 'default' => 'Access the Private Executive Briefing →', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_hero_cta_text', array( 'label' => __( 'CTA Button Text', 'executive-acquisition' ), 'section' => 'ea_hero_section' ) );
 
+    $wp_customize->add_setting( 'ea_hero_cta_url', array( 'default' => '#cta', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_hero_cta_url', array( 'label' => __( 'CTA Button URL', 'executive-acquisition' ), 'section' => 'ea_hero_section', 'type' => 'text' ) );
+
     $wp_customize->add_setting( 'ea_hero_micro_copy', array( 'default' => 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_hero_micro_copy', array( 'label' => __( 'Hero Micro-copy', 'executive-acquisition' ), 'section' => 'ea_hero_section' ) );
 
@@ -393,6 +396,8 @@ $wp_customize->add_control( 'ea_agitation_pre_headline', array( 'label' => __( '
         $wp_customize->add_control( "ea_tier_{$i}_price", array( 'label' => __( "Tier {$i} Price", 'executive-acquisition' ), 'section' => 'ea_tiers_section' ) );
         $wp_customize->add_setting( "ea_tier_{$i}_desc", array( 'default' => "Tier {$i} description.", 'transport' => 'postMessage' ) );
         $wp_customize->add_control( "ea_tier_{$i}_desc", array( 'label' => __( "Tier {$i} Description", 'executive-acquisition' ), 'section' => 'ea_tiers_section', 'type' => 'textarea' ) );
+        $wp_customize->add_setting( "ea_tier_{$i}_url", array( 'default' => '#cta', 'transport' => 'refresh' ) );
+        $wp_customize->add_control( "ea_tier_{$i}_url", array( 'label' => __( "Tier {$i} Button URL", 'executive-acquisition' ), 'section' => 'ea_tiers_section', 'type' => 'text' ) );
     }
 
     // 10.1 Case Studies Section (Homepage)
@@ -631,6 +636,12 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
         'label'    => __( 'OG Share Image (1200x630)', 'executive-acquisition' ),
         'section'  => 'ea_tracking_section',
     ) ) );
+
+    $wp_customize->add_setting( 'ea_header_cta_text', array( 'default' => 'Get Started', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_header_cta_text', array( 'label' => __( 'Header CTA Text', 'executive-acquisition' ), 'section' => 'ea_brand_section' ) );
+
+    $wp_customize->add_setting( 'ea_header_cta_url', array( 'default' => '#cta', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_header_cta_url', array( 'label' => __( 'Header CTA URL', 'executive-acquisition' ), 'section' => 'ea_brand_section', 'type' => 'text' ) );
 
     $wp_customize->add_setting( 'ea_schema_json', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_schema_json', array(

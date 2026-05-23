@@ -110,6 +110,12 @@
         });
     });
 
+    wp.customize('ea_header_cta_text', function(value) {
+        value.bind(function(newval) {
+            $('.header-cta').text(newval);
+        });
+    });
+
     // Social Proof
     wp.customize('ea_logo_bar_text', function(value) {
         value.bind(function(newval) {

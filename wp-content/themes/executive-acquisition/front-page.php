@@ -2,8 +2,8 @@
 
 <!-- Section 1: Above-the-Fold (The Hook) -->
 <?php
-$hero_h1_def = 'Book $25k+ Corporate Engagements Every Month Using Institutional Intent Mapping.';
-$hero_sub_def = 'Engineer predictable inbound acquisition that identifies anonymous C-Suite decision-makers and builds institutional trust entirely on autopilot.';
+$hero_h1_def = 'Book $25k+ Corporate Engagements Every Month Using Institutional Intent Mapping WITHOUT the Content Hamster Wheel or Cold Outreach.';
+$hero_sub_def = 'Identify anonymous C-Suite decision-makers and build instant institutional trust with a predictable, intent-driven acquisition engine—even if you have no current corporate pipeline.';
 if ( $hero_h1 = get_theme_mod('ea_hero_headline', $hero_h1_def) ) : ?>
 <section id="primary" class="hero animate-in">
     <div class="container hero-grid">
@@ -19,7 +19,7 @@ if ( $hero_h1 = get_theme_mod('ea_hero_headline', $hero_h1_def) ) : ?>
             <?php endif; ?>
 
             <?php if ( $cta = get_theme_mod('ea_hero_cta_text', 'Access the Private Executive Briefing →') ) : ?>
-                <a href="#cta" class="btn"><?php echo esc_html($cta); ?></a>
+                <a href="<?php echo esc_url( get_theme_mod('ea_hero_cta_url', '#cta') ); ?>" class="btn"><?php echo esc_html($cta); ?></a>
             <?php endif; ?>
 
             <?php if ( $micro = get_theme_mod('ea_hero_micro_copy', 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.') ) : ?>
@@ -319,7 +319,7 @@ if ( $t_title = get_theme_mod('ea_tiers_title', $t_title_def) ) : ?>
                         <?php if ($price) : ?><div class="tier-price text-accent"><?php echo esc_html( $price ); ?><span class="price-suffix">/ engagement</span></div><?php endif; ?>
                     </div>
                     <?php if ($desc) : ?><p class="mb-lg"><?php echo esc_html( $desc ); ?></p><?php endif; ?>
-                    <a href="#cta" class="btn btn-small w-100">Inquire for Availability →</a>
+                    <a href="<?php echo esc_url( get_theme_mod("ea_tier_{$i}_url", "#cta") ); ?>" class="btn btn-small w-100">Inquire for Availability →</a>
                 </div>
             <?php endif; endfor; ?>
         </div>
@@ -351,7 +351,7 @@ if ( $n_title = get_theme_mod('ea_newsletter_title', $n_title_def) ) : ?>
 
 <!-- CTA / Form Section -->
 <?php
-$c_title_def = 'Ready to exit the content hamster wheel?';
+$c_title_def = 'Ready to exit the content hamster wheel and book $25k engagements on autopilot?';
 if ( $c_title = get_theme_mod('ea_cta_title', $c_title_def) ) : ?>
 <section id="cta" class="final-cta">
     <div class="container narrow-container text-center">

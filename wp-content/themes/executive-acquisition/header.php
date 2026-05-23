@@ -115,7 +115,7 @@ if ( $gtm_id ) : ?>
             <span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'executive-acquisition' ); ?></span>
         </button>
 
-        <a href="#cta" class="btn btn-small header-cta">Get Started</a>
+        <a href="<?php echo esc_url( get_theme_mod('ea_header_cta_url', '#cta') ); ?>" class="btn btn-small header-cta"><?php echo esc_html( get_theme_mod('ea_header_cta_text', 'Get Started') ); ?></a>
     </div>
 </header>
 <main id="primary" class="site-main">
