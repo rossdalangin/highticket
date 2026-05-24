@@ -72,7 +72,7 @@
         }
     </style>
 </head>
-<body <?php body_class( get_theme_mod( 'ea_enable_night_mode' ) ? 'executive-night-mode' : '' ); ?>>
+<body <?php body_class( (get_theme_mod( 'ea_enable_night_mode' ) ? 'executive-night-mode ' : '') . 'design-preset-' . get_theme_mod( 'ea_design_preset', 'unisex' ) ); ?>>
 <?php
 if ( $gtm_id ) : ?>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo esc_attr( $gtm_id ); ?>"

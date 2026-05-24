@@ -92,6 +92,21 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'section'  => 'ea_brand_section',
     ) ) );
 
+    $wp_customize->add_setting( 'ea_design_preset', array(
+        'default'   => 'unisex',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_design_preset', array(
+        'label'    => __( 'Owner Design Preset', 'executive-acquisition' ),
+        'section'  => 'ea_brand_section',
+        'type'     => 'select',
+        'choices'  => array(
+            'unisex' => 'Unisex (Navy & Gold)',
+            'female' => 'Female Owner (Charcoal & Rose Gold)',
+            'male'   => 'Male Owner (Midnight & Cobalt Blue)',
+        ),
+    ) );
+
     // 2. Strategic Assets
     $wp_customize->add_section( 'ea_assets_section', array(
         'title'    => __( 'Strategic Assets (Lead Magnets)', 'executive-acquisition' ),

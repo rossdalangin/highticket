@@ -818,25 +818,67 @@ body.no-scroll { overflow: hidden; }
 
 /* Subheadline Utility */
 .subheadline { font-size: 1.25rem; opacity: 0.7; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-
 /* ==========================================================================
-   Executive Night Mode - High-Authority Dark Theme
+   Design Presets - High-Authority Combinations
    ========================================================================== */
-body.executive-night-mode {
-    --primary-color: #F8FAFC; /* Headings become light */
-    --text-main: #E2E8F0;     /* Body text becomes light */
-    --text-light: #A0AEC0;
-    --bg-light: #0d1a2d;      /* Light backgrounds become dark navy */
-    --white: #050c17;         /* White backgrounds become deep black/navy */
-    --border-soft: rgba(255, 255, 255, 0.1);
-    background-color: #050c17;
-    color: #E2E8F0;
+
+/* 1. UNISEX PRESET (Navy & Gold) */
+body.design-preset-unisex {
+    --primary-color: #0B1D33;
+    --accent-color: #C5A059;
 }
 
-/* Fix for .bg-dark which was becoming white due to --primary-color swap */
+/* 2. FEMALE PRESET (Charcoal & Rose Gold) */
+body.design-preset-female {
+    --primary-color: #2D3436; /* Midnight Charcoal */
+    --accent-color: #B76E79;  /* Rose Gold Metallic */
+}
+
+/* 3. MALE PRESET (Midnight & Cobalt) */
+body.design-preset-male {
+    --primary-color: #050c17; /* True Midnight */
+    --accent-color: #1A53FF;  /* Executive Cobalt */
+}
+
+/* Base override for preset compatibility */
+body[class*="design-preset-"] .bg-dark,
+body[class*="design-preset-"] .final-cta,
+body[class*="design-preset-"] .testimonials-cpt,
+body[class*="design-preset-"] .case-study-hero {
+    background-color: var(--primary-color) !important;
+}
+
+body[class*="design-preset-"] .btn { background-color: var(--accent-color) !important; }
+
+/* ==========================================================================
+   Night Mode Stability Layer (Handles all 6 Combinations)
+   ========================================================================== */
+body.executive-night-mode {
+    --white: #050c17;
+    --bg-light: #0d1a2d;
+    --text-main: #F8FAFC;
+    --primary-color: #FFFFFF; /* All headings white in dark mode */
+    background-color: #050c17 !important;
+    color: #F8FAFC !important;
+}
+
+/* Night Mode Presets Specifics */
+body.executive-night-mode.design-preset-female {
+    --white: #1a1a1a;
+    --bg-light: #2d2d2d;
+    --accent-color: #D48891; /* Brighter Rose for dark bg */
+}
+
+body.executive-night-mode.design-preset-male {
+    --white: #02060c;
+    --bg-light: #08101d;
+    --accent-color: #4D7BFF; /* Brighter Cobalt for dark bg */
+}
+
+/* Section Contrast in Night Mode */
 body.executive-night-mode .bg-dark,
-body.executive-night-mode .testimonials-cpt,
-body.executive-night-mode .final-cta {
+body.executive-night-mode .final-cta,
+body.executive-night-mode .testimonials-cpt {
     background-color: #02060c !important;
     color: #FFFFFF !important;
 }
@@ -848,87 +890,43 @@ body.executive-night-mode .bg-dark h4 {
     color: #FFFFFF !important;
 }
 
-/* User Specific Request: Testimonial Cards stay White with Dark Text */
+/* ==========================================================================
+   Testimonial & Card Absolute Contrast (Fixed for all modes)
+   ========================================================================== */
+body .testimonial-card,
 body.executive-night-mode .testimonial-card {
-    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
     border: 1px solid #FFFFFF !important;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4) !important;
+    color: #0B1D33 !important;
 }
 
+body .testimonial-card .testimonial-content,
+body .testimonial-card .testimonial-content p,
 body.executive-night-mode .testimonial-card .testimonial-content,
 body.executive-night-mode .testimonial-card .testimonial-content p {
-    color: #0B1D33 !important; /* Executive Navy text */
+    color: #0B1D33 !important;
     opacity: 1 !important;
     font-style: italic !important;
 }
 
+body .testimonial-card .author-meta,
 body.executive-night-mode .testimonial-card .author-meta {
-    color: #C5A059 !important; /* Keep Gold accent */
+    color: var(--accent-color) !important;
 }
 
+body .testimonial-card .quote-mark,
 body.executive-night-mode .testimonial-card .quote-mark {
-    color: rgba(197, 160, 89, 0.2) !important;
+    color: var(--accent-color) !important;
+    opacity: 0.2 !important;
 }
 
-/* Standard Cards in Night Mode (Non-Testimonial) */
-body.executive-night-mode .card:not(.testimonial-card) {
-    background-color: #0d1a2d !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    color: #F8FAFC !important;
-}
-
-body.executive-night-mode .card:not(.testimonial-card) h1,
-body.executive-night-mode .card:not(.testimonial-card) h2,
-body.executive-night-mode .card:not(.testimonial-card) h3,
-body.executive-night-mode .card:not(.testimonial-card) h4 {
-    color: #FFFFFF !important;
-}
-
-/* UI Elements */
-body.executive-night-mode .logo-item {
-    filter: grayscale(1) invert(1) brightness(1.2);
-    opacity: 0.8;
-}
-
-body.executive-night-mode .logo-bar::before { background: linear-gradient(to right, #050c17, transparent) !important; }
-body.executive-night-mode .logo-bar::after { background: linear-gradient(to left, #050c17, transparent) !important; }
-
+/* FAQ & Utility */
 body.executive-night-mode .faq-item {
-    background-color: #0d1a2d !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255,255,255,0.03) !important;
+    border-color: rgba(255,255,255,0.1) !important;
 }
 
-body.executive-night-mode .faq-question {
-    color: #FFFFFF !important;
-}
+body.executive-night-mode .faq-question { color: #FFFFFF !important; }
 
-body.executive-night-mode .site-header {
-    background-color: #050c17 !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-body.executive-night-mode .nav-menu a {
-    color: #FFFFFF !important;
-}
-
-body.executive-night-mode .btn:hover {
-    background-color: #A68444 !important;
-}
-
-/* Ensure Testimonial cards are ALWAYS white with dark text as requested */
-body.executive-night-mode .testimonial-card,
-.bg-dark .testimonial-card,
-.testimonials-cpt .testimonial-card {
-    background-color: #FFFFFF !important;
-    color: #0B1D33 !important;
-}
-
-body.executive-night-mode .testimonial-card .testimonial-content,
-body.executive-night-mode .testimonial-card .testimonial-content p,
-.bg-dark .testimonial-card .testimonial-content,
-.bg-dark .testimonial-card .testimonial-content p,
-.testimonials-cpt .testimonial-card .testimonial-content,
-.testimonials-cpt .testimonial-card .testimonial-content p {
-    color: #0B1D33 !important;
-    opacity: 1 !important;
-}
+body.executive-night-mode .logo-item { filter: grayscale(1) invert(1) brightness(1.5); }
