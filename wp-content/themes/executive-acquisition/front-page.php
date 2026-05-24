@@ -20,12 +20,18 @@ if ( $hero_h1 = get_theme_mod('ea_hero_headline', $hero_h1_def) ) : ?>
 
             <?php
             $hero_cta_type = get_theme_mod( 'ea_hero_cta_type', 'button' );
+            $hero_form = get_theme_mod( 'ea_hero_form_code' );
+
             if ( 'button' === $hero_cta_type ) :
                 if ( $cta = get_theme_mod('ea_hero_cta_text', 'Access the Private Executive Briefing →') ) : ?>
                     <a href="<?php echo esc_url( get_theme_mod('ea_hero_cta_url', '#cta') ); ?>" class="btn"><?php echo esc_html($cta); ?></a>
                 <?php endif;
+            elseif ( 'modal' === $hero_cta_type ) :
+                if ( $cta = get_theme_mod('ea_hero_cta_text', 'Access the Private Executive Briefing →') ) : ?>
+                    <a href="#" class="btn" data-ea-modal="ea-hero-modal-content"><?php echo esc_html($cta); ?></a>
+                    <div id="ea-hero-modal-content" style="display:none;"><?php echo do_shortcode($hero_form); ?></div>
+                <?php endif;
             else :
-                $hero_form = get_theme_mod( 'ea_hero_form_code' );
                 if ( $hero_form ) :
                     echo '<div class="hero-inline-form-wrapper">' . do_shortcode( $hero_form ) . '</div>';
                 endif;
@@ -352,10 +358,17 @@ if ( $n_title = get_theme_mod('ea_newsletter_title', $n_title_def) ) : ?>
             <p class="mb-lg"><?php echo esc_html($n_desc); ?></p>
         <?php endif; ?>
 
-        <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" class="newsletter-inline-form">
-            <input type="email" name="EMAIL" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_newsletter', 'Work Email Address') ); ?>" required>
-            <button type="submit" class="btn"><?php echo esc_html( get_theme_mod('ea_newsletter_btn', 'Join Briefing →') ); ?></button>
-        </form>
+        <?php
+        $news_type = get_theme_mod( 'ea_newsletter_type', 'default' );
+        if ( 'shortcode' === $news_type ) :
+            $news_code = get_theme_mod( 'ea_newsletter_form_code' );
+            echo '<div class="newsletter-shortcode-wrapper">' . do_shortcode($news_code) . '</div>';
+        else : ?>
+            <form action="<?php echo esc_url( get_theme_mod( 'ea_form_action_url', '#' ) ); ?>" method="POST" class="newsletter-inline-form">
+                <input type="email" name="EMAIL" placeholder="<?php echo esc_attr( get_theme_mod('ea_form_placeholder_newsletter', 'Work Email Address') ); ?>" required>
+                <button type="submit" class="btn"><?php echo esc_html( get_theme_mod('ea_newsletter_btn', 'Join Briefing →') ); ?></button>
+            </form>
+        <?php endif; ?>
     </div>
 </section>
 <?php endif; ?>
@@ -372,15 +385,23 @@ if ( $c_title = get_theme_mod('ea_cta_title', $c_title_def) ) : ?>
         <?php endif; ?>
 
         <?php
-        $cta_type = get_theme_mod( 'ea_cta_type', 'shortcode' );
+        $cta_type = get_theme_mod( 'ea_cta_type', 'modal' );
+        $cta_form = get_theme_mod('ea_cta_form_code');
+
         if ( 'button' === $cta_type ) : ?>
             <div class="cta-btn-wrapper">
                 <a href="<?php echo esc_url( get_theme_mod('ea_cta_btn_url', '/diagnostic-session') ); ?>" class="btn">
                     <?php echo esc_html( get_theme_mod('ea_cta_btn_text', 'Book Your Diagnostic Session →') ); ?>
                 </a>
             </div>
+        <?php elseif ( 'modal' === $cta_type ) : ?>
+            <div class="cta-btn-wrapper">
+                <a href="#" class="btn" data-ea-modal="ea-final-cta-modal-content">
+                    <?php echo esc_html( get_theme_mod('ea_cta_btn_text', 'Book Your Diagnostic Session →') ); ?>
+                </a>
+                <div id="ea-final-cta-modal-content" style="display:none;"><?php echo do_shortcode($cta_form); ?></div>
+            </div>
         <?php else :
-            $cta_form = get_theme_mod('ea_cta_form_code');
             if ( $cta_form ) :
                 echo '<div class="cta-form-container">' . do_shortcode($cta_form) . '</div>';
             else : ?>

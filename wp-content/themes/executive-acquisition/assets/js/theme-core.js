@@ -90,8 +90,38 @@ jQuery(document).ready(function($) {
         }
     });
 
-    // Briefing Page Redirect Logic
-    if ($('.briefing-page').length && window.location.pathname.includes('/briefing/')) {
-        // Handle any briefing specific client-side logic here
-    }
+    /**
+     * 8. High-Authority Modal System
+     */
+    const modal = $('#ea-conversion-modal');
+    const modalContent = $('#modal-content');
+
+    $('[data-ea-modal]').on('click', function(e) {
+        e.preventDefault();
+        const contentId = $(this).data('ea-modal');
+        const rawContent = $('#' + contentId).html();
+
+        if (rawContent) {
+            modalContent.html(rawContent);
+            modal.addClass('is-open').attr('aria-hidden', 'false');
+            $('body').addClass('no-scroll');
+        }
+    });
+
+    $('[data-micromodal-close]').on('click', function(e) {
+        if ($(e.target).is('.ea-modal-overlay') || $(e.target).is('.ea-modal-close')) {
+            modal.removeClass('is-open').attr('aria-hidden', 'true');
+            $('body').removeClass('no-scroll');
+            modalContent.empty();
+        }
+    });
+
+    // Close on ESC
+    $(document).on('keydown', function(e) {
+        if (e.key === "Escape" && modal.hasClass('is-open')) {
+            modal.removeClass('is-open').attr('aria-hidden', 'true');
+            $('body').removeClass('no-scroll');
+            modalContent.empty();
+        }
+    });
 });

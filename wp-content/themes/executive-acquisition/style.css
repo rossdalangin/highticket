@@ -930,3 +930,111 @@ body.executive-night-mode .faq-item {
 body.executive-night-mode .faq-question { color: #FFFFFF !important; }
 
 body.executive-night-mode .logo-item { filter: grayscale(1) invert(1) brightness(1.5); }
+
+/* ==========================================================================
+   Executive Conversion Modal (Mobile Friendly)
+   ========================================================================== */
+.ea-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.ea-modal.is-open {
+    display: block;
+}
+
+.ea-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 29, 51, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.ea-modal-container {
+    background: var(--white);
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-soft);
+    animation: modalSlideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ea-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.ea-modal-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-family: var(--font-heading);
+}
+
+.ea-modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-main);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    padding: 10px;
+}
+
+.ea-modal-close:hover {
+    opacity: 1;
+}
+
+.ea-modal-close::before {
+    content: "×";
+}
+
+.ea-modal-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-soft);
+    text-align: center;
+}
+
+.ea-modal-footer .micro-copy {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .ea-modal-container {
+        padding: 30px 20px;
+        margin-top: 20px;
+    }
+    .ea-modal-title {
+        font-size: 1.25rem;
+    }
+}

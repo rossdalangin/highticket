@@ -328,8 +328,9 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'section'  => 'ea_hero_section',
         'type'     => 'select',
         'choices'  => array(
-            'button'    => __( 'Button (Link)', 'executive-acquisition' ),
-            'shortcode' => __( 'Shortcode / HTML Form', 'executive-acquisition' ),
+            'button'    => __( 'Direct Link (Button)', 'executive-acquisition' ),
+            'modal'     => __( 'Trigger Modal (Shortcode/HTML)', 'executive-acquisition' ),
+            'inline'    => __( 'Inline Form (Shortcode/HTML)', 'executive-acquisition' ),
         ),
     ) );
 
@@ -564,14 +565,15 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     $wp_customize->add_setting( 'ea_cta_compliance', array( 'default' => '✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_cta_compliance', array( 'label' => __( 'CTA Compliance Text', 'executive-acquisition' ), 'section' => 'ea_final_cta_section' ) );
 
-    $wp_customize->add_setting( 'ea_cta_type', array( 'default' => 'shortcode', 'transport' => 'refresh' ) );
+    $wp_customize->add_setting( 'ea_cta_type', array( 'default' => 'modal', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_cta_type', array(
         'label'    => __( 'Final CTA Strategy', 'executive-acquisition' ),
         'section'  => 'ea_final_cta_section',
         'type'     => 'select',
         'choices'  => array(
-            'shortcode' => __( 'Shortcode / HTML Form', 'executive-acquisition' ),
-            'button'    => __( 'Direct Button (Link)', 'executive-acquisition' ),
+            'modal'     => __( 'Trigger Modal (Shortcode/HTML)', 'executive-acquisition' ),
+            'inline'    => __( 'Inline Form (Shortcode/HTML)', 'executive-acquisition' ),
+            'button'    => __( 'Direct Link (Button)', 'executive-acquisition' ),
         ),
     ) );
 
@@ -605,6 +607,24 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
 
     $wp_customize->add_setting( 'ea_newsletter_btn', array( 'default' => 'Join Briefing →', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_newsletter_btn', array( 'label' => __( 'Newsletter Button', 'executive-acquisition' ), 'section' => 'ea_newsletter_section' ) );
+
+    $wp_customize->add_setting( 'ea_newsletter_type', array( 'default' => 'default', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_newsletter_type', array(
+        'label'    => __( 'Newsletter Strategy', 'executive-acquisition' ),
+        'section'  => 'ea_newsletter_section',
+        'type'     => 'select',
+        'choices'  => array(
+            'default'   => __( 'Default Inline Form', 'executive-acquisition' ),
+            'shortcode' => __( 'Custom Shortcode / HTML', 'executive-acquisition' ),
+        ),
+    ) );
+
+    $wp_customize->add_setting( 'ea_newsletter_form_code', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_newsletter_form_code', array(
+        'label'    => __( 'Newsletter Shortcode / HTML', 'executive-acquisition' ),
+        'section'  => 'ea_newsletter_section',
+        'type'     => 'textarea',
+    ) );
 
     // 15. Infrastructure Blueprint (Generator Defaults)
     $wp_customize->add_section( 'ea_blueprint_section', array(

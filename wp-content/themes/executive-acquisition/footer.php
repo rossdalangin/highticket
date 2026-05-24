@@ -66,6 +66,24 @@
     </div>
 </footer>
 
+<!-- High-Authority Conversion Modal -->
+<div id="ea-conversion-modal" class="ea-modal" aria-hidden="true">
+    <div class="ea-modal-overlay" tabindex="-1" data-micromodal-close>
+        <div class="ea-modal-container card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <header class="ea-modal-header">
+                <h2 class="ea-modal-title" id="modal-title">Secure Strategic Inquiry</h2>
+                <button class="ea-modal-close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="ea-modal-content" id="modal-content">
+                <!-- Content injected via JS -->
+            </main>
+            <footer class="ea-modal-footer">
+                <p class="micro-copy">✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
 <?php
 echo get_theme_mod( 'ea_footer_scripts' );
 wp_footer();
