@@ -49,9 +49,39 @@ require get_template_directory() . '/functions-cpt.php';
  */
 function executive_acquisition_customize_register( $wp_customize ) {
 
+    // Define Panels
+    $wp_customize->add_panel( 'ea_panel_global', array(
+        'title'    => __( '1. Global System & Style', 'executive-acquisition' ),
+        'priority' => 10,
+    ) );
+    $wp_customize->add_panel( 'ea_panel_header', array(
+        'title'    => __( '2. Header & Navigation', 'executive-acquisition' ),
+        'priority' => 20,
+    ) );
+    $wp_customize->add_panel( 'ea_panel_homepage', array(
+        'title'    => __( '3. Homepage Architecture', 'executive-acquisition' ),
+        'priority' => 30,
+    ) );
+    $wp_customize->add_panel( 'ea_panel_pages', array(
+        'title'    => __( '4. Page-Specific Assets', 'executive-acquisition' ),
+        'priority' => 40,
+    ) );
+    $wp_customize->add_panel( 'ea_panel_footer', array(
+        'title'    => __( '5. Footer & Trust Seals', 'executive-acquisition' ),
+        'priority' => 50,
+    ) );
+
+    // Header Section (New)
+    $wp_customize->add_section( 'ea_header_section', array(
+        'title'    => __( 'Header Configuration', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_header',
+        'priority' => 10,
+    ) );
+
     // 1. Global Brand Identity
     $wp_customize->add_section( 'ea_brand_section', array(
         'title'    => __( 'Global Brand Identity', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_global',
         'priority' => 25,
     ) );
 
@@ -76,6 +106,16 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'input_attrs' => array('step' => '0.25')
     ) );
 
+    $wp_customize->add_setting( 'ea_border_radius', array(
+        'default'   => '2px',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'ea_border_radius', array(
+        'label'    => __( 'Global Border Radius (px)', 'executive-acquisition' ),
+        'section'  => 'ea_brand_section',
+        'type'     => 'text',
+    ) );
+
     $wp_customize->add_setting( 'ea_enable_night_mode', array(
         'default'   => false,
         'transport' => 'refresh',
@@ -85,12 +125,6 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'section'  => 'ea_brand_section',
         'type'     => 'checkbox',
     ) );
-
-    $wp_customize->add_setting( 'ea_executive_logo', array( 'default' => '', 'transport' => 'postMessage' ) );
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_executive_logo', array(
-        'label'    => __( 'Header Logo', 'executive-acquisition' ),
-        'section'  => 'ea_brand_section',
-    ) ) );
 
     $wp_customize->add_setting( 'ea_design_preset', array(
         'default'   => 'unisex',
@@ -110,6 +144,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 2. Strategic Assets
     $wp_customize->add_section( 'ea_assets_section', array(
         'title'    => __( 'Strategic Assets (Lead Magnets)', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_pages',
         'priority' => 26,
     ) );
 
@@ -139,6 +174,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 2.1 Resources Library
     $wp_customize->add_section( 'ea_resources_section', array(
         'title'    => __( 'Resources Library', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_pages',
         'priority' => 27,
     ) );
 
@@ -157,6 +193,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 3. About Page Strategy
     $wp_customize->add_section( 'ea_about_section', array(
         'title'    => __( 'About Page Strategy', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_pages',
         'priority' => 27,
     ) );
 
@@ -188,6 +225,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 4. Contact Page Strategy
     $wp_customize->add_section( 'ea_contact_section', array(
         'title'    => __( 'Contact Page Strategy', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_pages',
         'priority' => 28,
     ) );
 
@@ -227,6 +265,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 5. Founder Profile
     $wp_customize->add_section( 'ea_profile_section', array(
         'title'    => __( 'Founder Profile', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_pages',
         'priority' => 29,
     ) );
 
@@ -254,6 +293,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 6. Funnel Flow & Video
     $wp_customize->add_section( 'ea_funnel_flow', array(
         'title'    => __( 'Funnel Flow & Video', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_global',
         'priority' => 30,
     ) );
 
@@ -290,6 +330,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 7. Hero & Direct Response
     $wp_customize->add_section( 'ea_hero_section', array(
         'title'    => __( 'Hero & Direct Response', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 31,
     ) );
 
@@ -368,6 +409,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 8. Social Proof & Authority
     $wp_customize->add_section( 'ea_social_proof', array(
         'title'    => __( 'Social Proof & Authority', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 32,
     ) );
 
@@ -391,6 +433,7 @@ function executive_acquisition_customize_register( $wp_customize ) {
     // 9. Agitation (Pain Points)
     $wp_customize->add_section( 'ea_agitation_section', array(
         'title'    => __( 'Agitation (Pain Points)', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 33,
     ) );
 
@@ -434,6 +477,7 @@ $wp_customize->add_control( 'ea_agitation_pre_headline', array( 'label' => __( '
     // 10. Engagement Tiers
     $wp_customize->add_section( 'ea_tiers_section', array(
         'title'    => __( 'Engagement Tiers', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 34,
     ) );
 
@@ -460,6 +504,7 @@ $wp_customize->add_control( 'ea_agitation_pre_headline', array( 'label' => __( '
     // 10.1 Case Studies Section (Homepage)
     $wp_customize->add_section( 'ea_case_studies_home_section', array(
         'title'    => __( 'Homepage Case Studies', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 34,
     ) );
 
@@ -472,6 +517,7 @@ $wp_customize->add_control( 'ea_agitation_pre_headline', array( 'label' => __( '
     // 11. The Mechanism (3-Step System)
     $wp_customize->add_section( 'ea_mechanism_section', array(
         'title'    => __( 'The Mechanism (3-Step System)', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 35,
     ) );
 
@@ -515,6 +561,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 12. FAQ Section
     $wp_customize->add_section( 'ea_faq_section', array(
         'title'    => __( 'FAQ Section', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 36,
     ) );
 
@@ -553,6 +600,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 13. Final CTA (Bottom of Page)
     $wp_customize->add_section( 'ea_final_cta_section', array(
         'title'    => __( 'Final CTA (Bottom)', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 37,
     ) );
 
@@ -593,6 +641,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 14. Newsletter Section
     $wp_customize->add_section( 'ea_newsletter_section', array(
         'title'    => __( 'Newsletter Section', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_homepage',
         'priority' => 38,
     ) );
 
@@ -629,6 +678,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 15. Infrastructure Blueprint (Generator Defaults)
     $wp_customize->add_section( 'ea_blueprint_section', array(
         'title'    => __( 'Infrastructure Blueprint (Generator)', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_global',
         'priority' => 10,
     ) );
 
@@ -653,6 +703,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 15.1 Strategy Session Page
     $wp_customize->add_section( 'ea_strategy_session_section', array(
         'title'    => __( 'Strategy Session Page', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_pages',
         'priority' => 11,
     ) );
 
@@ -665,6 +716,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 16. Form Architecture
     $wp_customize->add_section( 'ea_forms_section', array(
         'title'    => __( 'Form Architecture & UX', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_global',
         'priority' => 70,
     ) );
 
@@ -712,6 +764,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 17. Tracking & Scripts
     $wp_customize->add_section( 'ea_tracking_section', array(
         'title'    => __( 'Tracking & Analytics', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_global',
         'priority' => 80,
     ) );
 
@@ -730,11 +783,17 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
         'section'  => 'ea_tracking_section',
     ) ) );
 
+    $wp_customize->add_setting( 'ea_executive_logo', array( 'default' => '', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ea_executive_logo', array(
+        'label'    => __( 'Header Logo', 'executive-acquisition' ),
+        'section'  => 'ea_header_section',
+    ) ) );
+
     $wp_customize->add_setting( 'ea_header_cta_text', array( 'default' => 'Get Started', 'transport' => 'postMessage' ) );
-    $wp_customize->add_control( 'ea_header_cta_text', array( 'label' => __( 'Header CTA Text', 'executive-acquisition' ), 'section' => 'ea_brand_section' ) );
+    $wp_customize->add_control( 'ea_header_cta_text', array( 'label' => __( 'Header CTA Text', 'executive-acquisition' ), 'section' => 'ea_header_section' ) );
 
     $wp_customize->add_setting( 'ea_header_cta_url', array( 'default' => '#cta', 'transport' => 'refresh' ) );
-    $wp_customize->add_control( 'ea_header_cta_url', array( 'label' => __( 'Header CTA URL', 'executive-acquisition' ), 'section' => 'ea_brand_section', 'type' => 'text' ) );
+    $wp_customize->add_control( 'ea_header_cta_url', array( 'label' => __( 'Header CTA URL', 'executive-acquisition' ), 'section' => 'ea_header_section', 'type' => 'text' ) );
 
     $wp_customize->add_setting( 'ea_schema_json', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_schema_json', array(
@@ -746,6 +805,7 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
     // 18. Footer Redesign
     $wp_customize->add_section( 'ea_footer_redesign', array(
         'title'    => __( 'Footer & Trust Seals', 'executive-acquisition' ),
+        'panel'    => 'ea_panel_footer',
         'priority' => 90,
     ) );
 

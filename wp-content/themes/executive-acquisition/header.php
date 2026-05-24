@@ -69,6 +69,7 @@
         :root {
             --accent-color: <?php echo get_theme_mod( 'ea_accent_color', '#C5A059' ); ?>;
             --border-radius: <?php echo get_theme_mod( 'ea_border_radius', '2px' ); ?>;
+            --h1-size: clamp(2.75rem, 8vw, <?php echo get_theme_mod( 'ea_h1_size_rem', '4.75' ); ?>rem);
         }
     </style>
 </head>
