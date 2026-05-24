@@ -206,6 +206,24 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_contact_form_title', array( 'default' => 'Secure Inquiry Channel', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_contact_form_title', array( 'label' => __( 'Form Title', 'executive-acquisition' ), 'section' => 'ea_contact_section' ) );
 
+    $wp_customize->add_setting( 'ea_contact_type', array( 'default' => 'default', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_contact_type', array(
+        'label'    => __( 'Contact Form Strategy', 'executive-acquisition' ),
+        'section'  => 'ea_contact_section',
+        'type'     => 'select',
+        'choices'  => array(
+            'default'   => __( 'Standard Theme Form', 'executive-acquisition' ),
+            'shortcode' => __( 'Custom Shortcode / HTML', 'executive-acquisition' ),
+        ),
+    ) );
+
+    $wp_customize->add_setting( 'ea_contact_shortcode', array( 'default' => '', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_contact_shortcode', array(
+        'label'    => __( 'Contact Page Shortcode or HTML', 'executive-acquisition' ),
+        'section'  => 'ea_contact_section',
+        'type'     => 'textarea',
+    ) );
+
     // 5. Founder Profile
     $wp_customize->add_section( 'ea_profile_section', array(
         'title'    => __( 'Founder Profile', 'executive-acquisition' ),
@@ -304,6 +322,17 @@ function executive_acquisition_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'ea_hero_cta_url', array( 'default' => '#cta', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_hero_cta_url', array( 'label' => __( 'CTA Button URL', 'executive-acquisition' ), 'section' => 'ea_hero_section', 'type' => 'text' ) );
 
+    $wp_customize->add_setting( 'ea_hero_cta_type', array( 'default' => 'button', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_hero_cta_type', array(
+        'label'    => __( 'Hero CTA Interaction', 'executive-acquisition' ),
+        'section'  => 'ea_hero_section',
+        'type'     => 'select',
+        'choices'  => array(
+            'button'    => __( 'Button (Link)', 'executive-acquisition' ),
+            'shortcode' => __( 'Shortcode / HTML Form', 'executive-acquisition' ),
+        ),
+    ) );
+
     $wp_customize->add_setting( 'ea_hero_micro_copy', array( 'default' => 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_hero_micro_copy', array( 'label' => __( 'Hero Micro-copy', 'executive-acquisition' ), 'section' => 'ea_hero_section' ) );
 
@@ -321,6 +350,18 @@ function executive_acquisition_customize_register( $wp_customize ) {
         'label'    => __( 'Hero Form Shortcode or HTML', 'executive-acquisition' ),
         'section'  => 'ea_hero_section',
         'type'     => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'ea_hero_media_type', array( 'default' => 'video', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_hero_media_type', array(
+        'label'    => __( 'Hero Media Type', 'executive-acquisition' ),
+        'section'  => 'ea_hero_section',
+        'type'     => 'select',
+        'choices'  => array(
+            'video' => __( 'Video (YouTube/Vimeo)', 'executive-acquisition' ),
+            'image' => __( 'Image', 'executive-acquisition' ),
+            'form'  => __( 'Shortcode / HTML Form', 'executive-acquisition' ),
+        ),
     ) );
 
     // 8. Social Proof & Authority
@@ -522,6 +563,23 @@ $wp_customize->add_control( 'ea_mechanism_pre_headline', array( 'label' => __( '
 
     $wp_customize->add_setting( 'ea_cta_compliance', array( 'default' => '✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED', 'transport' => 'postMessage' ) );
     $wp_customize->add_control( 'ea_cta_compliance', array( 'label' => __( 'CTA Compliance Text', 'executive-acquisition' ), 'section' => 'ea_final_cta_section' ) );
+
+    $wp_customize->add_setting( 'ea_cta_type', array( 'default' => 'shortcode', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_cta_type', array(
+        'label'    => __( 'Final CTA Strategy', 'executive-acquisition' ),
+        'section'  => 'ea_final_cta_section',
+        'type'     => 'select',
+        'choices'  => array(
+            'shortcode' => __( 'Shortcode / HTML Form', 'executive-acquisition' ),
+            'button'    => __( 'Direct Button (Link)', 'executive-acquisition' ),
+        ),
+    ) );
+
+    $wp_customize->add_setting( 'ea_cta_btn_text', array( 'default' => 'Book Your Diagnostic Session →', 'transport' => 'postMessage' ) );
+    $wp_customize->add_control( 'ea_cta_btn_text', array( 'label' => __( 'CTA Button Text', 'executive-acquisition' ), 'section' => 'ea_final_cta_section' ) );
+
+    $wp_customize->add_setting( 'ea_cta_btn_url', array( 'default' => '/diagnostic-session', 'transport' => 'refresh' ) );
+    $wp_customize->add_control( 'ea_cta_btn_url', array( 'label' => __( 'CTA Button URL', 'executive-acquisition' ), 'section' => 'ea_final_cta_section' ) );
 
     $wp_customize->add_setting( 'ea_cta_form_code', array( 'default' => '', 'transport' => 'refresh' ) );
     $wp_customize->add_control( 'ea_cta_form_code', array(

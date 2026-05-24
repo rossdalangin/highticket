@@ -18,9 +18,19 @@ if ( $hero_h1 = get_theme_mod('ea_hero_headline', $hero_h1_def) ) : ?>
                 <p class="mb-lg"><?php echo esc_html($sub); ?></p>
             <?php endif; ?>
 
-            <?php if ( $cta = get_theme_mod('ea_hero_cta_text', 'Access the Private Executive Briefing →') ) : ?>
-                <a href="<?php echo esc_url( get_theme_mod('ea_hero_cta_url', '#cta') ); ?>" class="btn"><?php echo esc_html($cta); ?></a>
-            <?php endif; ?>
+            <?php
+            $hero_cta_type = get_theme_mod( 'ea_hero_cta_type', 'button' );
+            if ( 'button' === $hero_cta_type ) :
+                if ( $cta = get_theme_mod('ea_hero_cta_text', 'Access the Private Executive Briefing →') ) : ?>
+                    <a href="<?php echo esc_url( get_theme_mod('ea_hero_cta_url', '#cta') ); ?>" class="btn"><?php echo esc_html($cta); ?></a>
+                <?php endif;
+            else :
+                $hero_form = get_theme_mod( 'ea_hero_form_code' );
+                if ( $hero_form ) :
+                    echo '<div class="hero-inline-form-wrapper">' . do_shortcode( $hero_form ) . '</div>';
+                endif;
+            endif;
+            ?>
 
             <?php if ( $micro = get_theme_mod('ea_hero_micro_copy', 'Takes 12 minutes. No \'salesy\' fluff. Pure strategy.') ) : ?>
                 <p class="hero-micro-copy mt-sm"><?php echo esc_html($micro); ?></p>
@@ -28,23 +38,24 @@ if ( $hero_h1 = get_theme_mod('ea_hero_headline', $hero_h1_def) ) : ?>
         </div>
         <div class="hero-media">
             <?php
+            $hero_media_type = get_theme_mod( 'ea_hero_media_type', 'video' );
             $video_url = get_theme_mod( 'ea_hero_video_url' );
             $hero_img = get_theme_mod( 'ea_hero_image' );
             $hero_form = get_theme_mod( 'ea_hero_form_code' );
 
-            if ( $hero_form ) :
+            if ( 'form' === $hero_media_type && $hero_form ) :
                 echo '<div class="hero-form-wrapper card">' . do_shortcode( $hero_form ) . '</div>';
-            elseif ( $video_url ) : ?>
-                <div class="hero-video">
-                    <iframe src="<?php echo esc_url( $video_url ); ?>" fetchpriority="high" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            <?php elseif ( $hero_img ) : ?>
+            elseif ( 'image' === $hero_media_type && $hero_img ) : ?>
                 <div class="hero-image-box">
                     <img src="<?php echo esc_url( $hero_img ); ?>" alt="Executive Briefing" class="img-fluid hero-main-img">
                 </div>
+            <?php elseif ( 'video' === $hero_media_type && $video_url ) : ?>
+                <div class="hero-video">
+                    <iframe src="<?php echo esc_url( $video_url ); ?>" fetchpriority="high" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
             <?php else : ?>
                 <div class="hero-video video-placeholder">
-                    <p>Executive Briefing Video Placeholder</p>
+                    <p>Executive Media Placeholder</p>
                 </div>
             <?php endif; ?>
         </div>
@@ -361,16 +372,25 @@ if ( $c_title = get_theme_mod('ea_cta_title', $c_title_def) ) : ?>
         <?php endif; ?>
 
         <?php
-        $cta_form = get_theme_mod('ea_cta_form_code');
-        if ( $cta_form ) :
-            echo '<div class="cta-form-container">' . do_shortcode($cta_form) . '</div>';
-        else : ?>
-            <!-- Form Placeholder -->
-            <div class="cta-form-container card">
-                <p class="form-placeholder-title mb-xxs"><?php echo esc_html( get_theme_mod('ea_form_title_cta', '[Lead Qualification Form Placeholder]') ); ?></p>
-                <p class="form-placeholder-desc"><?php echo esc_html( get_theme_mod('ea_form_desc_cta', '(Use Step 1: Work Email -> Step 2: Executive Qualifier)') ); ?></p>
+        $cta_type = get_theme_mod( 'ea_cta_type', 'shortcode' );
+        if ( 'button' === $cta_type ) : ?>
+            <div class="cta-btn-wrapper">
+                <a href="<?php echo esc_url( get_theme_mod('ea_cta_btn_url', '/diagnostic-session') ); ?>" class="btn">
+                    <?php echo esc_html( get_theme_mod('ea_cta_btn_text', 'Book Your Diagnostic Session →') ); ?>
+                </a>
             </div>
-        <?php endif; ?>
+        <?php else :
+            $cta_form = get_theme_mod('ea_cta_form_code');
+            if ( $cta_form ) :
+                echo '<div class="cta-form-container">' . do_shortcode($cta_form) . '</div>';
+            else : ?>
+                <!-- Form Placeholder -->
+                <div class="cta-form-container card">
+                    <p class="form-placeholder-title mb-xxs"><?php echo esc_html( get_theme_mod('ea_form_title_cta', '[Lead Qualification Form Placeholder]') ); ?></p>
+                    <p class="form-placeholder-desc"><?php echo esc_html( get_theme_mod('ea_form_desc_cta', '(Use Step 1: Work Email -> Step 2: Executive Qualifier)') ); ?></p>
+                </div>
+            <?php endif;
+        endif; ?>
 
         <div class="compliance-row mt-lg">
             <p><?php echo esc_html( get_theme_mod( 'ea_cta_compliance', '✓ STRICTLY CONFIDENTIAL | ✓ NO HIGH-PRESSURE SALES | ✓ C-SUITE OPTIMIZED' ) ); ?></p>
