@@ -1,37 +1,42 @@
-# Executive Acquisition: User Guide
+# Executive Acquisition: User Guide (v1.2)
 
-Welcome to the elite client acquisition system for high-ticket executive coaches. This guide will help you deploy your infrastructure in minutes.
+Welcome to the elite client acquisition system for high-ticket executive coaches. This guide will help you deploy your institutional infrastructure in minutes.
 
 ## 1. Initial Setup
-1. **Activate the Theme:** Upon activation, you will be redirected to the **Theme Setup** page.
-2. **Generate Infrastructure:** Click the "Generate Infrastructure" button. This will automatically create:
-   - Your Home (Funnel) page.
-   - Your Thank You (Authority Bridge) page.
-   - Your Executive Briefing (VSL) page.
-   - Your Blog (Insights) and ROI Case Study pages.
-   - A primary navigation menu.
-   - Automatic configuration of your WordPress "Reading Settings."
+1. **Activate the Theme:** Upon activation, navigate to the **Theme Setup** admin page.
+2. **Generate Infrastructure:** Click the "Generate Infrastructure" button. This automated wizard will:
+   - Deploy your complete 10-page funnel (Home, About, Briefing, Case Studies, etc.).
+   - Configure your Header and Footer menu structures.
+   - Set up your WordPress Reading Settings to point to the Funnel Home.
+   - Populate Sample Authority Content for all Custom Post Types (FAQs, Testimonials, Resources).
 
-## 2. Customizing Your Funnel
-Navigate to **Appearance > Customize** to brand your system:
-- **Global Brand Identity:** Set your primary accent color and global border radius.
-- **Hero Section:** Update your primary headline and CTA text.
-- **Funnel Flow:** Enter your video URLs (Vimeo/Wistia recommended) for the Bridge and Briefing pages.
-- **Founder/Coach Profile:** Introduce yourself with a bio and high-authority image.
-- **Strategic Assets:** Link your high-value lead magnets directly to the funnel.
-- **Executive FAQ:** Address common corporate objections directly on your home page.
-- **Engagement Tiers:** Showcase your $10k and $25k packages on ROI Case Study pages.
+## 2. The High-Authority Customizer
+Navigate to **Appearance > Customize** to manage your boardroom aesthetic. The system is organized into 5 logical panels:
 
-## 3. Email & Nurture Integration
-To maximize your acquisition engine, follow these steps to connect your email platform:
-1. **The Lead Magnet:** Create a page using the `Lead Magnet / Asset Capture` template.
-2. **ESP Connection:** In the Customizer under `Strategic Assets`, paste your Form Action URL from Mailchimp or Klaviyo.
-3. **The Nurture:** Use the templates in `docs/email-nurture-sequence.md` to build an automated follow-up sequence for anyone who downloads your asset or watches your briefing.
+- **1. Global System & Style:** Manage your Design Presets (Unisex, Female, Male), Executive Night Mode, primary accent colors, and global component rounding (Border Radius).
+- **2. Header & Navigation:** Configure your institutional logo and the Direct-Response CTA button found in the header.
+- **3. Homepage Architecture:** Manage every section of your conversion funnel (Hero, Social Proof, Agitation, The Mechanism, Tiers, FAQ, Final CTA, and Newsletter).
+- **4. Page-Specific Assets:** Customize your About page pillars, Contact inquiry logic, and Strategic Resource Library.
+- **5. Footer & Trust Seals:** Configure your professional mission statement and institutional trust seals.
 
-## 4. Advanced Features
-- **Dynamic Text Replacement:** Use `?company=YourTarget` in your URLs to personalize the page for specific institutional leads.
-- **Exit-Intent:** Enable the exit-intent overlay in the "Funnel Flow" section to recover leads who attempt to leave without booking.
-- **GTM Integration:** Enter your GTM ID in "Tracking & Scripts" to instantly track conversion milestones (Lead_Step1, Lead_Qualified, etc.).
+## 3. Advanced Conversion Strategies
+The system offers elite flexibility for your "Lead Capture" logic:
+
+### Flexible CTA Interactions
+For the Hero, Final CTA, and Contact areas, you can choose:
+- **Direct Link:** A standard high-contrast button linking to a URL.
+- **Trigger Modal:** (Recommended) The button launches a mobile-friendly, backdrop-blurred popup containing your shortcode or HTML form.
+- **Inline Form:** The form is rendered directly on the page for maximum immediate exposure.
+
+### Strategic Media
+The Hero section allows you to toggle between:
+- **Video:** High-production VSL (Vimeo/Wistia recommended).
+- **Image:** A professional, high-stakes authority shot.
+- **Form:** Direct lead capture on the right side of the fold.
+
+## 4. Personalization & Tracking
+- **Dynamic Text Replacement (DTR):** Use URL parameters like `?company=Google&name=John` to personalize headlines and text blocks with the `.dtr` class.
+- **Tracking & Analytics:** Enter your GTM ID or custom scripts in the **Global System & Style > Tracking** section to monitor conversion milestones.
 
 ---
-*Support: Built by Jules (Elite CRO Architect)*
+*Support: Engineered by Jules (Elite CRO Architect)*
